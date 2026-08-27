@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 1024" width="100%" height="100%">
+  <defs>
+    <!-- Paper texture filter -->
+    <filter id="paper-texture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2" result="light">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+      <feBlend mode="multiply" in="SourceGraphic" in2="light" />
+    </filter>
+    <filter id="crayon-rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <!-- Gradients -->
+    <linearGradient id="wall-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faedcd"/>
+      <stop offset="100%" stop-color="#e9d8a6"/>
+    </linearGradient>
+    <linearGradient id="window-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#94d2bd"/>
+      <stop offset="50%" stop-color="#0a9396"/>
+      <stop offset="100%" stop-color="#005f73"/>
+    </linearGradient>
+    <linearGradient id="coat-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ee9b00"/>
+      <stop offset="100%" stop-color="#ca6702"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Wall (Torn Paper Feel) -->
+  <rect width="768" height="1024" fill="#fdf0d5" filter="url(#paper-texture)"/>
+  
+  <!-- Cafe Interior Collage Blocks -->
+  <path d="M 0,0 L 768,0 L 768,1024 L 0,1024 Z" fill="url(#wall-grad)" opacity="0.8"/>
+  <polygon points="40,60 520,50 500,680 30,700" fill="#fefae0" stroke="#d4a373" stroke-width="6" stroke-dasharray="16,8" filter="url(#crayon-rough)"/>
+  
+  <!-- Rain Window Frame & Outer Scenery -->
+  <rect x="50" y="70" width="440" height="600" rx="12" fill="url(#window-grad)" opacity="0.85"/>
+  <!-- Rain Streaks -->
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <line x1="80" y1="90" x2="60" y2="150"/>
+    <line x1="140" y1="120" x2="120" y2="200"/>
+    <line x1="200" y1="80" x2="180" y2="180"/>
+    <line x1="300" y1="110" x2="280" y2="210"/>
+    <line x1="380" y1="95" x2="360" y2="190"/>
+    <line x1="100" y1="260" x2="80" y2="340"/>
+    <line x1="220" y1="240" x2="200" y2="350"/>
+    <line x1="340" y1="270" x2="320" y2="380"/>
+    <line x1="420" y1="230" x2="400" y2="330"/>
+    <line x1="160" y1="420" x2="140" y2="520"/>
+    <line x1="280" y1="400" x2="260" y2="510"/>
+  </g>
+  <!-- Window Grid lines -->
+  <line x1="50" y1="370" x2="490" y2="370" stroke="#bb3e03" stroke-width="8" stroke-linecap="round"/>
+  <line x1="270" y1="70" x2="270" y2="670" stroke="#bb3e03" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Warm Cafe Ceiling Lamp -->
+  <path d="M 620,0 L 620,160" stroke="#7f4f24" stroke-width="4"/>
+  <path d="M 560,160 Q 620,120 680,160 Z" fill="#e76f51" filter="url(#crayon-rough)"/>
+  <circle cx="620" cy="170" r="18" fill="#ffd166"/>
+  <circle cx="620" cy="180" r="120" fill="#ffd166" opacity="0.18"/>
+
+  <!-- Wooden Table (Collage paper layers) -->
+  <polygon points="0,680 768,640 768,1024 0,1024" fill="#936639" filter="url(#paper-texture)"/>
+  <polygon points="0,680 768,640 768,730 0,780" fill="#a68a64" filter="url(#crayon-rough)"/>
+  <!-- Table Wood Lines in Crayon style -->
+  <g stroke="#582f0e" stroke-width="4" opacity="0.4" stroke-linecap="round">
+    <line x1="30" y1="740" x2="740" y2="690"/>
+    <line x1="20" y1="820" x2="750" y2="770"/>
+    <line x1="40" y1="910" x2="730" y2="860"/>
+  </g>
+
+  <!-- Sleeping Cat on Table (Chunky, cute collage) -->
+  <g transform="translate(100, 700)" filter="url(#crayon-rough)">
+    <!-- Cat Mat -->
+    <rect x="0" y="20" width="220" height="140" rx="20" fill="#e9c46a" stroke="#f4a261" stroke-width="4" stroke-dasharray="10,6"/>
+    <!-- Cat Body -->
+    <ellipse cx="110" cy="90" rx="80" ry="50" fill="#e76f51"/>
+    <!-- Stripes -->
+    <path d="M 70,60 Q 80,90 70,120" stroke="#ae2012" stroke-width="6" fill="none"/>
+    <path d="M 110,50 Q 120,90 110,130" stroke="#ae2012" stroke-width="6" fill="none"/>
+    <path d="M 150,60 Q 160,90 150,120" stroke="#ae2012" stroke-width="6" fill="none"/>
+    <!-- Cat Head -->
+    <circle cx="60" cy="80" r="38" fill="#e76f51"/>
+    <!-- Ears -->
+    <polygon points="35,55 50,20 65,50" fill="#ae2012"/>
+    <polygon points="65,50 85,20 95,55" fill="#ae2012"/>
+    <!-- Closed Eyes -->
+    <path d="M 40,85 Q 50,95 60,85" stroke="#333" stroke-width="3" fill="none"/>
+    <path d="M 65,85 Q 75,95 85,85" stroke="#333" stroke-width="3" fill="none"/>
+    <ellipse cx="62" cy="95" rx="4" ry="3" fill="#333"/>
+    <!-- Tail curled -->
+    <path d="M 180,90 Q 210,60 190,40 Q 170,30 170,50" stroke="#e76f51" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <!-- "Zzz" -->
+    <text x="75" y="15" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="bold" fill="#ae2012">Zzz...</text>
+  </g>
+
+  <!-- Woman Sitting by Window -->
+  <g transform="translate(380, 240)" filter="url(#crayon-rough)">
+    <!-- Coat Body -->
+    <path d="M 80,360 L 260,340 L 320,620 L 40,640 Z" fill="url(#coat-grad)"/>
+    <!-- Knit Sweater Collar -->
+    <path d="M 130,340 Q 170,380 210,340 Z" fill="#fdf0d5" stroke="#dda15e" stroke-width="5"/>
+    <!-- Woman Head & Face -->
+    <ellipse cx="170" cy="270" rx="55" ry="68" fill="#fcd5ce"/>
+    <!-- Hair -->
+    <path d="M 100,240 Q 80,380 140,400 Q 220,380 240,240 Z" fill="#582f0e"/>
+    <!-- Facial Features (Storybook Cute) -->
+    <!-- Closed Peaceful Eye & Smile -->
+    <path d="M 140,270 Q 152,280 162,270" stroke="#6c584c" stroke-width="3.5" fill="none"/>
+    <path d="M 145,295 Q 155,305 168,295" stroke="#bc6c25" stroke-width="3.5" fill="none"/>
+    <!-- Rosy Cheek -->
+    <circle cx="138" cy="285" r="14" fill="#ffb5a7" opacity="0.8"/>
+
+    <!-- Wide Brim Hat -->
+    <!-- Crown -->
+    <path d="M 100,200 Q 170,120 240,200 Z" fill="#283618"/>
+    <!-- Hat Ribbon -->
+    <path d="M 98,195 Q 170,180 242,195" stroke="#dda15e" stroke-width="12" fill="none"/>
+    <!-- Wide Brim -->
+    <ellipse cx="170" cy="205" rx="140" ry="32" fill="#386641"/>
+
+    <!-- Arm Holding Coffee Cup -->
+    <path d="M 100,420 Q 60,460 70,500 L 120,500" stroke="#ca6702" stroke-width="38" stroke-linecap="round" fill="none"/>
+    <!-- Coffee Cup & Saucer -->
+    <g transform="translate(40, 480)">
+      <ellipse cx="40" cy="35" rx="35" ry="12" fill="#dda15e"/>
+      <path d="M 15,10 L 65,10 L 60,32 L 20,32 Z" fill="#fefae0" stroke="#bc6c25" stroke-width="3"/>
+      <!-- Steam -->
+      <path d="M 30,0 Q 25,-20 35,-35" stroke="#fefae0" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+      <path d="M 45,-5 Q 55,-25 45,-45" stroke="#fefae0" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- Title Badge Overlay on Bottom -->
+  <g transform="translate(40, 940)">
+    <rect width="688" height="50" rx="14" fill="#283618" opacity="0.9"/>
+    <text x="24" y="32" font-family="'Noto Serif SC', serif" font-size="20" font-weight="bold" fill="#fefae0">
+      14. 绘本蜡笔与拼贴 (Picture Book Crayon Collage) · 场景 A
+    </text>
+  </g>
+</svg>
