@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI 艺术风格全景对比实验室 | Art Style Matrix & Comparator</title>
+  <title>画风图谱 · 经典艺术与插画流派视觉解构 | Art Style Archive</title>
   
   <!-- Analytics (Umami) -->
   <script
@@ -23,13 +23,22 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              400: '#818cf8',
-              500: '#6366f1',
-              600: '#4f46e5',
-              900: '#1e1b4b',
+            terracotta: {
+              50: '#fdf4f2',
+              100: '#fbe8e4',
+              200: '#f7d5cc',
+              300: '#f0b5a6',
+              400: '#e68972',
+              500: '#e25c38',
+              600: '#c8502e',
+              700: '#a63f23',
+              800: '#86351f',
+              900: '#6f2f1e',
+            },
+            ochre: {
+              400: '#f59e0b',
+              500: '#d97706',
+              600: '#b45309',
             }
           }
         }
@@ -40,97 +49,91 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#07090e] text-slate-200 min-h-screen selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+<body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden">
 
-  <!-- Glow Background Effect -->
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 glow-gradient pointer-events-none z-0"></div>
+  <!-- Main Wrapper -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-  <!-- Main Container -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-    <!-- Top Navigation / Brand Header -->
-    <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-8 border-b border-slate-800/80">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wider uppercase mb-3">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          AI Prompt Engineering & Aesthetics Matrix
+    <!-- Editorial Header -->
+    <header class="pb-10 border-b border-white/[0.08] flex flex-col md:flex-row md:items-end justify-between gap-8">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 text-xs tracking-[0.2em] uppercase font-mono text-[#a1a1aa] mb-3">
+          <span class="inline-block w-2 h-2 rounded-full bg-[#e25c38]"></span>
+          <span>ART STYLE ARCHIVE · 14 MOVEMENTS × 3 BENCHMARKS</span>
         </div>
-        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-          <span class="gradient-text font-serif-sc">AI 艺术风格全景对比实验室</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif-editorial text-[#fbfbfa] tracking-tight leading-tight">
+          画风图谱 <span class="font-normal text-[#a1a1aa] italic font-serif-editorial">/ 经典艺术与插画流派视觉解构</span>
         </h1>
-        <p class="mt-2 text-sm sm:text-base text-slate-400 max-w-2xl">
-          基于控制变量法，固定 3 大基准测试场景，深度剖析 14 种经典绘画与插画流派的<span class="text-slate-200 font-medium">笔触肌理、色彩语言、光影逻辑与出图提示词</span>。
+        <p class="mt-4 text-sm sm:text-base text-[#a1a1aa] leading-relaxed max-w-2xl font-normal">
+          基于统一基准场景，解构 14 种经典绘画与插画流派的<span class="text-[#fbfbfa] font-medium">笔触肌理、色彩语言、光影逻辑与 Prompt 结构化对照</span>。
         </p>
       </div>
 
-      <!-- Quick Action / Stats Badge / GitHub Repo Button -->
-      <div class="flex flex-wrap items-center gap-3">
-        <div class="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-2">
-          <i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i>
-          <span>14 种艺术流派</span>
+      <!-- Header Actions & Meta -->
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <div class="px-3.5 py-2 rounded-lg bg-[#18191d] border border-white/[0.08] text-xs text-[#a1a1aa] flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+          <span>42 组视觉图谱与 Prompt</span>
         </div>
-        <div class="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center gap-2">
-          <i data-lucide="image" class="w-4 h-4 text-emerald-400"></i>
-          <span>42/42 组全景视觉与 Prompt 矩阵</span>
-        </div>
-        <button id="exportPromptsBtn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all flex items-center gap-2 shadow-lg shadow-indigo-600/20">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          导出 Prompt
+
+        <button id="exportPromptsBtn" class="px-4 py-2 rounded-lg bg-[#24262c] hover:bg-[#2e3037] text-[#fbfbfa] border border-white/[0.1] text-xs font-medium transition-all flex items-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-[#a1a1aa]"></i>
+          <span>导出 Prompt 库</span>
         </button>
-        <!-- GitHub Repo Link -->
-        <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 text-xs font-semibold transition-all flex items-center gap-2 shadow-sm">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+
+        <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" 
+           class="px-4 py-2 rounded-lg bg-[#18191d] hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>GitHub</span>
         </a>
       </div>
     </header>
 
-    <!-- Scene Selector Tabs -->
+    <!-- Scene Selector (Architectural 3-Column Tabs) -->
     <section class="mt-8">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-sm font-semibold tracking-wider text-slate-400 uppercase flex items-center gap-2">
-          <i data-lucide="map-pin" class="w-4 h-4 text-indigo-400"></i>
-          选择基准测试场景 (Benchmark Scene)
-        </h2>
-        <span class="text-xs text-slate-500">固定画面要素 · 对比画风差异</span>
+      <div class="flex items-center justify-between mb-3 text-xs tracking-wider uppercase font-mono text-[#888990]">
+        <span>BENCHMARK SCENES / 基准场景</span>
+        <span>固定主体要素 · 纯粹对照流派差异</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="sceneTabsContainer">
-        <!-- Scene Tab Cards rendered dynamically -->
+        <!-- Injected via JavaScript -->
       </div>
     </section>
 
-    <!-- Active Scene Context Banner -->
-    <section class="mt-6 p-5 rounded-2xl glass-panel relative overflow-hidden" id="sceneBanner">
+    <!-- Active Scene Context Box -->
+    <section class="mt-6 p-5 rounded-xl bg-[#18191d] border border-white/[0.06]" id="sceneBanner">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <div class="flex items-center gap-2 mb-1">
-            <span id="sceneBadge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              3:4 肖像比例
+          <div class="flex items-center gap-2 mb-1.5">
+            <span id="sceneBadge" class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-[#24262c] text-[#c4c4c7] border border-white/[0.08]">
+              3:4 肖像
             </span>
-            <h3 id="sceneTitle" class="text-lg font-bold text-white">场景 A · 咖啡馆女性与猫</h3>
+            <h3 id="sceneTitle" class="text-base font-bold text-[#fbfbfa] font-serif-editorial">
+              I · 咖啡馆雨窗与猫
+            </h3>
           </div>
-          <p id="sceneDesc" class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+          <p id="sceneDesc" class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed max-w-3xl">
             咖啡馆雨窗旁，戴宽檐帽喝咖啡的优雅女性，木桌上趴着一只睡猫。用于测试人物五官结构、衣褶质感、室内外冷暖对比与情绪传达。
           </p>
         </div>
 
-        <div class="shrink-0 bg-slate-950/70 p-3 rounded-xl border border-slate-800 text-xs">
-          <div class="text-slate-400 font-medium mb-1 flex items-center gap-1.5">
-            <i data-lucide="anchor" class="w-3.5 h-3.5 text-indigo-400"></i>
-            固定核心主体 (Core Subject)
+        <div class="shrink-0 bg-[#121316] p-3 rounded-lg border border-white/[0.06] text-xs">
+          <div class="text-[#888990] font-mono text-[11px] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <i data-lucide="crosshair" class="w-3 h-3 text-[#e25c38]"></i>
+            基准主体描述 (Core Subject)
           </div>
-          <div id="sceneSubject" class="font-mono-code text-indigo-200/90 text-[11px] max-w-md line-clamp-2">
-            A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee...
+          <div id="sceneSubject" class="font-mono-code text-[#c4c4c7] text-[11px] max-w-md line-clamp-2">
+            A stylish woman in a wide-brim hat sitting by a rainy cafe window...
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Controls Bar: Category Filter, View Mode, Search -->
+    <!-- Filter & View Controls -->
     <section class="mt-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
       
-      <!-- Category Filter Pills -->
+      <!-- Category Filter Tabs -->
       <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="categoryFilterContainer">
         <!-- Rendered dynamically -->
       </div>
@@ -138,22 +141,22 @@
       <!-- Right Controls: View Mode & Search -->
       <div class="flex items-center gap-3">
         <!-- View Mode Switcher -->
-        <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
-          <button id="viewGridBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-indigo-600 text-white shadow-sm">
-            <i data-lucide="grid" class="w-3.5 h-3.5"></i>
+        <div class="flex items-center bg-[#18191d] p-1 rounded-lg border border-white/[0.08]">
+          <button id="viewGridBtn" class="px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
             <span>画廊矩阵</span>
           </button>
-          <button id="viewCompareBtn" class="px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200">
-            <i data-lucide="columns-2" class="w-3.5 h-3.5"></i>
-            <span>并排对比台</span>
+          <button id="viewCompareBtn" class="px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white">
+            <i data-lucide="split-square-vertical" class="w-3.5 h-3.5"></i>
+            <span>画风对比台</span>
           </button>
         </div>
 
         <!-- Search Input -->
         <div class="relative flex-1 md:w-56">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
-          <input type="text" id="searchInput" placeholder="搜索画风、艺术家、标签..." 
-            class="w-full pl-9 pr-3 py-1.5 bg-slate-900/90 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-all">
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#888990]"></i>
+          <input type="text" id="searchInput" placeholder="搜索流派、技法或大师..." 
+            class="w-full pl-8 pr-3 py-1.5 bg-[#18191d] border border-white/[0.08] rounded-lg text-xs text-[#fbfbfa] placeholder-[#5c5d64] focus:outline-none focus:border-[#e25c38] transition-all">
         </div>
       </div>
     </section>
@@ -167,20 +170,20 @@
 
     <!-- View 2: Split Comparator View (Hidden by default) -->
     <main id="compareView" class="mt-8 hidden">
-      <div class="glass-panel p-6 rounded-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div class="bg-[#18191d] border border-white/[0.08] p-6 sm:p-8 rounded-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
           <div>
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <i data-lucide="git-compare" class="w-5 h-5 text-indigo-400"></i>
+            <h3 class="text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
+              <i data-lucide="git-compare" class="w-5 h-5 text-[#e25c38]"></i>
               双画风同屏深度对比台
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">选择任意 2 种艺术风格，直观对比笔触微结构、色彩分布与光影语言</p>
+            <p class="text-xs text-[#a1a1aa] mt-1">选择任意 2 种艺术流派，在同一基准场景下直观对照笔触肌理、色彩构成与 Prompt 差异</p>
           </div>
-          <div class="flex items-center gap-3">
-            <span class="text-xs text-slate-400">模式：</span>
-            <div class="flex bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
-              <button id="compareDualBtn" class="px-2.5 py-1 rounded bg-indigo-600 text-white font-medium">并排视图</button>
-              <button id="compareSliderBtn" class="px-2.5 py-1 rounded text-slate-400 hover:text-white font-medium">滑动对比</button>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-[#888990] font-mono">视图模式：</span>
+            <div class="flex bg-[#121316] p-1 rounded-lg border border-white/[0.08] text-xs">
+              <button id="compareDualBtn" class="px-3 py-1 rounded bg-[#e25c38] text-white font-medium">并排视图</button>
+              <button id="compareSliderBtn" class="px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium">滑动对比</button>
             </div>
           </div>
         </div>
@@ -188,15 +191,15 @@
         <!-- Selectors for Left & Right Style -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           <div class="flex items-center gap-3">
-            <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">左侧风格 A:</span>
-            <select id="leftStyleSelect" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
-              <!-- Options populated dynamically -->
+            <span class="text-xs font-mono font-semibold text-[#e25c38] uppercase tracking-wider shrink-0">风格 A:</span>
+            <select id="leftStyleSelect" class="flex-1 bg-[#121316] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
+              <!-- Populated dynamically -->
             </select>
           </div>
           <div class="flex items-center gap-3">
-            <span class="text-xs font-semibold text-pink-400 uppercase tracking-wider">右侧风格 B:</span>
-            <select id="rightStyleSelect" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
-              <!-- Options populated dynamically -->
+            <span class="text-xs font-mono font-semibold text-[#d97706] uppercase tracking-wider shrink-0">风格 B:</span>
+            <select id="rightStyleSelect" class="flex-1 bg-[#121316] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
+              <!-- Populated dynamically -->
             </select>
           </div>
         </div>
@@ -207,20 +210,20 @@
         </div>
 
         <!-- Detailed Stylistic Diff Table -->
-        <div class="mt-8 pt-6 border-t border-slate-800 overflow-x-auto">
-          <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-            <i data-lucide="file-diff" class="w-4 h-4 text-indigo-400"></i>
-            画风核心要素对比表
+        <div class="mt-8 pt-6 border-t border-white/[0.08] overflow-x-auto">
+          <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#a1a1aa] mb-3 flex items-center gap-2">
+            <i data-lucide="table" class="w-3.5 h-3.5 text-[#e25c38]"></i>
+            画风要素对比解构表
           </h4>
-          <table class="w-full text-xs text-left text-slate-300">
-            <thead class="bg-slate-950/60 text-slate-400 uppercase border-b border-slate-800">
+          <table class="w-full text-xs text-left text-[#c4c4c7]">
+            <thead class="bg-[#121316] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
               <tr>
-                <th class="p-3 w-1/5">对比维度</th>
-                <th class="p-3 w-2/5 text-indigo-300" id="tableLeftName">风格 A</th>
-                <th class="p-3 w-2/5 text-pink-300" id="tableRightName">风格 B</th>
+                <th class="p-3.5 w-1/5">解构维度</th>
+                <th class="p-3.5 w-2/5 text-[#e25c38]" id="tableLeftName">风格 A</th>
+                <th class="p-3.5 w-2/5 text-[#d97706]" id="tableRightName">风格 B</th>
               </tr>
             </thead>
-            <tbody id="diffTableBody" class="divide-y divide-slate-800/60">
+            <tbody id="diffTableBody" class="divide-y divide-white/[0.04]">
               <!-- Injected by script -->
             </tbody>
           </table>
@@ -228,77 +231,77 @@
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-16 pt-8 pb-12 border-t border-slate-800/80 text-center text-xs text-slate-500">
-      <div class="flex items-center justify-center gap-4 mb-2">
-        <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-1">
+    <!-- Editorial Footer -->
+    <footer class="mt-20 pt-8 pb-12 border-t border-white/[0.08] text-center text-xs text-[#888990]">
+      <div class="flex items-center justify-center gap-4 mb-3">
+        <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" class="text-[#c4c4c7] hover:text-[#e25c38] transition-colors flex items-center gap-1.5 font-medium">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>GitHub 开源仓库</span>
         </a>
         <span>·</span>
-        <a href="https://holynova.github.io/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors">
+        <a href="https://holynova.github.io/" target="_blank" rel="noopener noreferrer" class="text-[#c4c4c7] hover:text-[#e25c38] transition-colors font-medium">
           holynova 个人作品集
         </a>
       </div>
-      <p>AI 艺术风格全景对比实验室 · 42/42 组全景控制变量视觉图谱与提示词矩阵</p>
+      <p>画风图谱 (Art Style Archive) · 42/42 组全景视觉与提示词结构化解构</p>
     </footer>
 
   </div>
 
   <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="relative max-w-5xl w-full max-h-[90vh] bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="relative max-w-5xl w-full max-h-[92vh] bg-[#18191d] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <!-- Close Button -->
-      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-950/70 hover:bg-slate-800 text-slate-300 transition-all">
-        <i data-lucide="x" class="w-5 h-5"></i>
+      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <!-- Prev / Next Navigation overlay -->
-      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-slate-950/70 hover:bg-slate-800 text-slate-300 transition-all">
-        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      <!-- Prev / Next Navigation buttons -->
+      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
       </button>
-      <button id="nextLightboxBtn" class="absolute right-4 md:right-[400px] top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-slate-950/70 hover:bg-slate-800 text-slate-300 transition-all">
-        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      <button id="nextLightboxBtn" class="absolute right-4 md:right-[400px] top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
       </button>
 
       <!-- Image Area -->
-      <div class="flex-1 bg-black flex items-center justify-center p-4 overflow-hidden relative min-h-[300px]">
-        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-lg transition-transform duration-300">
+      <div class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[320px]">
+        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-xl">
       </div>
 
       <!-- Details Drawer Area -->
-      <div class="w-full md:w-96 bg-slate-900/95 p-6 overflow-y-auto max-h-[85vh] border-t md:border-t-0 md:border-l border-slate-800">
+      <div class="w-full md:w-[380px] bg-[#18191d] p-6 overflow-y-auto max-h-[85vh] border-t md:border-t-0 md:border-l border-white/[0.08]">
         <div class="flex items-center gap-2 mb-2">
-          <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">01</span>
-          <span id="lightboxCategory" class="text-xs text-slate-400">传统画种</span>
+          <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#24262c] text-[#e25c38] border border-white/[0.08]">01</span>
+          <span id="lightboxCategory" class="text-xs text-[#888990]">传统绘画与油彩</span>
         </div>
-        <h3 id="lightboxTitleCn" class="text-xl font-bold text-white font-serif-sc">厚涂油画</h3>
-        <div id="lightboxTitleEn" class="text-xs text-indigo-400 font-medium mb-4">Impasto Oil Painting</div>
+        <h3 id="lightboxTitleCn" class="text-2xl font-bold text-[#fbfbfa] font-serif-editorial">厚涂油画</h3>
+        <div id="lightboxTitleEn" class="text-xs font-mono text-[#a1a1aa] mb-5">Impasto Oil Painting</div>
 
         <div class="space-y-4 text-xs">
           <div>
-            <div class="text-slate-400 font-semibold mb-1">代表大师 / 源流：</div>
-            <div id="lightboxMaster" class="text-slate-200">Craig Mullins / 梵高</div>
+            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1">代表大师 / 源流：</div>
+            <div id="lightboxMaster" class="text-[#fbfbfa] font-medium">Craig Mullins / 梵高</div>
           </div>
 
           <div>
-            <div class="text-slate-400 font-semibold mb-1">技法与质感解析：</div>
-            <p id="lightboxTechnique" class="text-slate-300 leading-relaxed">使用厚重油彩与油画刀层叠涂抹，强调厚重物理肌理与雕塑般的形体转折。</p>
+            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1">技法与质感解析：</div>
+            <p id="lightboxTechnique" class="text-[#c4c4c7] leading-relaxed">使用厚重油彩与油画刀层叠涂抹，强调厚重物理肌理与雕塑般的形体转折。</p>
           </div>
 
           <div>
-            <div class="text-slate-400 font-semibold mb-1">核心提示词 (Prompt)：</div>
-            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono-code text-[11px] text-slate-300 break-words leading-relaxed relative group">
+            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1.5">完整提示词 (Prompt)：</div>
+            <div class="bg-[#121316] p-3 rounded-lg border border-white/[0.08] font-mono-code text-[11px] text-[#e4e4e7] break-words leading-relaxed">
               <span id="lightboxPromptText">Prompt text</span>
-              <button id="lightboxCopyBtn" class="mt-2 w-full py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold flex items-center justify-center gap-1.5 transition-all">
+              <button id="lightboxCopyBtn" class="mt-3 w-full py-2 rounded-md bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 transition-all text-xs">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                复制 Prompt
+                <span id="lightboxCopyBtnText">复制 Prompt</span>
               </button>
             </div>
           </div>
 
           <div>
-            <div class="text-slate-400 font-semibold mb-1.5">关键修饰词提取：</div>
+            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1.5">核心修饰关键词：</div>
             <div id="lightboxModifiers" class="flex flex-wrap gap-1.5">
               <!-- Modifiers tags -->
             </div>
@@ -309,9 +312,9 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-indigo-600 text-white text-xs font-semibold shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-    <span id="toastMsg">提示词已成功复制到剪贴板！</span>
+  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#18191d] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
+    <i data-lucide="check" class="w-4 h-4 text-[#e25c38]"></i>
+    <span id="toastMsg">提示词已成功复制到剪贴板</span>
   </div>
 
   <!-- App Logic Scripts -->
@@ -354,9 +357,10 @@
     const lightboxTechnique = document.getElementById('lightboxTechnique');
     const lightboxPromptText = document.getElementById('lightboxPromptText');
     const lightboxCopyBtn = document.getElementById('lightboxCopyBtn');
+    const lightboxCopyBtnText = document.getElementById('lightboxCopyBtnText');
     const lightboxModifiers = document.getElementById('lightboxModifiers');
 
-    // Init App
+    // Initialize
     function init() {
       renderSceneTabs();
       renderCategoryFilters();
@@ -369,26 +373,26 @@
 
     // Render Scene Tabs
     function renderSceneTabs() {
-      sceneTabsContainer.innerHTML = SCENES_DATA.map(scene => {
+      sceneTabsContainer.innerHTML = SCENES_DATA.map((scene, idx) => {
         const isActive = scene.id === currentSceneId;
-        const iconName = scene.id === 'scene_a' ? 'coffee' : (scene.id === 'scene_b' ? 'train' : 'mountain');
+        const roman = idx === 0 ? 'I' : (idx === 1 ? 'II' : 'III');
         return `
           <button onclick="switchScene('${scene.id}')" 
-            class="p-4 rounded-2xl text-left transition-all relative overflow-hidden ${
+            class="p-4 rounded-xl text-left transition-all relative overflow-hidden border ${
               isActive 
-                ? 'bg-gradient-to-br from-indigo-900/60 to-slate-900/90 border-2 border-indigo-500/80 shadow-lg shadow-indigo-500/10' 
-                : 'glass-panel hover:bg-slate-900/80 border border-slate-800'
+                ? 'bg-[#1e2025] border-[#e25c38] text-white shadow-lg' 
+                : 'bg-[#18191d] border-white/[0.08] hover:border-white/[0.18] text-[#a1a1aa]'
             }">
             <div class="flex items-center justify-between mb-2">
-              <div class="w-8 h-8 rounded-xl flex items-center justify-center ${isActive ? 'bg-indigo-500 text-white' : 'bg-slate-800 text-slate-400'}">
-                <i data-lucide="${iconName}" class="w-4 h-4"></i>
-              </div>
-              <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                14/14 完整图谱
+              <span class="font-mono text-xs font-bold px-2 py-0.5 rounded ${isActive ? 'bg-[#e25c38] text-white' : 'bg-[#121316] text-[#888990]'}">
+                SCENE ${roman}
+              </span>
+              <span class="text-[11px] font-mono text-[#888990]">
+                ${scene.badge}
               </span>
             </div>
-            <div class="font-bold text-sm text-white">${scene.title}</div>
-            <div class="text-xs text-slate-400 mt-1 line-clamp-1">${scene.subtitle}</div>
+            <div class="font-bold text-sm font-serif-editorial ${isActive ? 'text-[#fbfbfa]' : 'text-[#c4c4c7]'}">${scene.title}</div>
+            <div class="text-xs text-[#888990] mt-1 line-clamp-1">${scene.subtitle}</div>
           </button>
         `;
       }).join('');
@@ -415,16 +419,16 @@
       updateComparisonDisplay();
     };
 
-    // Render Category Filter Pills
+    // Render Category Filter Tabs
     function renderCategoryFilters() {
       categoryFilterContainer.innerHTML = STYLE_CATEGORIES.map(cat => {
         const isActive = cat.id === currentCategory;
         return `
           <button onclick="setCategory('${cat.id}')" 
-            class="px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
+            class="px-3.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap border ${
               isActive 
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20' 
-                : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800/80 hover:border-slate-700'
+                ? 'bg-[#e25c38] text-white border-[#e25c38]' 
+                : 'bg-[#18191d] text-[#a1a1aa] hover:text-white border-white/[0.08] hover:border-white/[0.18]'
             }">
             <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
             <span>${cat.name}</span>
@@ -465,54 +469,54 @@
       const items = getFilteredStyles();
       if (items.length === 0) {
         galleryGrid.innerHTML = `
-          <div class="col-span-full py-16 text-center text-slate-500">
-            <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-40"></i>
-            <p class="text-sm">未找到匹配的风格，尝试切换分类或搜索关键词</p>
+          <div class="col-span-full py-16 text-center text-[#888990]">
+            <i data-lucide="search-x" class="w-10 h-10 mx-auto mb-3 opacity-40"></i>
+            <p class="text-sm">未找到匹配的艺术流派，请尝试切换分类或调整关键词</p>
           </div>
         `;
         lucide.createIcons();
         return;
       }
 
-      galleryGrid.innerHTML = items.map((item, index) => {
+      galleryGrid.innerHTML = items.map(item => {
         return `
-          <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-slate-800">
-            <!-- Image Area -->
-            <div class="relative ${aspectClass} bg-slate-950 overflow-hidden cursor-pointer" onclick="openLightbox('${item.id}')">
-              <img src="${item.image}" alt="${item.nameCn}" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                loading="lazy">
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                <span class="text-xs font-semibold text-white flex items-center gap-1.5 bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md">
-                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
-                  点击查看高清细节与解析
-                </span>
+          <div class="gallery-card flex flex-col justify-between overflow-hidden">
+            <div>
+              <!-- Artwork Frame -->
+              <div class="artwork-frame ${aspectClass} cursor-pointer" onclick="openLightbox('${item.id}')">
+                <img src="${item.image}" alt="${item.nameCn}" 
+                  class="w-full h-full object-cover" 
+                  loading="lazy">
+                
+                <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                  <span class="text-xs font-medium text-white flex items-center gap-1.5 bg-[#121316]/90 px-3 py-1.5 rounded-lg border border-white/[0.15]">
+                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                    查看大图与解构
+                  </span>
+                </div>
+                
+                <!-- Card Badge Header -->
+                <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#121316]/90 text-[#fbfbfa] border border-white/[0.1]">
+                    #${item.number}
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#24262c]/90 text-[#c4c4c7] border border-white/[0.08]">
+                    ${item.categoryName}
+                  </span>
+                </div>
               </div>
-              
-              <!-- Number & Category Badge -->
-              <div class="absolute top-3 left-3 flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded-md text-[11px] font-bold bg-black/70 backdrop-blur-md text-white border border-white/10">
-                  #${item.number}
-                </span>
-                <span class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-indigo-600/80 backdrop-blur-md text-white">
-                  ${item.categoryName}
-                </span>
-              </div>
-            </div>
 
-            <!-- Content Area -->
-            <div class="p-5 flex-1 flex flex-col justify-between">
-              <div>
+              <!-- Metadata Area -->
+              <div class="p-5">
                 <div class="flex items-start justify-between gap-2">
                   <div>
-                    <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors font-serif-sc">
+                    <h3 class="text-lg font-bold text-[#fbfbfa] font-serif-editorial">
                       ${item.nameCn}
                     </h3>
-                    <div class="text-xs text-slate-400 font-medium">${item.nameEn}</div>
+                    <div class="text-xs font-mono text-[#888990] mt-0.5">${item.nameEn}</div>
                   </div>
                   ${item.master ? `
-                    <span class="text-[10px] text-slate-400 px-2 py-0.5 rounded bg-slate-900 border border-slate-800 shrink-0 max-w-[120px] truncate" title="${item.master}">
+                    <span class="text-[11px] text-[#888990] px-2 py-0.5 rounded bg-[#121316] border border-white/[0.06] shrink-0 max-w-[130px] truncate" title="${item.master}">
                       ${item.master.split('/')[0].trim()}
                     </span>
                   ` : ''}
@@ -520,59 +524,70 @@
 
                 <!-- Tags -->
                 <div class="flex flex-wrap gap-1.5 mt-3">
-                  ${item.tags.map(t => `<span class="px-2 py-0.5 rounded text-[10px] bg-slate-900/90 text-slate-300 border border-slate-800">${t}</span>`).join('')}
+                  ${item.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}
                 </div>
 
-                <!-- Technique / Note -->
+                <!-- Technique Description -->
                 ${item.technique ? `
-                  <p class="text-xs text-slate-400 mt-3 line-clamp-2 leading-relaxed">
+                  <p class="text-xs text-[#a1a1aa] mt-3 line-clamp-2 leading-relaxed">
                     ${item.technique}
                   </p>
                 ` : ''}
               </div>
+            </div>
 
-              <!-- Prompt Snippet Box & Copy Action -->
-              <div class="mt-4 pt-4 border-t border-slate-800/80">
-                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-[11px] font-mono-code text-slate-300 relative group/box">
-                  <div class="line-clamp-2 pr-6 text-slate-400 group-hover/box:text-slate-200 transition-colors">
-                    ${item.prompt}
-                  </div>
-                  <button onclick="copyPrompt('${item.id}')" 
-                    title="复制完整提示词" 
-                    class="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white transition-all">
-                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <!-- Prompt Box & Actions -->
+            <div class="p-5 pt-0">
+              <div class="prompt-box p-3">
+                <div class="flex items-center justify-between text-[10px] font-mono text-[#888990] mb-1.5">
+                  <span>PROMPT</span>
+                  <button onclick="copyPrompt('${item.id}', this)" class="text-[#c4c4c7] hover:text-[#e25c38] flex items-center gap-1 font-medium transition-colors">
+                    <i data-lucide="copy" class="w-3 h-3"></i>
+                    <span>复制</span>
                   </button>
                 </div>
+                <div class="line-clamp-2 font-mono-code text-[11px] text-[#a1a1aa] leading-relaxed select-all">
+                  ${item.prompt}
+                </div>
               </div>
-
             </div>
+
           </div>
         `;
       }).join('');
       lucide.createIcons();
     }
 
-    // Copy Prompt Function
-    window.copyPrompt = function(styleId) {
+    // Copy Prompt Function with Visual Button State
+    window.copyPrompt = function(styleId, btnEl) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const item = scene.styles.find(st => st.id === styleId);
       if (!item) return;
 
       navigator.clipboard.writeText(item.prompt).then(() => {
-        showToast(`已复制【${item.nameCn}】的完整出图 Prompt！`);
-      }).catch(err => {
-        showToast('复制失败，请手动选择复制');
+        if (btnEl) {
+          const originalHtml = btnEl.innerHTML;
+          btnEl.innerHTML = `<i data-lucide="check" class="w-3 h-3 text-[#e25c38]"></i><span class="text-[#e25c38]">已复制</span>`;
+          lucide.createIcons();
+          setTimeout(() => {
+            btnEl.innerHTML = originalHtml;
+            lucide.createIcons();
+          }, 1800);
+        }
+        showToast(`已复制【${item.nameCn}】出图 Prompt`);
+      }).catch(() => {
+        showToast('复制失败，请手动选取');
       });
     };
 
-    // Show Toast Notification
+    // Toast Notification
     function showToast(msg) {
       toastMsg.innerText = msg;
       toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
       setTimeout(() => {
         toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-      }, 2500);
+      }, 2200);
     }
 
     // Lightbox Logic
@@ -604,10 +619,16 @@
       lightboxTechnique.innerText = item.technique || item.colorTone || '精细风格控制变量测试';
       lightboxPromptText.innerText = item.prompt;
       
-      lightboxCopyBtn.onclick = () => copyPrompt(item.id);
+      lightboxCopyBtn.onclick = () => {
+        navigator.clipboard.writeText(item.prompt).then(() => {
+          lightboxCopyBtnText.innerText = '已复制到剪贴板！';
+          setTimeout(() => { lightboxCopyBtnText.innerText = '复制 Prompt'; }, 1800);
+          showToast(`已复制【${item.nameCn}】出图 Prompt`);
+        });
+      };
 
       lightboxModifiers.innerHTML = (item.keyModifiers || []).map(mod => `
-        <span class="px-2 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-mono-code text-[10px]">
+        <span class="px-2 py-1 rounded bg-[#121316] border border-white/[0.08] text-[#c4c4c7] font-mono-code text-[11px]">
           ${mod}
         </span>
       `).join('');
@@ -665,7 +686,6 @@
       leftSelect.innerHTML = optionsHtml;
       rightSelect.innerHTML = optionsHtml;
 
-      // Select default valid values
       const currentIds = scene.styles.map(s => s.id);
       if (!currentIds.includes(leftStyleId)) {
         leftStyleId = scene.styles[0].id;
@@ -704,69 +724,73 @@
         stage.innerHTML = `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Style Card -->
-            <div class="bg-slate-950 p-4 rounded-2xl border border-indigo-500/30 flex flex-col">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                  ${styleA.number}. ${styleA.nameCn}
-                </span>
-                <button onclick="copyPrompt('${styleA.id}')" class="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
-                </button>
-              </div>
-              <div class="${aspectClass} rounded-xl overflow-hidden bg-slate-900 relative">
-                <img src="${styleA.image}" alt="${styleA.nameCn}" class="w-full h-full object-cover">
-              </div>
-              <div class="mt-4 text-xs space-y-2">
-                <div class="text-slate-300 font-medium">大师/源流：<span class="text-slate-400 font-normal">${styleA.master || '经典'}</span></div>
-                <div class="text-slate-300 font-medium">主色调：<span class="text-slate-400 font-normal">${styleA.colorTone || '-'}</span></div>
-                <p class="text-slate-400 leading-relaxed">${styleA.technique || ''}</p>
+            <div class="bg-[#121316] p-5 rounded-xl border border-[#e25c38]/30 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#e25c38]/10 text-[#e25c38] border border-[#e25c38]/20">
+                    ${styleA.number}. ${styleA.nameCn}
+                  </span>
+                  <button onclick="copyPrompt('${styleA.id}', this)" class="text-xs text-[#a1a1aa] hover:text-[#e25c38] flex items-center gap-1 font-medium">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
+                  </button>
+                </div>
+                <div class="${aspectClass} rounded-lg overflow-hidden bg-black relative">
+                  <img src="${styleA.image}" alt="${styleA.nameCn}" class="w-full h-full object-cover">
+                </div>
+                <div class="mt-4 text-xs space-y-2">
+                  <div class="text-[#fbfbfa] font-medium">大师/源流：<span class="text-[#a1a1aa] font-normal">${styleA.master || '经典'}</span></div>
+                  <div class="text-[#fbfbfa] font-medium">主色调：<span class="text-[#a1a1aa] font-normal">${styleA.colorTone || '-'}</span></div>
+                  <p class="text-[#a1a1aa] leading-relaxed">${styleA.technique || ''}</p>
+                </div>
               </div>
             </div>
 
             <!-- Right Style Card -->
-            <div class="bg-slate-950 p-4 rounded-2xl border border-pink-500/30 flex flex-col">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30">
-                  ${styleB.number}. ${styleB.nameCn}
-                </span>
-                <button onclick="copyPrompt('${styleB.id}')" class="text-xs text-pink-400 hover:text-pink-300 flex items-center gap-1">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
-                </button>
-              </div>
-              <div class="${aspectClass} rounded-xl overflow-hidden bg-slate-900 relative">
-                <img src="${styleB.image}" alt="${styleB.nameCn}" class="w-full h-full object-cover">
-              </div>
-              <div class="mt-4 text-xs space-y-2">
-                <div class="text-slate-300 font-medium">大师/源流：<span class="text-slate-400 font-normal">${styleB.master || '经典'}</span></div>
-                <div class="text-slate-300 font-medium">主色调：<span class="text-slate-400 font-normal">${styleB.colorTone || '-'}</span></div>
-                <p class="text-slate-400 leading-relaxed">${styleB.technique || ''}</p>
+            <div class="bg-[#121316] p-5 rounded-xl border border-[#d97706]/30 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#d97706]/10 text-[#d97706] border border-[#d97706]/20">
+                    ${styleB.number}. ${styleB.nameCn}
+                  </span>
+                  <button onclick="copyPrompt('${styleB.id}', this)" class="text-xs text-[#a1a1aa] hover:text-[#d97706] flex items-center gap-1 font-medium">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
+                  </button>
+                </div>
+                <div class="${aspectClass} rounded-lg overflow-hidden bg-black relative">
+                  <img src="${styleB.image}" alt="${styleB.nameCn}" class="w-full h-full object-cover">
+                </div>
+                <div class="mt-4 text-xs space-y-2">
+                  <div class="text-[#fbfbfa] font-medium">大师/源流：<span class="text-[#a1a1aa] font-normal">${styleB.master || '经典'}</span></div>
+                  <div class="text-[#fbfbfa] font-medium">主色调：<span class="text-[#a1a1aa] font-normal">${styleB.colorTone || '-'}</span></div>
+                  <p class="text-[#a1a1aa] leading-relaxed">${styleB.technique || ''}</p>
+                </div>
               </div>
             </div>
           </div>
         `;
       } else {
-        // Slider Comparison
-        const sliderAspect = scene.aspectRatio === '16:9' ? 'aspect-[16/9] max-w-2xl' : 'aspect-[3/4] max-w-lg';
+        // Precision Slider Comparison
+        const sliderAspect = scene.aspectRatio === '16:9' ? 'aspect-[16/9] max-w-3xl' : 'aspect-[3/4] max-w-lg';
         stage.innerHTML = `
-          <div class="comparison-container ${sliderAspect} mx-auto rounded-2xl overflow-hidden border border-slate-700 relative" id="sliderBox">
-            <!-- Background Image (Right) -->
+          <div class="comparison-container ${sliderAspect} mx-auto rounded-xl overflow-hidden border border-white/[0.1] relative" id="sliderBox">
+            <!-- Background Image (Right / Style B) -->
             <img src="${styleB.image || ''}" class="absolute inset-0 w-full h-full object-cover select-none">
-            <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-pink-300 border border-pink-500/30 font-bold">
+            <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#d97706] border border-[#d97706]/30 font-mono font-bold">
               ${styleB.nameCn}
             </div>
 
-            <!-- Overlay Image (Left) -->
+            <!-- Overlay Image (Left / Style A) -->
             <div class="comparison-overlay w-1/2 z-10" id="sliderOverlay">
               <img src="${styleA.image || ''}" class="absolute inset-0 max-w-none w-full h-full object-cover select-none" id="sliderImgLeft">
-              <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-indigo-300 border border-indigo-500/30 font-bold">
+              <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#e25c38] border border-[#e25c38]/30 font-mono font-bold">
                 ${styleA.nameCn}
               </div>
             </div>
 
             <!-- Slider Handle -->
             <div class="comparison-handle left-1/2" id="sliderHandle">
-              <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center -translate-x-1/2 -translate-y-1/2 absolute top-1/2 shadow-xl border-2 border-white cursor-ew-resize text-xs">
-                <i data-lucide="move-horizontal" class="w-4 h-4"></i>
+              <div class="comparison-knob">
+                <i data-lucide="move-horizontal" class="w-3.5 h-3.5"></i>
               </div>
             </div>
           </div>
@@ -774,28 +798,28 @@
         initSliderDrag();
       }
 
-      // Populate Diff Table
+      // Diff Table
       const diffTableBody = document.getElementById('diffTableBody');
       diffTableBody.innerHTML = `
         <tr>
-          <td class="p-3 font-semibold text-slate-400">流派归类</td>
-          <td class="p-3">${styleA.categoryName} (${styleA.category})</td>
-          <td class="p-3">${styleB.categoryName} (${styleB.category})</td>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">流派分类</td>
+          <td class="p-3.5">${styleA.categoryName}</td>
+          <td class="p-3.5">${styleB.categoryName}</td>
         </tr>
         <tr>
-          <td class="p-3 font-semibold text-slate-400">笔触与线条特征</td>
-          <td class="p-3 text-slate-300">${styleA.tags.join(' · ')}</td>
-          <td class="p-3 text-slate-300">${styleB.tags.join(' · ')}</td>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">笔触与物理特征</td>
+          <td class="p-3.5 text-[#e4e4e7]">${styleA.tags.join(' · ')}</td>
+          <td class="p-3.5 text-[#e4e4e7]">${styleB.tags.join(' · ')}</td>
         </tr>
         <tr>
-          <td class="p-3 font-semibold text-slate-400">色彩与光影逻辑</td>
-          <td class="p-3 text-slate-300">${styleA.colorTone || '冷暖强烈对比'}</td>
-          <td class="p-3 text-slate-300">${styleB.colorTone || '清爽高饱和'}</td>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">色彩与光影逻辑</td>
+          <td class="p-3.5 text-[#a1a1aa]">${styleA.colorTone || '冷暖强烈对比'}</td>
+          <td class="p-3.5 text-[#a1a1aa]">${styleB.colorTone || '清爽高饱和'}</td>
         </tr>
         <tr>
-          <td class="p-3 font-semibold text-slate-400">核心修饰关键词</td>
-          <td class="p-3 font-mono-code text-[11px] text-indigo-300">${(styleA.keyModifiers || []).join(', ')}</td>
-          <td class="p-3 font-mono-code text-[11px] text-pink-300">${(styleB.keyModifiers || []).join(', ')}</td>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">核心修饰关键词</td>
+          <td class="p-3.5 font-mono-code text-[11px] text-[#e25c38]">${(styleA.keyModifiers || []).join(', ')}</td>
+          <td class="p-3.5 font-mono-code text-[11px] text-[#d97706]">${(styleB.keyModifiers || []).join(', ')}</td>
         </tr>
       `;
 
@@ -845,16 +869,16 @@
       // View Toggle
       viewGridBtn.onclick = () => {
         currentViewMode = 'grid';
-        viewGridBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-indigo-600 text-white shadow-sm';
-        viewCompareBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200';
+        viewGridBtn.className = 'px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
+        viewCompareBtn.className = 'px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
         galleryView.classList.remove('hidden');
         compareView.classList.add('hidden');
       };
 
       viewCompareBtn.onclick = () => {
         currentViewMode = 'compare';
-        viewCompareBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all bg-indigo-600 text-white shadow-sm';
-        viewGridBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all text-slate-400 hover:text-slate-200';
+        viewCompareBtn.className = 'px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
+        viewGridBtn.className = 'px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
         galleryView.classList.add('hidden');
         compareView.classList.remove('hidden');
         updateComparisonDisplay();
@@ -865,14 +889,14 @@
       const compareSliderBtn = document.getElementById('compareSliderBtn');
       compareDualBtn.onclick = () => {
         compareMode = 'dual';
-        compareDualBtn.className = 'px-2.5 py-1 rounded bg-indigo-600 text-white font-medium';
-        compareSliderBtn.className = 'px-2.5 py-1 rounded text-slate-400 hover:text-white font-medium';
+        compareDualBtn.className = 'px-3 py-1 rounded bg-[#e25c38] text-white font-medium';
+        compareSliderBtn.className = 'px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium';
         updateComparisonDisplay();
       };
       compareSliderBtn.onclick = () => {
         compareMode = 'slider';
-        compareSliderBtn.className = 'px-2.5 py-1 rounded bg-indigo-600 text-white font-medium';
-        compareDualBtn.className = 'px-2.5 py-1 rounded text-slate-400 hover:text-white font-medium';
+        compareSliderBtn.className = 'px-3 py-1 rounded bg-[#e25c38] text-white font-medium';
+        compareDualBtn.className = 'px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium';
         updateComparisonDisplay();
       };
 
@@ -880,7 +904,7 @@
       exportPromptsBtn.onclick = () => {
         const scene = SCENES_DATA.find(s => s.id === currentSceneId);
         if (!scene) return;
-        const textData = scene.styles.map(st => `=== ${st.number}. ${st.nameCn} (${st.nameEn}) ===\nPrompt: ${st.prompt}\nTags: ${st.tags.join(', ')}\n`).join('\n\n');
+        const textData = scene.styles.map(st => `=== ${st.number}. ${st.nameCn} (${st.nameEn}) ===\nMaster: ${st.master}\nTechnique: ${st.technique}\nPrompt: ${st.prompt}\nTags: ${st.tags.join(', ')}\n`).join('\n\n');
         const blob = new Blob([textData], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -888,7 +912,7 @@
         a.download = `${scene.id}_prompts.txt`;
         a.click();
         URL.revokeObjectURL(url);
-        showToast(`已导出 ${scene.title} 的全部 Prompt！`);
+        showToast(`已导出【${scene.title}】全部 Prompt 图谱`);
       };
     }
 

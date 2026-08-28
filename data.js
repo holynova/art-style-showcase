@@ -4,18 +4,18 @@
  */
 
 const STYLE_CATEGORIES = [
-  { id: 'all', name: '全部风格', icon: 'sparkles' },
-  { id: 'fine_art', name: '传统画种与质感', icon: 'palette', desc: '注重颜料厚度、笔触肌理与光影层次' },
-  { id: 'printmaking', name: '版画与印刷媒介', icon: 'printer', desc: '强调套印对位、网点网纹与分明色块' },
-  { id: 'retro_pop', name: '时代美学与潮流', icon: 'disc', desc: '融合时代符号、几何曲线与复古光泽' },
-  { id: 'digital', name: '现代数码与概念', icon: 'monitor', desc: '兼具矢量极简、赛璐珞光影与点阵趣味' }
+  { id: 'all', name: '全部流派', icon: 'layout-grid', desc: '全量 14 种经典绘画与插画流派' },
+  { id: 'fine_art', name: '传统绘画与油彩', icon: 'palette', desc: '颜料堆叠、笔触肌理与古典光影层次' },
+  { id: 'printmaking', name: '版画与印刷媒介', icon: 'printer', desc: '套印对位、网点纹理与木刻矿物拓印' },
+  { id: 'retro_pop', name: '时代美学与潮流', icon: 'compass', desc: '经典时代符号、装饰曲线与复古光泽' },
+  { id: 'digital', name: '现代数码与概念', icon: 'monitor', desc: '极简矢量、赛璐珞光影与点阵像素美学' }
 ];
 
 const SCENES_DATA = [
   {
     id: 'scene_a',
-    title: '场景 A · 咖啡馆女性与猫',
-    subtitle: '人物与生活情境 · 肖像与氛围光影测试',
+    title: 'I · 咖啡馆雨窗与猫',
+    subtitle: '人物肖像 · 室内外冷暖光影与织物质感',
     badge: '3:4 肖像比例',
     description: '咖啡馆雨窗旁，戴宽檐帽喝咖啡的优雅女性，木桌上趴着一只睡猫。用于测试人物五官结构、衣褶质感、室内外冷暖对比与情绪传达。',
     coreSubject: 'A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table',
@@ -249,8 +249,8 @@ const SCENES_DATA = [
   },
   {
     id: 'scene_b',
-    title: '场景 B · 雨后黄昏海滨电车',
-    subtitle: '城市与建筑街景 · 空间透视与倒影测试',
+    title: 'II · 雨后黄昏海滨电车',
+    subtitle: '街景建筑 · 空间透视与水洼倒影',
     badge: '16:9 全景比例',
     description: '雨后黄昏的海滨街口，一辆复古黄色有轨电车驶过，路面水洼倒影与路灯。用于测试透视线条、建筑几何、反光倒影、冷暖色彩与时代感。',
     coreSubject: 'A coastal city street intersection at twilight after rain, a vintage yellow tram passing on rails, glowing street lamps, wet reflections on asphalt, ocean horizon',
@@ -484,8 +484,8 @@ const SCENES_DATA = [
   },
   {
     id: 'scene_c',
-    title: '场景 C · 悬崖古树与镜湖',
-    subtitle: '自然与宏大风光 · 材质与写意度测试',
+    title: 'III · 悬崖古树与镜湖',
+    subtitle: '自然风光 · 远近层次与写意笔触',
     badge: '16:9 全景比例',
     description: '悬崖边缘盛开的孤树，俯瞰宁静镜面湖泊，远方雪山与晚霞落日。用于测试自然笔触、色彩渐变、水体质感、空气透视与写意度。',
     coreSubject: 'A solitary ancient blossoming cherry tree standing on a rocky cliff overlooking a serene alpine lake at sunset, distant snowy mountain peaks, dramatic clouds',

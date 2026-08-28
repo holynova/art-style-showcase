@@ -1,86 +1,122 @@
-/* Custom Animations and Glassmorphism Styles */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* ==========================================================================
+   Art Style Archive · Curatorial Gallery & Editorial Stylesheet
+   Designed for deep art-historical comparison, zero AI slop, pure editorial clarity
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Serif+SC:wght@500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --bg-primary: #07090e;
-  --bg-card: rgba(15, 23, 42, 0.7);
-  --border-card: rgba(255, 255, 255, 0.08);
+  /* Editorial Curatorial Palette (Warm Obsidian & Terracotta Sienna) */
+  --bg-canvas: #121316;
+  --bg-surface: #18191d;
+  --bg-surface-elevated: #1e2025;
+  --bg-surface-hover: #24262c;
+  
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(226, 92, 56, 0.4);
+  
+  --text-primary: #f8f8f7;
+  --text-secondary: #c4c4c7;
+  --text-muted: #888990;
+  --text-dim: #5c5d64;
+
+  --accent-terracotta: #e25c38;
+  --accent-terracotta-hover: #f06c48;
+  --accent-terracotta-subtle: rgba(226, 92, 56, 0.12);
+  --accent-ochre: #d97706;
+  --accent-ochre-subtle: rgba(217, 119, 6, 0.12);
+
+  --font-serif: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base resets & typography */
+html {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-primary);
-  color: #f1f5f9;
+  background-color: var(--bg-canvas);
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(226, 92, 56, 0.05), transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(217, 119, 6, 0.03), transparent 40%);
+  min-height: 100vh;
 }
 
-.font-serif-sc {
-  font-family: 'Noto Serif SC', serif;
+.font-serif-editorial {
+  font-family: var(--font-serif);
 }
 
 .font-mono-code {
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Glassmorphism */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-panel-hover:hover {
-  background: rgba(20, 30, 55, 0.85);
-  border-color: rgba(99, 102, 241, 0.35);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(99, 102, 241, 0.15);
+  font-family: var(--font-mono);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: var(--bg-canvas);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: #2a2c33;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #3e414c;
 }
 
-/* Shimmer & Glow Effects */
-.glow-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 70%);
+/* Curatorial Museum Frame Card */
+.gallery-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.28s ease, 
+              box-shadow 0.28s ease;
+  position: relative;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6);
 }
 
-.gradient-accent {
-  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Artwork Matting Border */
+.artwork-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: #0b0c0e;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Comparison Image Slider */
+.artwork-frame img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .artwork-frame img {
+  transform: scale(1.03);
+}
+
+/* Interactive Split Comparison Slider */
 .comparison-container {
   position: relative;
   overflow: hidden;
   user-select: none;
+  touch-action: pan-y;
+  background-color: #0b0c0e;
 }
 
 .comparison-overlay {
@@ -89,26 +125,77 @@ body {
   left: 0;
   height: 100%;
   overflow: hidden;
+  will-change: width;
 }
 
 .comparison-handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 3px;
-  background: #818cf8;
+  width: 2px;
+  background: #fbfbfa;
   cursor: ew-resize;
   transform: translateX(-50%);
   z-index: 10;
-  box-shadow: 0 0 12px rgba(129, 140, 248, 0.8);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
 
-/* Pulse badge */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+.comparison-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #18191d;
+  border: 2px solid #fbfbfa;
+  color: #fbfbfa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+  transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
-.animate-pulse-subtle {
-  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.comparison-handle:hover .comparison-knob,
+.comparison-container:active .comparison-knob {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--accent-terracotta);
+  border-color: #fff;
+}
+
+/* Prompt Box inside Card */
+.prompt-box {
+  background: #0f1013;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.prompt-box:hover {
+  background: #131418;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Badges and Chips */
+.tag-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tag-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+/* Toast */
+#toast {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
