@@ -1,0 +1,28 @@
+{
+  "name": "art-style-showcase",
+  "version": "1.0.0",
+  "description": "🎨 AI Art Style Matrix & Comparator | 42 组全景艺术风格矩阵与交互式对比展示画廊",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "serve": "npx serve .",
+    "start": "open index.html"
+  },
+  "keywords": [
+    "ai",
+    "prompt-engineering",
+    "art-styles",
+    "midjourney",
+    "flux",
+    "gemini",
+    "gallery",
+    "comparator"
+  ],
+  "author": "holy_nova <holy_nova@126.com>",
+  "license": "MIT",
+  "homepage": "https://holynova.github.io/art-style-showcase/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holynova/art-style-showcase.git"
+  }
+}
