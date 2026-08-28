@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Automated Gemini Web Image Generator via opencli
-Generates all remaining Scene B & Scene C images with 30s intervals.
+Automated Gemini Web Image Generator via opencli (Fixed Event Handling)
 """
 
 import subprocess
@@ -11,7 +10,7 @@ import os
 import sys
 
 TASKS = [
-    # 场景 B 剩余 3 种
+    # Scene B
     {
         "id": "scene_b_12_flatvector",
         "prompt": "Generate an image: Minimalist flat vector graphic illustration by Malika Favre of a coastal tram intersection at sunset, bold geometric shapes, high contrast negative space, razor-sharp clean edges, chic modern travel poster --ar 16:9"
@@ -25,11 +24,7 @@ TASKS = [
         "prompt": "Generate an image: Whimsical children's picture book illustration of a cute yellow tram driving through a rainy coastal town at dusk, visible waxy crayon textures, soft oil pastels, torn paper collage elements, warm cozy storybook art --ar 16:9"
     },
 
-    # 场景 C 全套 14 种
-    {
-        "id": "scene_c_01_impasto",
-        "prompt": "Generate an image: Impasto oil painting of a solitary blossoming cherry tree on a rocky cliff overlooking a serene alpine lake at sunset, distant snowy peaks, thick sculptural palette knife strokes, heavy oil paint texture, dramatic rich golden-hour lighting --ar 16:9"
-    },
+    # Scene C (02 to 14)
     {
         "id": "scene_c_02_watercolor",
         "prompt": "Generate an image: Luminous watercolor landscape of an ancient blossoming tree on a cliff overlooking a calm alpine lake at sunset, distant mountains, translucent wet-on-wet bleeding washes, soft gradient skies, visible cold-press paper grain, delicate ink accents --ar 16:9"
@@ -91,89 +86,75 @@ def eval_js(code):
     res = subprocess.run(["opencli", "browser", "eyqqvdnr", "eval", code], capture_output=True, text=True)
     return res.stdout.strip()
 
-def send_prompt(prompt_text):
-    # Escape single quotes and backslashes
+def send_and_wait(prompt_text, target_file):
     safe_text = prompt_text.replace('\\', '\\\\').replace("'", "\\'")
     
-    js = f"""(() => {{
-      // 1. Click New Chat if available or clear editor
-      const newChatBtn = Array.from(document.querySelectorAll('button, a')).find(el => el.innerText && el.innerText.includes('New chat'));
-      if (newChatBtn) newChatBtn.click();
+    # 1. Type and submit
+    submit_js = f"""(() => {{
+      const editor = document.querySelector('.ql-editor');
+      if (!editor) return 'no editor';
+      editor.focus();
+      let p = editor.querySelector('p');
+      if (!p) {{
+        p = document.createElement('p');
+        editor.appendChild(p);
+      }}
+      p.textContent = '{safe_text}';
+      editor.dispatchEvent(new InputEvent('beforeinput', {{ bubbles: true, inputType: 'insertText', data: '{safe_text}' }}));
+      editor.dispatchEvent(new InputEvent('input', {{ bubbles: true, inputType: 'insertText', data: '{safe_text}' }}));
+      editor.dispatchEvent(new Event('input', {{ bubbles: true }}));
+      editor.dispatchEvent(new Event('change', {{ bubbles: true }}));
       
       setTimeout(() => {{
-        const editor = document.querySelector('.ql-editor');
-        if (!editor) return;
-        editor.focus();
-        document.execCommand('selectAll', false, null);
-        document.execCommand('delete', false, null);
-        document.execCommand('insertText', false, '{safe_text}');
-        editor.dispatchEvent(new Event('input', {{ bubbles: true }}));
-        
-        setTimeout(() => {{
-          const sendBtn = Array.from(document.querySelectorAll('button')).find(b => b.getAttribute('aria-label') === 'Send message' || b.innerHTML.includes('arrow_upward'));
-          if (sendBtn) {{
-            const target = sendBtn.querySelector('.mat-mdc-button-touch-target') || sendBtn;
-            target.dispatchEvent(new PointerEvent('pointerdown', {{ bubbles: true }}));
-            target.dispatchEvent(new MouseEvent('mousedown', {{ bubbles: true }}));
-            target.dispatchEvent(new PointerEvent('pointerup', {{ bubbles: true }}));
-            target.dispatchEvent(new MouseEvent('mouseup', {{ bubbles: true }}));
-            target.dispatchEvent(new MouseEvent('click', {{ bubbles: true }}));
-          }}
-        }}, 600);
-      }}, 1000);
-      return 'submitted';
+        const sendBtn = document.querySelector('button[aria-label="Send message"], button[aria-label="发送"]');
+        if (sendBtn) {{
+          sendBtn.click();
+        }}
+      }}, 600);
+      return 'sent';
     }})()"""
-    eval_js(js)
-
-def extract_latest_image():
-    js = """(() => {
+    
+    eval_js(submit_js)
+    
+    # Wait for image generation (15s to 30s)
+    extract_js = """(() => {
       const imgs = Array.from(document.querySelectorAll('img.image, img[alt*="AI generated"]'));
       if (imgs.length === 0) return 'none';
-      const img = imgs[imgs.length - 1]; // pick latest
+      const img = imgs[imgs.length - 1];
       if (!img.complete || img.naturalWidth === 0) return 'loading';
       
       const canvas = document.createElement('canvas');
-      canvas.width = img.naturalWidth || 1280;
-      canvas.height = img.naturalHeight || 720;
+      canvas.width = img.naturalWidth || 1024;
+      canvas.height = img.naturalHeight || 576;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0);
       return canvas.toDataURL('image/jpeg', 0.95);
     })()"""
-    return eval_js(js)
-
-def run():
-    print(f"🎨 Starting batch image generation for {len(TASKS)} remaining artworks...")
     
-    for idx, item in enumerate(TASKS, 1):
-        target_file = os.path.join(IMAGE_DIR, f"{item['id']}.jpg")
-        print(f"\n[{idx}/{len(TASKS)}] Generating: {item['id']} ...")
-        print(f"Prompt: {item['prompt'][:80]}...")
-        
-        send_prompt(item['prompt'])
-        
-        # Wait up to 35s for image to appear
-        image_saved = False
-        start_wait = time.time()
-        while time.time() - start_wait < 40:
-            time.sleep(4)
-            data_url = extract_latest_image()
-            if data_url.startswith("data:image/jpeg;base64,"):
-                b64_data = data_url.split("data:image/jpeg;base64,")[1]
-                with open(target_file, "wb") as f:
-                    f.write(base64.b64decode(b64_data))
-                print(f"✅ Successfully saved: {target_file}")
-                image_saved = True
-                break
-            elif data_url == "loading":
-                print("⏳ Image is rendering in browser...")
-        
-        if not image_saved:
-            print(f"⚠️ Warning: Could not extract image for {item['id']}, continuing...")
+    start_time = time.time()
+    while time.time() - start_time < 45:
+        time.sleep(4)
+        data_url = eval_js(extract_js)
+        if data_url.startswith("data:image/jpeg;base64,"):
+            b64_data = data_url.split("data:image/jpeg;base64,")[1]
+            with open(target_file, "wb") as f:
+                f.write(base64.b64decode(b64_data))
+            return True
+    return False
+
+def main():
+    print(f"🎨 Running generation for {len(TASKS)} images...")
+    for i, t in enumerate(TASKS, 1):
+        target = os.path.join(IMAGE_DIR, f"{t['id']}.jpg")
+        print(f"\n[{i}/{len(TASKS)}] Generating {t['id']}...")
+        ok = send_and_wait(t['prompt'], target)
+        if ok:
+            print(f"✅ Generated & saved {t['id']}.jpg")
+        else:
+            print(f"❌ Failed to generate {t['id']}")
             
-        print("⏱ Waiting 30s before next generation (rate limit safety)...")
+        print("⏱ 30s cooling interval...")
         time.sleep(30)
-        
-    print("\n🎉 Batch generation complete!")
 
 if __name__ == "__main__":
-    run()
+    main()
