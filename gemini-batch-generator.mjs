@@ -165,8 +165,6 @@ async function generateSingleImage({ session, prompt, outputPath, knownHashes, m
     await opencli(session, 'click', 'rich-textarea div[role="textbox"]');
     await sleep(200);
     await opencli(session, 'keys', 'Enter');
-    
-    // 双重保险：如果没触发，点击发送按钮
     await evalJs(session, CLICK_SEND_JS);
     console.log(`  [⏳] 已触发提交，等待 Gemini 开启新会话并渲染...`);
 
