@@ -59,7 +59,7 @@
       <div class="max-w-3xl">
         <div class="flex items-center gap-3 text-xs tracking-[0.2em] uppercase font-mono text-[#a1a1aa] mb-3">
           <span class="inline-block w-2 h-2 rounded-full bg-[#e25c38]"></span>
-          <span>ART STYLE ARCHIVE · 14 MOVEMENTS × 6 BENCHMARKS</span>
+          <span>ART STYLE ARCHIVE · 14 MOVEMENTS × 9 BENCHMARKS</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif-editorial text-[#fbfbfa] tracking-tight leading-tight">
           画风图谱 <span class="font-normal text-[#a1a1aa] italic font-serif-editorial">/ 经典艺术与插画流派视觉解构</span>
@@ -73,7 +73,7 @@
       <div class="flex flex-wrap items-center gap-3 shrink-0">
         <div class="px-3.5 py-2 rounded-lg bg-[#18191d] border border-white/[0.08] text-xs text-[#a1a1aa] flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-          <span>84 组视觉图谱与 Prompt</span>
+          <span>126 组视觉图谱与 Prompt</span>
         </div>
 
         <button id="exportPromptsBtn" class="px-4 py-2 rounded-lg bg-[#24262c] hover:bg-[#2e3037] text-[#fbfbfa] border border-white/[0.1] text-xs font-medium transition-all flex items-center gap-2">
@@ -89,17 +89,14 @@
       </div>
     </header>
 
-    <!-- Scene Selector (Architectural 6-Column / 2-Row Tabs) -->
+    <!-- Scene Selector (Architectural Grid Tabs) -->
     <section class="mt-8">
       <div class="flex items-center justify-between mb-3 text-xs tracking-wider uppercase font-mono text-[#888990]">
         <span>BENCHMARK SCENES / 基准场景</span>
         <span>固定主体要素 · 纯粹对照流派差异</span>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3" id="sceneTabsContainer">
-        <!-- Injected via JavaScript -->
-      </div>
-    </section>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-9 gap-2.5" id="sceneTabsContainer">
         <!-- Injected via JavaScript -->
       </div>
     </section>
@@ -333,7 +330,7 @@
     let leftStyleId = 'scene_a_01_impasto';
     let rightStyleId = 'scene_a_07_citypop';
 
-    const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+    const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
     // DOM Elements
     const sceneTabsContainer = document.getElementById('sceneTabsContainer');
