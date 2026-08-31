@@ -602,7 +602,10 @@
       document.getElementById('sidebarCoreSubject').innerText = scene.coreSubject;
 
       const catObj = STYLE_CATEGORIES.find(c => c.id === currentCategory);
-      document.getElementById('activeCategoryBadge').innerText = catObj ? catObj.name : '全部流派';
+      const activeCategoryBadge = document.getElementById('activeCategoryBadge');
+      if (activeCategoryBadge) {
+        activeCategoryBadge.innerText = catObj ? catObj.name : '全部流派';
+      }
       
       const filtered = getFilteredStyles();
       document.getElementById('filteredCountBadge').innerText = `显示 ${filtered.length} / ${scene.styles.length} 组`;
@@ -610,7 +613,7 @@
     }
 
     // Switch Scene
-    window.switchScene = function(sceneId) {
+    function switchScene(sceneId) {
       currentSceneId = sceneId;
       renderSceneSidebar();
       renderCategorySidebar();
@@ -620,16 +623,18 @@
       updateCompareSelectors();
       updateComparisonDisplay();
       closeMobileMenu();
-    };
+    }
+    window.switchScene = switchScene;
 
-    window.setCategory = function(catId) {
+    function setCategory(catId) {
       currentCategory = catId;
       renderCategorySidebar();
       updateSceneHeaderContext();
       renderGallery();
       renderCheatsheet();
       closeMobileMenu();
-    };
+    }
+    window.setCategory = setCategory;
 
     // Get Filtered Styles
     function getFilteredStyles() {
@@ -789,16 +794,17 @@
     }
 
     // Set Quick Style to Comparison
-    window.setForComparison = function(styleId) {
+    function setForComparison(styleId) {
       leftStyleId = styleId;
       document.getElementById('viewCompareBtn').click();
       updateCompareSelectors();
       updateComparisonDisplay();
       showToast('已载入对比台');
-    };
+    }
+    window.setForComparison = setForComparison;
 
     // Copy Prompt Function with Visual Button State
-    window.copyPrompt = function(styleId, btnEl) {
+    function copyPrompt(styleId, btnEl) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const item = scene.styles.find(st => st.id === styleId);
@@ -818,7 +824,8 @@
       }).catch(() => {
         showToast('复制失败，请手动选取');
       });
-    };
+    }
+    window.copyPrompt = copyPrompt;
 
     // Toast Notification
     function showToast(msg) {
@@ -830,13 +837,14 @@
     }
 
     // Clear search
-    window.clearSearch = function() {
+    function clearSearch() {
       searchInput.value = '';
       searchQuery = '';
       clearSearchBtn.classList.add('hidden');
       renderGallery();
       renderCheatsheet();
-    };
+    }
+    window.clearSearch = clearSearch;
 
     // Mobile Drawer Open/Close
     function openMobileMenu() {
@@ -850,7 +858,7 @@
     }
 
     // Lightbox Logic
-    window.openLightbox = function(styleId) {
+    function openLightbox(styleId) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const idx = scene.styles.findIndex(st => st.id === styleId);
@@ -860,7 +868,8 @@
       updateLightboxContent();
       lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
       document.body.style.overflow = 'hidden';
-    };
+    }
+    window.openLightbox = openLightbox;
 
     function updateLightboxContent() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
