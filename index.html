@@ -83,34 +83,18 @@
         </div>
       </div>
 
-      <!-- Right: View Switcher & Actions -->
+      <!-- Right: Quick Actions -->
       <div class="flex items-center gap-2 shrink-0">
-        <!-- View Switcher Tabs -->
-        <div class="flex items-center bg-[#15161a] p-1 rounded-lg border border-white/[0.08] text-xs">
-          <button id="viewGridBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white" title="画廊矩阵模式">
-            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-            <span class="hidden sm:inline">画廊</span>
-          </button>
-          <button id="viewCompareBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="双画风同屏对比台">
-            <i data-lucide="split-square-vertical" class="w-3.5 h-3.5"></i>
-            <span class="hidden sm:inline">对比台</span>
-          </button>
-          <button id="viewCheatBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="Prompt 结构化速查表">
-            <i data-lucide="table" class="w-3.5 h-3.5"></i>
-            <span class="hidden sm:inline">速查表</span>
-          </button>
-        </div>
-
         <!-- Quick Random Style Pick -->
-        <button id="randomStyleBtn" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风灵感">
+        <button id="randomStyleBtn" class="px-2.5 py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风灵感">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
-          <span class="hidden md:inline">灵感</span>
+          <span class="hidden sm:inline">灵感</span>
         </button>
 
         <!-- Export Prompts -->
-        <button id="exportPromptsBtn" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#fbfbfa] border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="导出当前场景全部 Prompt">
+        <button id="exportPromptsBtn" class="px-2.5 py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#fbfbfa] border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="导出当前场景全部 Prompt">
           <i data-lucide="download" class="w-3.5 h-3.5 text-[#a1a1aa]"></i>
-          <span class="hidden md:inline">导出</span>
+          <span class="hidden sm:inline">导出</span>
         </button>
 
         <!-- GitHub -->
@@ -127,7 +111,7 @@
   <div class="sticky top-[53px] z-30 w-full bg-[#0f1013]/90 backdrop-blur-md border-b border-white/[0.06] px-4 lg:px-8 py-2.5 transition-all space-y-2.5">
     <div class="max-w-[1720px] mx-auto space-y-2.5">
       
-      <!-- Row 1: 9 Benchmark Scenes Horizontal Tabs -->
+      <!-- Row 1: 9 Benchmark Scenes Horizontal Tabs (Without Roman Numerals) -->
       <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5" id="sceneNavContainer">
         <!-- Rendered dynamically -->
       </div>
@@ -176,110 +160,11 @@
 
   <!-- Main Exploration Stage (Full-Width Visual Canvas) -->
   <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
-    <!-- View 1: Gallery Matrix Grid (Default) -->
     <main id="galleryView" class="space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 transition-all" id="galleryGrid">
         <!-- Visual cards populated here -->
       </div>
     </main>
-
-    <!-- View 2: Split Comparator View (Hidden by default) -->
-    <main id="compareView" class="hidden">
-      <div class="bg-[#15161a] border border-white/[0.08] p-5 sm:p-7 rounded-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
-          <div>
-            <h3 class="text-lg sm:text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
-              <i data-lucide="split-square-vertical" class="w-5 h-5 text-[#e25c38]"></i>
-              双画风同屏深度对比台
-            </h3>
-            <p class="text-xs text-[#a1a1aa] mt-1">选择当前基准场景下的任意 2 种流派，直观对照笔触肌理与出图 Prompt 差异</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-[#888990] font-mono">视图模式：</span>
-            <div class="flex bg-[#0f1013] p-1 rounded-lg border border-white/[0.08] text-xs">
-              <button id="compareDualBtn" class="px-3 py-1 rounded bg-[#e25c38] text-white font-medium">并排视图</button>
-              <button id="compareSliderBtn" class="px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium">滑动对比</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Selectors for Left & Right Style -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-semibold text-[#e25c38] uppercase tracking-wider shrink-0">风格 A:</span>
-            <select id="leftStyleSelect" class="flex-1 bg-[#0f1013] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
-              <!-- Populated dynamically -->
-            </select>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-semibold text-[#d97706] uppercase tracking-wider shrink-0">风格 B:</span>
-            <select id="rightStyleSelect" class="flex-1 bg-[#0f1013] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
-              <!-- Populated dynamically -->
-            </select>
-          </div>
-        </div>
-
-        <!-- Comparison Display Stage -->
-        <div id="comparisonStage" class="mt-6">
-          <!-- Side-by-side or Slider container injected here -->
-        </div>
-
-        <!-- Detailed Stylistic Diff Table -->
-        <div class="mt-8 pt-6 border-t border-white/[0.08] overflow-x-auto">
-          <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#a1a1aa] mb-3 flex items-center gap-2">
-            <i data-lucide="table" class="w-3.5 h-3.5 text-[#e25c38]"></i>
-            画风要素与 Prompt 对比表
-          </h4>
-          <table class="w-full text-xs text-left text-[#c4c4c7]">
-            <thead class="bg-[#0f1013] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
-              <tr>
-                <th class="p-3.5 w-1/5">解构维度</th>
-                <th class="p-3.5 w-2/5 text-[#e25c38]" id="tableLeftName">风格 A</th>
-                <th class="p-3.5 w-2/5 text-[#d97706]" id="tableRightName">风格 B</th>
-              </tr>
-            </thead>
-            <tbody id="diffTableBody" class="divide-y divide-white/[0.04]">
-              <!-- Injected by script -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-
-    <!-- View 3: Prompt CheatSheet Table (Hidden by default) -->
-    <main id="cheatsheetView" class="hidden">
-      <div class="bg-[#15161a] border border-white/[0.08] p-5 sm:p-7 rounded-2xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
-          <div>
-            <h3 class="text-lg sm:text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
-              <i data-lucide="book-open" class="w-5 h-5 text-[#e25c38]"></i>
-              Prompt 提示词结构化速查表
-            </h3>
-            <p class="text-xs text-[#a1a1aa] mt-1">一览 24 种艺术流派的核心修饰词、代表大师与完整 Prompt，支持单键即时复制</p>
-          </div>
-        </div>
-
-        <div class="mt-5 overflow-x-auto">
-          <table class="w-full text-xs text-left text-[#c4c4c7]">
-            <thead class="bg-[#0f1013] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
-              <tr>
-                <th class="p-3.5 w-12 text-center">#</th>
-                <th class="p-3.5 w-40">流派名称</th>
-                <th class="p-3.5 w-36">代表大师 / 源流</th>
-                <th class="p-3.5 w-48">核心修饰关键词 (Modifiers)</th>
-                <th class="p-3.5">出图 Prompt 片段</th>
-                <th class="p-3.5 w-24 text-center">操作</th>
-              </tr>
-            </thead>
-            <tbody id="cheatsheetTableBody" class="divide-y divide-white/[0.04]">
-              <!-- Populated dynamically -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-
   </div>
 
   <!-- Lightbox Modal (Full-Screen Immersive Cinema & Prompt Bar) -->
@@ -296,12 +181,6 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <button onclick="setForComparison(SCENES_DATA.find(s=>s.id===currentSceneId).styles[activeLightboxIndex].id); closeLightbox();" 
-          class="px-3 py-2 rounded-xl bg-[#15161a]/90 hover:bg-[#22252c] text-[#c4c4c7] hover:text-white border border-white/[0.1] backdrop-blur-md text-xs flex items-center gap-1.5 transition-all shadow-lg" title="加入对比台">
-          <i data-lucide="split-square-vertical" class="w-3.5 h-3.5 text-[#e25c38]"></i>
-          <span class="hidden sm:inline">加入对比台</span>
-        </button>
-
         <button id="closeLightboxBtn" class="p-2 rounded-xl bg-[#15161a]/90 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-lg" title="关闭 (Esc)">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
@@ -370,12 +249,8 @@
     let currentSceneId = 'scene_a';
     let currentCategory = 'all';
     let searchQuery = '';
-    let currentViewMode = 'grid'; // 'grid' | 'compare' | 'cheat'
     let currentGridDensity = 'compact'; // 'compact' | 'standard' | 'spacious'
     let activeLightboxIndex = 0;
-    let compareMode = 'dual'; // 'dual' | 'slider'
-    let leftStyleId = 'scene_a_01_impasto';
-    let rightStyleId = 'scene_a_07_citypop';
 
     const SCENE_ICONS = {
       scene_a: '☕',
@@ -389,20 +264,12 @@
       scene_i: '🐪'
     };
 
-    const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-
     // DOM Elements
     const sceneNavContainer = document.getElementById('sceneNavContainer');
     const categoryNavContainer = document.getElementById('categoryNavContainer');
     const galleryGrid = document.getElementById('galleryGrid');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
-    const viewGridBtn = document.getElementById('viewGridBtn');
-    const viewCompareBtn = document.getElementById('viewCompareBtn');
-    const viewCheatBtn = document.getElementById('viewCheatBtn');
-    const galleryView = document.getElementById('galleryView');
-    const compareView = document.getElementById('compareView');
-    const cheatsheetView = document.getElementById('cheatsheetView');
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMsg');
     const exportPromptsBtn = document.getElementById('exportPromptsBtn');
@@ -436,18 +303,15 @@
       renderCategoryPills();
       updateSceneContext();
       renderGallery();
-      renderCheatsheet();
-      initComparisonView();
       initEventListeners();
       setGridDensity(currentGridDensity);
       lucide.createIcons();
     }
 
-    // Render 9 Benchmark Scene Horizontal Pill Tabs
+    // Render 9 Benchmark Scene Horizontal Pill Tabs (Without Roman Numerals)
     function renderSceneTabs() {
-      sceneNavContainer.innerHTML = SCENES_DATA.map((scene, idx) => {
+      sceneNavContainer.innerHTML = SCENES_DATA.map(scene => {
         const isActive = scene.id === currentSceneId;
-        const roman = ROMAN_NUMERALS[idx] || (idx + 1);
         const icon = SCENE_ICONS[scene.id] || '🎨';
         const cleanTitle = scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title;
 
@@ -459,7 +323,6 @@
                 : 'bg-[#15161a] hover:bg-[#1f2128] text-[#a1a1aa] hover:text-white border-white/[0.06]'
             }">
             <span>${icon}</span>
-            <span class="font-mono opacity-80">${roman}.</span>
             <span class="font-serif-editorial">${cleanTitle}</span>
             <span class="text-[10px] font-mono opacity-70 ml-0.5">(${scene.aspectRatio})</span>
           </button>
@@ -518,9 +381,6 @@
       renderCategoryPills();
       updateSceneContext();
       renderGallery();
-      renderCheatsheet();
-      updateCompareSelectors();
-      updateComparisonDisplay();
     }
     window.switchScene = switchScene;
 
@@ -530,7 +390,6 @@
       renderCategoryPills();
       updateSceneContext();
       renderGallery();
-      renderCheatsheet();
     }
     window.setCategory = setCategory;
 
@@ -585,10 +444,6 @@
                 <span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#0f1013]/90 text-[#fbfbfa] border border-white/[0.12] backdrop-blur-md shadow-md">
                   #${item.number} ${item.nameCn}
                 </span>
-                <button onclick="event.stopPropagation(); setForComparison('${item.id}')" 
-                  class="pointer-events-auto p-1.5 rounded-md bg-[#0f1013]/90 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.12] backdrop-blur-md transition-all shadow-md" title="加入对比台">
-                  <i data-lucide="split-square-vertical" class="w-3.5 h-3.5"></i>
-                </button>
               </div>
 
               <!-- Hover Overlay with Prompt & Action -->
@@ -629,48 +484,6 @@
       lucide.createIcons();
     }
 
-    // Render CheatSheet Table
-    function renderCheatsheet() {
-      const items = getFilteredStyles();
-      const tbody = document.getElementById('cheatsheetTableBody');
-      if (!tbody) return;
-
-      tbody.innerHTML = items.map(item => `
-        <tr class="hover:bg-[#1a1c22]/60 transition-colors">
-          <td class="p-3.5 text-center font-mono font-bold text-[#e25c38]">#${item.number}</td>
-          <td class="p-3.5">
-            <div class="font-bold text-[#fbfbfa] font-serif-editorial">${item.nameCn}</div>
-            <div class="text-[10px] font-mono text-[#888990]">${item.nameEn}</div>
-          </td>
-          <td class="p-3.5 text-xs text-[#c4c4c7]">${item.master || '-'}</td>
-          <td class="p-3.5">
-            <div class="flex flex-wrap gap-1">
-              ${(item.keyModifiers || []).map(m => `<span class="px-1.5 py-0.5 rounded bg-[#0f1013] border border-white/[0.06] text-[10px] font-mono text-[#a1a1aa]">${m}</span>`).join('')}
-            </div>
-          </td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#888990] max-w-xs truncate" title="${item.prompt}">
-            ${item.prompt}
-          </td>
-          <td class="p-3.5 text-center">
-            <button onclick="copyPrompt('${item.id}', this)" class="px-2.5 py-1 rounded bg-[#22252c] hover:bg-[#e25c38] text-white text-xs transition-colors flex items-center justify-center gap-1 mx-auto">
-              <i data-lucide="copy" class="w-3 h-3"></i> 复制
-            </button>
-          </td>
-        </tr>
-      `).join('');
-      lucide.createIcons();
-    }
-
-    // Set Quick Style to Comparison
-    function setForComparison(styleId) {
-      leftStyleId = styleId;
-      document.getElementById('viewCompareBtn').click();
-      updateCompareSelectors();
-      updateComparisonDisplay();
-      showToast('已载入对比台');
-    }
-    window.setForComparison = setForComparison;
-
     // Copy Prompt Function with Visual Button State
     function copyPrompt(styleId, btnEl) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
@@ -710,7 +523,6 @@
       searchQuery = '';
       clearSearchBtn.classList.add('hidden');
       renderGallery();
-      renderCheatsheet();
     }
     window.clearSearch = clearSearch;
 
@@ -799,203 +611,6 @@
 
     closeLightboxBtn.onclick = closeLightbox;
 
-    // Comparison View Logic
-    function initComparisonView() {
-      updateCompareSelectors();
-      updateComparisonDisplay();
-    }
-
-    function updateCompareSelectors() {
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-
-      const leftSelect = document.getElementById('leftStyleSelect');
-      const rightSelect = document.getElementById('rightStyleSelect');
-
-      const optionsHtml = scene.styles.map(s => `
-        <option value="${s.id}">${s.number}. ${s.nameCn} (${s.nameEn})</option>
-      `).join('');
-
-      leftSelect.innerHTML = optionsHtml;
-      rightSelect.innerHTML = optionsHtml;
-
-      const currentIds = scene.styles.map(s => s.id);
-      if (!currentIds.includes(leftStyleId)) {
-        leftStyleId = scene.styles[0].id;
-      }
-      if (!currentIds.includes(rightStyleId) || rightStyleId === leftStyleId) {
-        rightStyleId = scene.styles[6] ? scene.styles[6].id : scene.styles[1].id;
-      }
-
-      leftSelect.value = leftStyleId;
-      rightSelect.value = rightStyleId;
-
-      leftSelect.onchange = (e) => {
-        leftStyleId = e.target.value;
-        updateComparisonDisplay();
-      };
-      rightSelect.onchange = (e) => {
-        rightStyleId = e.target.value;
-        updateComparisonDisplay();
-      };
-    }
-
-    function updateComparisonDisplay() {
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-
-      const styleA = scene.styles.find(s => s.id === leftStyleId) || scene.styles[0];
-      const styleB = scene.styles.find(s => s.id === rightStyleId) || scene.styles[6] || scene.styles[1];
-
-      document.getElementById('tableLeftName').innerText = `${styleA.number}. ${styleA.nameCn}`;
-      document.getElementById('tableRightName').innerText = `${styleB.number}. ${styleB.nameCn}`;
-
-      const stage = document.getElementById('comparisonStage');
-      const aspectClass = scene.aspectRatio === '16:9' ? 'aspect-[16/9]' : 'aspect-[3/4]';
-
-      if (compareMode === 'dual') {
-        stage.innerHTML = `
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Left Style Card -->
-            <div class="bg-[#0f1013] p-5 rounded-xl border border-[#e25c38]/30 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#e25c38]/10 text-[#e25c38] border border-[#e25c38]/20">
-                    ${styleA.number}. ${styleA.nameCn}
-                  </span>
-                  <button onclick="copyPrompt('${styleA.id}', this)" class="text-xs text-[#a1a1aa] hover:text-[#e25c38] flex items-center gap-1 font-medium">
-                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
-                  </button>
-                </div>
-                <div class="${aspectClass} rounded-lg overflow-hidden bg-black relative">
-                  <img src="${styleA.image}" alt="${styleA.nameCn}" class="w-full h-full object-cover">
-                </div>
-                <div class="mt-4 text-xs space-y-2">
-                  <div class="text-[#fbfbfa] font-medium">大师/源流：<span class="text-[#a1a1aa] font-normal">${styleA.master || '经典'}</span></div>
-                  <div class="text-[#fbfbfa] font-medium">主色调：<span class="text-[#a1a1aa] font-normal">${styleA.colorTone || '-'}</span></div>
-                  <p class="text-[#a1a1aa] leading-relaxed">${styleA.technique || ''}</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Style Card -->
-            <div class="bg-[#0f1013] p-5 rounded-xl border border-[#d97706]/30 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#d97706]/10 text-[#d97706] border border-[#d97706]/20">
-                    ${styleB.number}. ${styleB.nameCn}
-                  </span>
-                  <button onclick="copyPrompt('${styleB.id}', this)" class="text-xs text-[#a1a1aa] hover:text-[#d97706] flex items-center gap-1 font-medium">
-                    <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制 Prompt
-                  </button>
-                </div>
-                <div class="${aspectClass} rounded-lg overflow-hidden bg-black relative">
-                  <img src="${styleB.image}" alt="${styleB.nameCn}" class="w-full h-full object-cover">
-                </div>
-                <div class="mt-4 text-xs space-y-2">
-                  <div class="text-[#fbfbfa] font-medium">大师/源流：<span class="text-[#a1a1aa] font-normal">${styleB.master || '经典'}</span></div>
-                  <div class="text-[#fbfbfa] font-medium">主色调：<span class="text-[#a1a1aa] font-normal">${styleB.colorTone || '-'}</span></div>
-                  <p class="text-[#a1a1aa] leading-relaxed">${styleB.technique || ''}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        // Precision Slider Comparison
-        const sliderAspect = scene.aspectRatio === '16:9' ? 'aspect-[16/9] max-w-3xl' : 'aspect-[3/4] max-w-lg';
-        stage.innerHTML = `
-          <div class="comparison-container ${sliderAspect} mx-auto rounded-xl overflow-hidden border border-white/[0.1] relative" id="sliderBox">
-            <!-- Background Image (Right / Style B) -->
-            <img src="${styleB.image || ''}" class="absolute inset-0 w-full h-full object-cover select-none">
-            <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-[#0f1013]/90 backdrop-blur-md text-xs text-[#d97706] border border-[#d97706]/30 font-mono font-bold">
-              ${styleB.nameCn}
-            </div>
-
-            <!-- Overlay Image (Left / Style A) -->
-            <div class="comparison-overlay w-1/2 z-10" id="sliderOverlay">
-              <img src="${styleA.image || ''}" class="absolute inset-0 max-w-none w-full h-full object-cover select-none" id="sliderImgLeft">
-              <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-[#0f1013]/90 backdrop-blur-md text-xs text-[#e25c38] border border-[#e25c38]/30 font-mono font-bold">
-                ${styleA.nameCn}
-              </div>
-            </div>
-
-            <!-- Slider Handle -->
-            <div class="comparison-handle left-1/2" id="sliderHandle">
-              <div class="comparison-knob">
-                <i data-lucide="move-horizontal" class="w-3.5 h-3.5"></i>
-              </div>
-            </div>
-          </div>
-        `;
-        initSliderDrag();
-      }
-
-      // Diff Table
-      const diffTableBody = document.getElementById('diffTableBody');
-      diffTableBody.innerHTML = `
-        <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">流派分类</td>
-          <td class="p-3.5">${styleA.categoryName}</td>
-          <td class="p-3.5">${styleB.categoryName}</td>
-        </tr>
-        <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">笔触与物理特征</td>
-          <td class="p-3.5 text-[#e4e4e7]">${styleA.tags.join(' · ')}</td>
-          <td class="p-3.5 text-[#e4e4e7]">${styleB.tags.join(' · ')}</td>
-        </tr>
-        <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">色彩与光影逻辑</td>
-          <td class="p-3.5 text-[#a1a1aa]">${styleA.colorTone || '冷暖强烈对比'}</td>
-          <td class="p-3.5 text-[#a1a1aa]">${styleB.colorTone || '清爽高饱和'}</td>
-        </tr>
-        <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">核心修饰关键词</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#e25c38]">${(styleA.keyModifiers || []).join(', ')}</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#d97706]">${(styleB.keyModifiers || []).join(', ')}</td>
-        </tr>
-        <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">完整出图 Prompt</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#888990] select-all">${styleA.prompt}</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#888990] select-all">${styleB.prompt}</td>
-        </tr>
-      `;
-
-      lucide.createIcons();
-    }
-
-    function initSliderDrag() {
-      const box = document.getElementById('sliderBox');
-      const overlay = document.getElementById('sliderOverlay');
-      const handle = document.getElementById('sliderHandle');
-      const imgLeft = document.getElementById('sliderImgLeft');
-      if (!box || !overlay || !handle) return;
-
-      let isDown = false;
-
-      function updateSliderPosition(clientX) {
-        const rect = box.getBoundingClientRect();
-        let posX = clientX - rect.left;
-        if (posX < 0) posX = 0;
-        if (posX > rect.width) posX = rect.width;
-        const percentage = (posX / rect.width) * 100;
-        overlay.style.width = `${percentage}%`;
-        handle.style.left = `${percentage}%`;
-        if (imgLeft) {
-          imgLeft.style.width = `${rect.width}px`;
-        }
-      }
-
-      box.onmousedown = (e) => { isDown = true; updateSliderPosition(e.clientX); };
-      window.onmouseup = () => { isDown = false; };
-      window.onmousemove = (e) => { if (isDown) updateSliderPosition(e.clientX); };
-
-      // Touch
-      box.ontouchstart = (e) => { isDown = true; updateSliderPosition(e.touches[0].clientX); };
-      window.ontouchend = () => { isDown = false; };
-      window.ontouchmove = (e) => { if (isDown) updateSliderPosition(e.touches[0].clientX); };
-    }
-
     // Set Grid Density
     function setGridDensity(density) {
       currentGridDensity = density;
@@ -1019,7 +634,6 @@
         searchQuery = e.target.value.trim();
         clearSearchBtn.classList.toggle('hidden', searchQuery.length === 0);
         renderGallery();
-        renderCheatsheet();
       };
       clearSearchBtn.onclick = clearSearch;
 
@@ -1062,55 +676,6 @@
         });
       };
 
-      // View Toggle
-      viewGridBtn.onclick = () => {
-        currentViewMode = 'grid';
-        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        galleryView.classList.remove('hidden');
-        compareView.classList.add('hidden');
-        cheatsheetView.classList.add('hidden');
-      };
-
-      viewCompareBtn.onclick = () => {
-        currentViewMode = 'compare';
-        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        galleryView.classList.add('hidden');
-        compareView.classList.remove('hidden');
-        cheatsheetView.classList.add('hidden');
-        updateComparisonDisplay();
-      };
-
-      viewCheatBtn.onclick = () => {
-        currentViewMode = 'cheat';
-        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        galleryView.classList.add('hidden');
-        compareView.classList.add('hidden');
-        cheatsheetView.classList.remove('hidden');
-        renderCheatsheet();
-      };
-
-      // Compare mode buttons
-      const compareDualBtn = document.getElementById('compareDualBtn');
-      const compareSliderBtn = document.getElementById('compareSliderBtn');
-      compareDualBtn.onclick = () => {
-        compareMode = 'dual';
-        compareDualBtn.className = 'px-3 py-1 rounded bg-[#e25c38] text-white font-medium';
-        compareSliderBtn.className = 'px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium';
-        updateComparisonDisplay();
-      };
-      compareSliderBtn.onclick = () => {
-        compareMode = 'slider';
-        compareSliderBtn.className = 'px-3 py-1 rounded bg-[#e25c38] text-white font-medium';
-        compareDualBtn.className = 'px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium';
-        updateComparisonDisplay();
-      };
-
       // Export
       exportPromptsBtn.onclick = () => {
         const scene = SCENES_DATA.find(s => s.id === currentSceneId);
@@ -1136,4 +701,5 @@
   </script>
 </body>
 </html>
+
 
