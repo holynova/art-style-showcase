@@ -253,10 +253,11 @@
       }
 
       galleryGrid.innerHTML = items.map(item => {
+        const thumbSrc = item.image.replace('images/', 'images/thumbs/');
         return `
           <div class="art-card flex flex-col justify-between group">
             <div class="art-card-media ${aspectClass}" onclick="openLightbox('${item.id}')">
-              <img src="${item.image}" alt="${item.nameCn}" loading="lazy">
+              <img src="${thumbSrc}" alt="${item.nameCn}" loading="lazy" decoding="async">
               
               <!-- Number badge on top left -->
               <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
@@ -346,8 +347,22 @@
       const item = scene.styles[activeLightboxIndex];
       if (!item) return;
 
-      lightboxImg.src = item.image || '';
+      const thumbSrc = item.image.replace('images/', 'images/thumbs/');
+      const fullSrc = item.image;
+
+      // Show thumbnail immediately as fast placeholder
+      lightboxImg.src = thumbSrc;
       lightboxImg.alt = item.nameCn;
+
+      // Preload full resolution image and swap seamlessly
+      const highRes = new Image();
+      highRes.src = fullSrc;
+      highRes.onload = () => {
+        if (scene.styles[activeLightboxIndex] && scene.styles[activeLightboxIndex].id === item.id) {
+          lightboxImg.src = fullSrc;
+        }
+      };
+
       lightboxNumber.innerText = `#${item.number}`;
       lightboxTitleCn.innerText = item.nameCn;
       if (lightboxTitleEn) lightboxTitleEn.innerText = item.nameEn;
