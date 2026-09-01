@@ -1,20 +1,20 @@
 /* ==========================================================================
-   Art Style Archive · Curatorial Gallery & Editorial Stylesheet
-   Designed for deep art-historical comparison, zero AI slop, pure editorial clarity
+   Art Style Archive · Visual-First Curatorial Gallery Stylesheet
+   Designed for pure visual immersion, streamlined text, and frictionless Prompt access
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Serif+SC:wght@500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Editorial Curatorial Palette (Warm Obsidian & Terracotta Sienna) */
-  --bg-canvas: #121316;
-  --bg-surface: #18191d;
-  --bg-surface-elevated: #1e2025;
-  --bg-surface-hover: #24262c;
+  /* Curatorial Palette */
+  --bg-canvas: #0f1013;
+  --bg-surface: #15161a;
+  --bg-surface-elevated: #1a1c22;
+  --bg-surface-hover: #22252c;
   
-  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.06);
   --border-strong: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(226, 92, 56, 0.4);
+  --border-accent: rgba(226, 92, 56, 0.5);
   
   --text-primary: #f8f8f7;
   --text-secondary: #c4c4c7;
@@ -23,9 +23,8 @@
 
   --accent-terracotta: #e25c38;
   --accent-terracotta-hover: #f06c48;
-  --accent-terracotta-subtle: rgba(226, 92, 56, 0.12);
+  --accent-terracotta-subtle: rgba(226, 92, 56, 0.14);
   --accent-ochre: #d97706;
-  --accent-ochre-subtle: rgba(217, 119, 6, 0.12);
 
   --font-serif: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -45,8 +44,8 @@ html {
 body {
   background-color: var(--bg-canvas);
   background-image: 
-    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(226, 92, 56, 0.05), transparent 70%),
-    radial-gradient(circle at 100% 100%, rgba(217, 119, 6, 0.03), transparent 40%);
+    radial-gradient(ellipse 70% 30% at 50% -5%, rgba(226, 92, 56, 0.06), transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(217, 119, 6, 0.03), transparent 50%);
   min-height: 100vh;
 }
 
@@ -77,48 +76,88 @@ body {
   background: #3e414c;
 }
 
-.scrollbar-none::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-.scrollbar-none {
+.no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Curatorial Museum Frame Card */
-.gallery-card {
+/* Visual Gallery Card */
+.art-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.28s ease, 
-              box-shadow 0.28s ease;
+  border-radius: 12px;
+  overflow: hidden;
   position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease;
 }
 
-.gallery-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-strong);
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6);
+.art-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(226, 92, 56, 0.35);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(226, 92, 56, 0.2);
 }
 
-/* Artwork Matting Border */
-.artwork-frame {
+.art-card-media {
   position: relative;
   overflow: hidden;
   background-color: #0b0c0e;
-  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
 }
 
-.artwork-frame img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.art-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
-.gallery-card:hover .artwork-frame img {
-  transform: scale(1.03);
+.art-card:hover .art-card-media img {
+  transform: scale(1.04);
 }
 
-/* Interactive Split Comparison Slider */
+/* Hover prompt overlay */
+.art-card-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 12, 14, 0.95) 0%, rgba(11, 12, 14, 0.6) 40%, rgba(11, 12, 14, 0.1) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+  z-index: 10;
+}
+
+.art-card:hover .art-card-hover-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Floating copy button */
+.copy-pill-btn {
+  background: rgba(18, 19, 22, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  font-size: 11px;
+  transition: all 0.15s ease;
+}
+
+.copy-pill-btn:hover {
+  background: #e25c38;
+  border-color: #e25c38;
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+/* Comparison Container */
 .comparison-container {
   position: relative;
   overflow: hidden;
@@ -153,8 +192,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #18191d;
   border: 2px solid #fbfbfa;
@@ -173,37 +212,7 @@ body {
   border-color: #fff;
 }
 
-/* Prompt Box inside Card */
-.prompt-box {
-  background: #0f1013;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.prompt-box:hover {
-  background: #131418;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Badges and Chips */
-.tag-chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 6px;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.tag-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
 /* Toast */
 #toast {
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
 }

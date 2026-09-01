@@ -49,41 +49,34 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden bg-[#121316]">
+<body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden bg-[#0f1013]">
 
   <!-- Top Global Navigation Bar (Sticky) -->
-  <nav class="sticky top-0 z-40 w-full bg-[#121316]/90 backdrop-blur-md border-b border-white/[0.08] px-4 lg:px-8 py-3 transition-all">
-    <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 w-full bg-[#0f1013]/95 backdrop-blur-md border-b border-white/[0.08] px-4 lg:px-8 py-2.5 transition-all">
+    <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-3 sm:gap-6">
       
       <!-- Left: Brand & Title -->
       <div class="flex items-center gap-3 shrink-0">
-        <!-- Mobile Sidebar Toggle -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg bg-[#18191d] border border-white/[0.08] text-[#a1a1aa] hover:text-white">
-          <i data-lucide="panel-left" class="w-4 h-4"></i>
-        </button>
-
         <a href="#" class="flex items-center gap-2.5 group">
-          <span class="w-2.5 h-2.5 rounded-full bg-[#e25c38] group-hover:scale-125 transition-transform"></span>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="font-serif-editorial text-base sm:text-lg font-bold text-[#fbfbfa] tracking-tight">画风图谱</span>
-              <span class="text-xs font-mono text-[#888990] hidden sm:inline">ART STYLE ARCHIVE</span>
-            </div>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#e25c38] group-hover:scale-125 transition-transform shadow-[0_0_8px_rgba(226,92,56,0.6)]"></span>
+          <div class="flex items-center gap-2">
+            <span class="font-serif-editorial text-base sm:text-lg font-bold text-[#fbfbfa] tracking-tight">画风图谱</span>
+            <span class="text-[11px] font-mono text-[#888990] hidden md:inline">ART STYLE ARCHIVE</span>
           </div>
         </a>
 
-        <div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#18191d] border border-white/[0.06] text-[11px] text-[#a1a1aa] font-mono">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-          <span>24 流派 × 9 场景 · 216 矩阵图谱</span>
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#15161a] border border-white/[0.06] text-[11px] text-[#a1a1aa] font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span>216 矩阵图谱</span>
         </div>
       </div>
 
       <!-- Center: Global Search Input -->
-      <div class="flex-1 max-w-md mx-2 sm:mx-6">
+      <div class="flex-1 max-w-md mx-1 sm:mx-4">
         <div class="relative w-full">
           <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#888990]"></i>
           <input type="text" id="searchInput" placeholder="搜索流派、笔触、大师或 Prompt 关键词... (/) " 
-            class="w-full pl-8 pr-8 py-1.5 bg-[#18191d] hover:bg-[#1e2025] focus:bg-[#1e2025] border border-white/[0.08] focus:border-[#e25c38] rounded-lg text-xs text-[#fbfbfa] placeholder-[#5c5d64] focus:outline-none transition-all">
+            class="w-full pl-8 pr-8 py-1.5 bg-[#15161a] hover:bg-[#1a1c22] focus:bg-[#1a1c22] border border-white/[0.08] focus:border-[#e25c38] rounded-lg text-xs text-[#fbfbfa] placeholder-[#5c5d64] focus:outline-none transition-all">
           <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-[#888990] hover:text-white">
             <i data-lucide="x" class="w-3 h-3"></i>
           </button>
@@ -91,340 +84,291 @@
       </div>
 
       <!-- Right: View Switcher & Actions -->
-      <div class="flex items-center gap-2.5 shrink-0">
+      <div class="flex items-center gap-2 shrink-0">
         <!-- View Switcher Tabs -->
-        <div class="flex items-center bg-[#18191d] p-1 rounded-lg border border-white/[0.08] text-xs">
-          <button id="viewGridBtn" class="px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white" title="画廊矩阵模式">
+        <div class="flex items-center bg-[#15161a] p-1 rounded-lg border border-white/[0.08] text-xs">
+          <button id="viewGridBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white" title="画廊矩阵模式">
             <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-            <span class="hidden md:inline">画廊矩阵</span>
+            <span class="hidden sm:inline">画廊</span>
           </button>
-          <button id="viewCompareBtn" class="px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="双画风同屏对比台">
+          <button id="viewCompareBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="双画风同屏对比台">
             <i data-lucide="split-square-vertical" class="w-3.5 h-3.5"></i>
-            <span class="hidden md:inline">对比台</span>
+            <span class="hidden sm:inline">对比台</span>
           </button>
-          <button id="viewCheatBtn" class="px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="Prompt 结构化速查表">
+          <button id="viewCheatBtn" class="px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white" title="Prompt 结构化速查表">
             <i data-lucide="table" class="w-3.5 h-3.5"></i>
-            <span class="hidden md:inline">速查表</span>
+            <span class="hidden sm:inline">速查表</span>
           </button>
         </div>
 
         <!-- Quick Random Style Pick -->
-        <button id="randomStyleBtn" class="p-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-[#18191d] hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风灵感">
+        <button id="randomStyleBtn" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风灵感">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
-          <span class="hidden sm:inline">随机抽取</span>
+          <span class="hidden md:inline">灵感</span>
         </button>
 
         <!-- Export Prompts -->
-        <button id="exportPromptsBtn" class="p-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-[#24262c] hover:bg-[#2e3037] text-[#fbfbfa] border border-white/[0.1] text-xs font-medium transition-all flex items-center gap-1.5" title="导出当前场景全部 Prompt">
+        <button id="exportPromptsBtn" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#fbfbfa] border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="导出当前场景全部 Prompt">
           <i data-lucide="download" class="w-3.5 h-3.5 text-[#a1a1aa]"></i>
-          <span class="hidden sm:inline">导出</span>
+          <span class="hidden md:inline">导出</span>
         </button>
 
         <!-- GitHub -->
         <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" 
-           class="p-1.5 rounded-lg bg-[#18191d] hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.08] transition-all flex items-center justify-center" title="GitHub 仓库">
+           class="p-1.5 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.08] transition-all flex items-center justify-center" title="GitHub 仓库">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
       </div>
 
     </div>
-  </nav>
+  </header>
 
-  <!-- Studio Split-Pane Workspace -->
-  <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="flex flex-col lg:flex-row items-start gap-8">
+  <!-- Sticky Sub-Nav: 9 Scenes Pill Bar & Streamlined Filter Controls -->
+  <div class="sticky top-[53px] z-30 w-full bg-[#0f1013]/90 backdrop-blur-md border-b border-white/[0.06] px-4 lg:px-8 py-2.5 transition-all space-y-2.5">
+    <div class="max-w-[1720px] mx-auto space-y-2.5">
       
-      <!-- ========================================================= -->
-      <!-- Left Sidebar: Studio Hub (Sticky Desktop, Drawer Mobile) -->
-      <!-- ========================================================= -->
-      <aside id="sidebarDrawer" class="w-full lg:w-[310px] xl:w-[340px] shrink-0 fixed lg:sticky top-0 lg:top-20 left-0 h-full lg:h-[calc(100vh-6rem)] bg-[#141519] lg:bg-transparent z-50 lg:z-10 p-5 lg:p-0 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-200 border-r lg:border-r-0 border-white/[0.08] scrollbar-none flex flex-col justify-between space-y-6">
+      <!-- Row 1: 9 Benchmark Scenes Horizontal Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5" id="sceneNavContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Row 2: Category Filter Pills + Utility Controls -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-white/[0.04]">
         
-        <!-- Mobile Drawer Close Header -->
-        <div class="flex lg:hidden items-center justify-between pb-3 border-b border-white/[0.08]">
-          <span class="font-serif-editorial text-sm font-bold text-[#fbfbfa]">控制台与场景导航</span>
-          <button id="closeMobileMenuBtn" class="p-1.5 rounded-lg bg-[#18191d] text-[#a1a1aa] hover:text-white">
-            <i data-lucide="x" class="w-4 h-4"></i>
+        <!-- Category Filter Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="categoryNavContainer">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Right Utilities: Scene Core Prompt & Density Toggle -->
+        <div class="flex items-center gap-3 shrink-0 ml-auto">
+          <!-- Copy Core Subject Prompt Button -->
+          <button id="copyCoreSubjectBtn" class="px-2.5 py-1 rounded-lg bg-[#15161a] hover:bg-[#22252c] text-[#a1a1aa] hover:text-[#e25c38] border border-white/[0.06] text-xs font-mono flex items-center gap-1.5 transition-all" title="复制当前基准场景的主体 Prompt">
+            <i data-lucide="crosshair" class="w-3 h-3 text-[#e25c38]"></i>
+            <span class="hidden sm:inline">主体 Prompt: </span>
+            <span id="activeSceneSubjectPreview" class="max-w-[140px] truncate text-[#c4c4c7]">A stylish woman...</span>
+            <i data-lucide="copy" class="w-2.5 h-2.5 opacity-60"></i>
           </button>
+
+          <!-- Density Controls -->
+          <div class="flex items-center bg-[#15161a] p-0.5 rounded-lg border border-white/[0.06] text-xs">
+            <button id="densityCompactBtn" class="p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all" title="4 列紧凑网格">
+              <i data-lucide="grid-3x3" class="w-3.5 h-3.5"></i>
+            </button>
+            <button id="densityStandardBtn" class="p-1.5 rounded bg-[#22252c] text-white transition-all" title="3 列标准网格">
+              <i data-lucide="grid-2x2" class="w-3.5 h-3.5"></i>
+            </button>
+            <button id="densitySpaciousBtn" class="p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all" title="2 列沉浸大图">
+              <i data-lucide="rectangle-horizontal" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Filtered Count Badge -->
+          <span id="filteredCountBadge" class="text-[11px] font-mono text-[#888990] bg-[#15161a] px-2 py-1 rounded-md border border-white/[0.05]">
+            24 / 24 组
+          </span>
         </div>
-
-        <div class="space-y-6">
-          <!-- Section 1: Benchmark Scenes Hub -->
-          <section>
-            <div class="flex items-center justify-between mb-2.5 px-1">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-[#888990] flex items-center gap-1.5">
-                <i data-lucide="layers" class="w-3.5 h-3.5 text-[#e25c38]"></i>
-                基准测试场景 (9)
-              </span>
-              <span class="text-[10px] font-mono text-[#5c5d64]">固定主体变量</span>
-            </div>
-
-            <div class="space-y-1.5" id="sceneSidebarContainer">
-              <!-- Rendered dynamically -->
-            </div>
-          </section>
-
-          <!-- Section 2: Style Categories Filter Hub -->
-          <section class="pt-4 border-t border-white/[0.06]">
-            <div class="flex items-center justify-between mb-2.5 px-1">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-[#888990] flex items-center gap-1.5">
-                <i data-lucide="palette" class="w-3.5 h-3.5 text-amber-500"></i>
-                艺术流派分类 (24)
-              </span>
-              <span id="activeCategoryCount" class="text-[10px] font-mono text-[#e25c38]">24 风格</span>
-            </div>
-
-            <div class="space-y-1" id="categorySidebarContainer">
-              <!-- Rendered dynamically -->
-            </div>
-          </section>
-
-          <!-- Section 3: Active Scene Benchmark Brief -->
-          <section class="p-4 rounded-xl bg-[#18191d] border border-white/[0.06] text-xs">
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#888990] flex items-center gap-1.5">
-                <i data-lucide="crosshair" class="w-3 h-3 text-[#e25c38]"></i>
-                当前场景主体 Prompt
-              </span>
-              <button id="copyCoreSubjectBtn" class="text-[10px] text-[#a1a1aa] hover:text-[#e25c38] font-mono flex items-center gap-1 transition-colors">
-                <i data-lucide="copy" class="w-2.5 h-2.5"></i> 复制主体
-              </button>
-            </div>
-            <p id="sidebarCoreSubject" class="font-mono-code text-[11px] text-[#c4c4c7] line-clamp-3 bg-[#121316] p-2.5 rounded-lg border border-white/[0.04] select-all leading-relaxed">
-              Loading benchmark core subject...
-            </p>
-          </section>
-        </div>
-
-        <!-- Sidebar Footer Info -->
-        <div class="pt-4 border-t border-white/[0.06] text-[11px] text-[#888990] flex items-center justify-between">
-          <span>画风图谱 v2.0 · Gemini AI</span>
-          <a href="https://holynova.github.io/" target="_blank" class="hover:text-[#e25c38] transition-colors">holynova</a>
-        </div>
-      </aside>
-
-      <!-- Sidebar Backdrop for Mobile -->
-      <div id="sidebarBackdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden lg:hidden"></div>
-
-      <!-- ========================================================= -->
-      <!-- Main Content Exploration Stage -->
-      <!-- ========================================================= -->
-      <div class="flex-1 min-w-0 w-full space-y-6">
-        
-        <!-- Active Scene Header Strip (Context & Density Controls) -->
-        <header class="p-5 sm:p-6 rounded-2xl bg-[#18191d] border border-white/[0.06] flex flex-col md:flex-row md:items-center justify-between gap-4 relative overflow-hidden">
-          <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-[#e25c38]/5 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div class="space-y-2.5 max-w-3xl">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="activeSceneBadge" class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-[#24262c] text-[#e25c38] border border-white/[0.08]">
-                SCENE I · 3:4 肖像
-              </span>
-              <span id="filteredCountBadge" class="text-xs font-mono text-[#888990]">
-                显示 24 / 24 组
-              </span>
-            </div>
-            <h2 id="activeSceneTitle" class="text-xl sm:text-2xl font-bold font-serif-editorial text-[#fbfbfa] tracking-tight">
-              咖啡馆雨窗与猫
-            </h2>
-            <p id="activeSceneDesc" class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
-              咖啡馆雨窗旁，戴宽檐帽喝咖啡的优雅女性，木桌上趴着一只睡猫。用于测试人物五官结构、衣褶质感、室内外冷暖对比与情绪传达。
-            </p>
-            <!-- Category Filter Pills -->
-            <div class="flex flex-wrap items-center gap-1.5 pt-1" id="categoryHeaderPills">
-              <!-- Injected dynamically -->
-            </div>
-          </div>
-
-          <!-- Quick Layout Density & Display Helpers -->
-          <div class="flex items-center gap-3 shrink-0 self-end md:self-center">
-            <div class="flex items-center bg-[#121316] p-1 rounded-lg border border-white/[0.06] text-xs">
-              <span class="text-[11px] text-[#888990] font-mono px-2">列密度:</span>
-              <button id="densityCompactBtn" class="p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all" title="4 列紧凑网格">
-                <i data-lucide="grid-3x3" class="w-3.5 h-3.5"></i>
-              </button>
-              <button id="densityStandardBtn" class="p-1.5 rounded bg-[#24262c] text-white transition-all" title="3 列标准网格">
-                <i data-lucide="grid-2x2" class="w-3.5 h-3.5"></i>
-              </button>
-              <button id="densitySpaciousBtn" class="p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all" title="2 列沉浸大图">
-                <i data-lucide="rectangle-horizontal" class="w-3.5 h-3.5"></i>
-              </button>
-            </div>
-          </div>
-        </header>
-
-        <!-- View 1: Gallery Matrix Grid -->
-        <main id="galleryView" class="space-y-8">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all" id="galleryGrid">
-            <!-- Cards will be populated here -->
-          </div>
-        </main>
-
-        <!-- View 2: Split Comparator View (Hidden by default) -->
-        <main id="compareView" class="hidden">
-          <div class="bg-[#18191d] border border-white/[0.08] p-6 sm:p-8 rounded-2xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
-              <div>
-                <h3 class="text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
-                  <i data-lucide="git-compare" class="w-5 h-5 text-[#e25c38]"></i>
-                  双画风同屏深度对比台
-                </h3>
-                <p class="text-xs text-[#a1a1aa] mt-1">选择当前基准场景下的任意 2 种流派，直观对照笔触肌理、色彩构成与 Prompt 差异</p>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs text-[#888990] font-mono">视图模式：</span>
-                <div class="flex bg-[#121316] p-1 rounded-lg border border-white/[0.08] text-xs">
-                  <button id="compareDualBtn" class="px-3 py-1 rounded bg-[#e25c38] text-white font-medium">并排视图</button>
-                  <button id="compareSliderBtn" class="px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium">滑动对比</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Selectors for Left & Right Style -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <div class="flex items-center gap-3">
-                <span class="text-xs font-mono font-semibold text-[#e25c38] uppercase tracking-wider shrink-0">风格 A:</span>
-                <select id="leftStyleSelect" class="flex-1 bg-[#121316] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
-                  <!-- Populated dynamically -->
-                </select>
-              </div>
-              <div class="flex items-center gap-3">
-                <span class="text-xs font-mono font-semibold text-[#d97706] uppercase tracking-wider shrink-0">风格 B:</span>
-                <select id="rightStyleSelect" class="flex-1 bg-[#121316] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
-                  <!-- Populated dynamically -->
-                </select>
-              </div>
-            </div>
-
-            <!-- Comparison Display Stage -->
-            <div id="comparisonStage" class="mt-6">
-              <!-- Side-by-side or Slider container injected here -->
-            </div>
-
-            <!-- Detailed Stylistic Diff Table -->
-            <div class="mt-8 pt-6 border-t border-white/[0.08] overflow-x-auto">
-              <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#a1a1aa] mb-3 flex items-center gap-2">
-                <i data-lucide="table" class="w-3.5 h-3.5 text-[#e25c38]"></i>
-                画风要素对比解构表
-              </h4>
-              <table class="w-full text-xs text-left text-[#c4c4c7]">
-                <thead class="bg-[#121316] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
-                  <tr>
-                    <th class="p-3.5 w-1/5">解构维度</th>
-                    <th class="p-3.5 w-2/5 text-[#e25c38]" id="tableLeftName">风格 A</th>
-                    <th class="p-3.5 w-2/5 text-[#d97706]" id="tableRightName">风格 B</th>
-                  </tr>
-                </thead>
-                <tbody id="diffTableBody" class="divide-y divide-white/[0.04]">
-                  <!-- Injected by script -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
-
-        <!-- View 3: Prompt CheatSheet Table (Hidden by default) -->
-        <main id="cheatsheetView" class="hidden">
-          <div class="bg-[#18191d] border border-white/[0.08] p-6 sm:p-8 rounded-2xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
-              <div>
-                <h3 class="text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
-                  <i data-lucide="book-open" class="w-5 h-5 text-[#e25c38]"></i>
-                  Prompt 提示词结构化速查表
-                </h3>
-                <p class="text-xs text-[#a1a1aa] mt-1">一览 24 种艺术流派的核心修饰词、代表大师与完整 Prompt，支持单键即时复制</p>
-              </div>
-            </div>
-
-            <div class="mt-6 overflow-x-auto">
-              <table class="w-full text-xs text-left text-[#c4c4c7]">
-                <thead class="bg-[#121316] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
-                  <tr>
-                    <th class="p-3.5 w-12 text-center">#</th>
-                    <th class="p-3.5 w-40">流派名称</th>
-                    <th class="p-3.5 w-36">代表大师 / 源流</th>
-                    <th class="p-3.5 w-48">核心修饰关键词 (Modifiers)</th>
-                    <th class="p-3.5">出图 Prompt 片段</th>
-                    <th class="p-3.5 w-24 text-center">操作</th>
-                  </tr>
-                </thead>
-                <tbody id="cheatsheetTableBody" class="divide-y divide-white/[0.04]">
-                  <!-- Populated dynamically -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
 
       </div>
 
     </div>
   </div>
 
-  <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
-    <div class="relative max-w-5xl w-full max-h-[92vh] bg-[#18191d] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+  <!-- Main Exploration Stage (Full-Width Visual Canvas) -->
+  <div class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- View 1: Gallery Matrix Grid (Default) -->
+    <main id="galleryView" class="space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 transition-all" id="galleryGrid">
+        <!-- Visual cards populated here -->
+      </div>
+    </main>
+
+    <!-- View 2: Split Comparator View (Hidden by default) -->
+    <main id="compareView" class="hidden">
+      <div class="bg-[#15161a] border border-white/[0.08] p-5 sm:p-7 rounded-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
+              <i data-lucide="split-square-vertical" class="w-5 h-5 text-[#e25c38]"></i>
+              双画风同屏深度对比台
+            </h3>
+            <p class="text-xs text-[#a1a1aa] mt-1">选择当前基准场景下的任意 2 种流派，直观对照笔触肌理与出图 Prompt 差异</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-[#888990] font-mono">视图模式：</span>
+            <div class="flex bg-[#0f1013] p-1 rounded-lg border border-white/[0.08] text-xs">
+              <button id="compareDualBtn" class="px-3 py-1 rounded bg-[#e25c38] text-white font-medium">并排视图</button>
+              <button id="compareSliderBtn" class="px-3 py-1 rounded text-[#a1a1aa] hover:text-white font-medium">滑动对比</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selectors for Left & Right Style -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-semibold text-[#e25c38] uppercase tracking-wider shrink-0">风格 A:</span>
+            <select id="leftStyleSelect" class="flex-1 bg-[#0f1013] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-semibold text-[#d97706] uppercase tracking-wider shrink-0">风格 B:</span>
+            <select id="rightStyleSelect" class="flex-1 bg-[#0f1013] border border-white/[0.1] rounded-lg px-3 py-2 text-xs text-[#fbfbfa] focus:outline-none focus:border-[#e25c38]">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Comparison Display Stage -->
+        <div id="comparisonStage" class="mt-6">
+          <!-- Side-by-side or Slider container injected here -->
+        </div>
+
+        <!-- Detailed Stylistic Diff Table -->
+        <div class="mt-8 pt-6 border-t border-white/[0.08] overflow-x-auto">
+          <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-[#a1a1aa] mb-3 flex items-center gap-2">
+            <i data-lucide="table" class="w-3.5 h-3.5 text-[#e25c38]"></i>
+            画风要素与 Prompt 对比表
+          </h4>
+          <table class="w-full text-xs text-left text-[#c4c4c7]">
+            <thead class="bg-[#0f1013] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
+              <tr>
+                <th class="p-3.5 w-1/5">解构维度</th>
+                <th class="p-3.5 w-2/5 text-[#e25c38]" id="tableLeftName">风格 A</th>
+                <th class="p-3.5 w-2/5 text-[#d97706]" id="tableRightName">风格 B</th>
+              </tr>
+            </thead>
+            <tbody id="diffTableBody" class="divide-y divide-white/[0.04]">
+              <!-- Injected by script -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- View 3: Prompt CheatSheet Table (Hidden by default) -->
+    <main id="cheatsheetView" class="hidden">
+      <div class="bg-[#15161a] border border-white/[0.08] p-5 sm:p-7 rounded-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/[0.08]">
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#fbfbfa] font-serif-editorial flex items-center gap-2.5">
+              <i data-lucide="book-open" class="w-5 h-5 text-[#e25c38]"></i>
+              Prompt 提示词结构化速查表
+            </h3>
+            <p class="text-xs text-[#a1a1aa] mt-1">一览 24 种艺术流派的核心修饰词、代表大师与完整 Prompt，支持单键即时复制</p>
+          </div>
+        </div>
+
+        <div class="mt-5 overflow-x-auto">
+          <table class="w-full text-xs text-left text-[#c4c4c7]">
+            <thead class="bg-[#0f1013] text-[#888990] uppercase border-b border-white/[0.08] font-mono text-[11px]">
+              <tr>
+                <th class="p-3.5 w-12 text-center">#</th>
+                <th class="p-3.5 w-40">流派名称</th>
+                <th class="p-3.5 w-36">代表大师 / 源流</th>
+                <th class="p-3.5 w-48">核心修饰关键词 (Modifiers)</th>
+                <th class="p-3.5">出图 Prompt 片段</th>
+                <th class="p-3.5 w-24 text-center">操作</th>
+              </tr>
+            </thead>
+            <tbody id="cheatsheetTableBody" class="divide-y divide-white/[0.04]">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Lightbox Modal (High-Res Inspector & Prompt Deconstruction) -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="relative max-w-6xl w-full max-h-[92vh] bg-[#15161a] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <!-- Close Button -->
-      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
       <!-- Prev / Next Navigation buttons -->
-      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
         <i data-lucide="chevron-left" class="w-5 h-5"></i>
       </button>
-      <button id="nextLightboxBtn" class="absolute right-4 md:right-[400px] top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+      <button id="nextLightboxBtn" class="absolute right-4 md:right-[420px] top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
         <i data-lucide="chevron-right" class="w-5 h-5"></i>
       </button>
 
-      <!-- Image Area -->
-      <div class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[320px]">
-        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-xl">
+      <!-- High-Res Image Display Area -->
+      <div class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[360px]">
+        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
       </div>
 
-      <!-- Details Drawer Area -->
-      <div class="w-full md:w-[380px] bg-[#18191d] p-6 overflow-y-auto max-h-[85vh] border-t md:border-t-0 md:border-l border-white/[0.08]">
-        <div class="flex items-center gap-2 mb-2">
-          <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#24262c] text-[#e25c38] border border-white/[0.08]">01</span>
-          <span id="lightboxCategory" class="text-xs text-[#888990]">传统绘画与油彩</span>
-        </div>
-        <h3 id="lightboxTitleCn" class="text-2xl font-bold text-[#fbfbfa] font-serif-editorial">厚涂油画</h3>
-        <div id="lightboxTitleEn" class="text-xs font-mono text-[#a1a1aa] mb-5">Impasto Oil Painting</div>
-
+      <!-- Prompt & Style Deconstruction Drawer -->
+      <div class="w-full md:w-[400px] bg-[#15161a] p-6 overflow-y-auto max-h-[88vh] border-t md:border-t-0 md:border-l border-white/[0.08] flex flex-col justify-between space-y-5">
         <div class="space-y-4 text-xs">
+          <!-- Header -->
           <div>
-            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1">代表大师 / 源流：</div>
-            <div id="lightboxMaster" class="text-[#fbfbfa] font-medium">Craig Mullins / 梵高</div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#22252c] text-[#e25c38] border border-white/[0.08]">#01</span>
+              <span id="lightboxCategory" class="text-xs font-medium text-[#888990]">传统绘画与油彩</span>
+            </div>
+            <h3 id="lightboxTitleCn" class="text-2xl font-bold text-[#fbfbfa] font-serif-editorial">厚涂油画</h3>
+            <div id="lightboxTitleEn" class="text-xs font-mono text-[#888990]">Impasto Oil Painting</div>
           </div>
 
+          <!-- Prompt Box (Hero) -->
           <div>
-            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1">技法与质感解析：</div>
-            <p id="lightboxTechnique" class="text-[#c4c4c7] leading-relaxed">使用厚重油彩与油画刀层叠涂抹，强调厚重物理肌理与雕塑般的形体转折。</p>
-          </div>
-
-          <div>
-            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1.5">完整提示词 (Prompt)：</div>
-            <div class="bg-[#121316] p-3 rounded-lg border border-white/[0.08] font-mono-code text-[11px] text-[#e4e4e7] break-words leading-relaxed">
-              <span id="lightboxPromptText">Prompt text</span>
-              <button id="lightboxCopyBtn" class="mt-3 w-full py-2 rounded-md bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 transition-all text-xs">
+            <div class="flex items-center justify-between text-[#888990] font-mono uppercase text-[10px] mb-1.5">
+              <span>完整出图 Prompt:</span>
+              <span class="text-[#e25c38]">可一键复制</span>
+            </div>
+            <div class="bg-[#0f1013] p-3.5 rounded-xl border border-white/[0.08] space-y-3">
+              <p id="lightboxPromptText" class="font-mono-code text-[11px] text-[#e4e4e7] break-words leading-relaxed select-all">
+                Prompt loading...
+              </p>
+              <button id="lightboxCopyBtn" class="w-full py-2.5 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-2 transition-all text-xs shadow-lg shadow-[#e25c38]/20">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                <span id="lightboxCopyBtnText">复制 Prompt</span>
+                <span id="lightboxCopyBtnText">复制完整 Prompt</span>
               </button>
             </div>
           </div>
 
+          <!-- Key Modifiers Chips -->
           <div>
-            <div class="text-[#888990] font-mono uppercase text-[11px] mb-1.5">核心修饰关键词：</div>
+            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1.5">核心修饰关键词 (点击单个复制)：</div>
             <div id="lightboxModifiers" class="flex flex-wrap gap-1.5">
-              <!-- Modifiers tags -->
+              <!-- Modifiers tags rendered dynamically -->
             </div>
           </div>
+
+          <!-- Master / Origin -->
+          <div>
+            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1">代表大师 / 源流：</div>
+            <div id="lightboxMaster" class="text-[#fbfbfa] font-medium bg-[#0f1013] px-3 py-2 rounded-lg border border-white/[0.05]">Craig Mullins / 梵高</div>
+          </div>
+
+          <!-- Technique & Texture -->
+          <div>
+            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1">笔触肌理与技法解析：</div>
+            <p id="lightboxTechnique" class="text-[#a1a1aa] leading-relaxed bg-[#0f1013] p-3 rounded-lg border border-white/[0.05]">
+              使用厚重油彩与油画刀层叠涂抹，强调厚重物理肌理与雕塑般的形体转折。
+            </p>
+          </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="pt-4 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-[#888990]">
+          <span>按 ← / → 键切换画风</span>
+          <button onclick="setForComparison(SCENES_DATA.find(s=>s.id===currentSceneId).styles[activeLightboxIndex].id); closeLightbox();" class="text-[#e25c38] hover:underline flex items-center gap-1">
+            <i data-lucide="split-square-vertical" class="w-3 h-3"></i> 加入对比台
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#18191d] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
+  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-[#15161a] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
     <i data-lucide="check" class="w-4 h-4 text-[#e25c38]"></i>
     <span id="toastMsg">提示词已成功复制到剪贴板</span>
   </div>
@@ -437,17 +381,29 @@
     let currentCategory = 'all';
     let searchQuery = '';
     let currentViewMode = 'grid'; // 'grid' | 'compare' | 'cheat'
-    let currentGridDensity = 'standard'; // 'compact' | 'standard' | 'spacious'
+    let currentGridDensity = 'compact'; // 'compact' | 'standard' | 'spacious'
     let activeLightboxIndex = 0;
     let compareMode = 'dual'; // 'dual' | 'slider'
     let leftStyleId = 'scene_a_01_impasto';
     let rightStyleId = 'scene_a_07_citypop';
 
+    const SCENE_ICONS = {
+      scene_a: '☕',
+      scene_b: '🚋',
+      scene_c: '🌳',
+      scene_d: '📚',
+      scene_e: '🛸',
+      scene_f: '🪼',
+      scene_g: '🍜',
+      scene_h: '🏡',
+      scene_i: '🐪'
+    };
+
     const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
     // DOM Elements
-    const sceneSidebarContainer = document.getElementById('sceneSidebarContainer');
-    const categorySidebarContainer = document.getElementById('categorySidebarContainer');
+    const sceneNavContainer = document.getElementById('sceneNavContainer');
+    const categoryNavContainer = document.getElementById('categoryNavContainer');
     const galleryGrid = document.getElementById('galleryGrid');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
@@ -462,17 +418,12 @@
     const exportPromptsBtn = document.getElementById('exportPromptsBtn');
     const randomStyleBtn = document.getElementById('randomStyleBtn');
     const copyCoreSubjectBtn = document.getElementById('copyCoreSubjectBtn');
+    const activeSceneSubjectPreview = document.getElementById('activeSceneSubjectPreview');
 
     // Density Buttons
     const densityCompactBtn = document.getElementById('densityCompactBtn');
     const densityStandardBtn = document.getElementById('densityStandardBtn');
     const densitySpaciousBtn = document.getElementById('densitySpaciousBtn');
-
-    // Mobile Drawer
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const closeMobileMenuBtn = document.getElementById('closeMobileMenuBtn');
-    const sidebarDrawer = document.getElementById('sidebarDrawer');
-    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 
     // Lightbox DOM
     const lightboxModal = document.getElementById('lightboxModal');
@@ -493,53 +444,48 @@
 
     // Initialize
     function init() {
-      renderSceneSidebar();
-      renderCategorySidebar();
-      updateSceneHeaderContext();
+      renderSceneTabs();
+      renderCategoryPills();
+      updateSceneContext();
       renderGallery();
       renderCheatsheet();
       initComparisonView();
       initEventListeners();
+      setGridDensity(currentGridDensity);
       lucide.createIcons();
     }
 
-    // Render Scene Sidebar Cards
-    function renderSceneSidebar() {
-      sceneSidebarContainer.innerHTML = SCENES_DATA.map((scene, idx) => {
+    // Render 9 Benchmark Scene Horizontal Pill Tabs
+    function renderSceneTabs() {
+      sceneNavContainer.innerHTML = SCENES_DATA.map((scene, idx) => {
         const isActive = scene.id === currentSceneId;
         const roman = ROMAN_NUMERALS[idx] || (idx + 1);
+        const icon = SCENE_ICONS[scene.id] || '🎨';
+        const cleanTitle = scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title;
+
         return `
           <button onclick="switchScene('${scene.id}')" 
-            class="w-full px-2.5 py-1.5 rounded-lg text-left transition-all relative overflow-hidden border flex items-center justify-between group ${
+            class="px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 flex items-center gap-1.5 transition-all border ${
               isActive 
-                ? 'bg-[#1e2025] border-[#e25c38] text-white shadow-sm' 
-                : 'bg-[#18191d] border-white/[0.05] hover:border-white/[0.12] text-[#a1a1aa] hover:text-[#e4e4e7]'
+                ? 'bg-[#e25c38] text-white border-[#e25c38] shadow-md shadow-[#e25c38]/20 font-semibold' 
+                : 'bg-[#15161a] hover:bg-[#1f2128] text-[#a1a1aa] hover:text-white border-white/[0.06]'
             }">
-            <div class="flex items-center gap-2 min-w-0">
-              <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded shrink-0 ${isActive ? 'bg-[#e25c38] text-white' : 'bg-[#121316] text-[#888990] group-hover:text-white'}">
-                ${roman}
-              </span>
-              <div class="min-w-0">
-                <div class="font-bold text-xs font-serif-editorial ${isActive ? 'text-[#fbfbfa]' : 'text-[#c4c4c7]'} truncate">
-                  ${scene.title.split('·')[1] || scene.title}
-                </div>
-              </div>
-            </div>
-            <span class="text-[9px] font-mono text-[#5c5d64] group-hover:text-[#888990] shrink-0 ml-1">
-              ${scene.aspectRatio}
-            </span>
+            <span>${icon}</span>
+            <span class="font-mono opacity-80">${roman}.</span>
+            <span class="font-serif-editorial">${cleanTitle}</span>
+            <span class="text-[10px] font-mono opacity-70 ml-0.5">(${scene.aspectRatio})</span>
           </button>
         `;
       }).join('');
       lucide.createIcons();
     }
 
-    // Render Category Sidebar Tabs & Header Pills
-    function renderCategorySidebar() {
+    // Render Streamlined Category Pills
+    function renderCategoryPills() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       const allCount = scene ? scene.styles.length : 24;
 
-      categorySidebarContainer.innerHTML = STYLE_CATEGORIES.map(cat => {
+      categoryNavContainer.innerHTML = STYLE_CATEGORIES.map(cat => {
         const isActive = cat.id === currentCategory;
         const count = cat.id === 'all' 
           ? allCount 
@@ -547,96 +493,60 @@
 
         return `
           <button onclick="setCategory('${cat.id}')" 
-            class="w-full px-3 py-2 rounded-lg text-xs font-medium flex items-center justify-between transition-all border ${
+            class="px-2.5 py-1 rounded-md text-[11px] font-medium flex items-center gap-1.5 transition-all border shrink-0 ${
               isActive 
-                ? 'bg-[#e25c38]/15 text-[#e25c38] border-[#e25c38]/40 font-semibold' 
-                : 'bg-[#18191d]/60 text-[#a1a1aa] hover:text-white border-transparent hover:border-white/[0.08]'
+                ? 'bg-[#e25c38]/20 text-[#e25c38] border-[#e25c38]/40 font-semibold' 
+                : 'bg-[#15161a] text-[#888990] hover:text-white border-white/[0.05] hover:border-white/[0.12]'
             }">
-            <div class="flex items-center gap-2">
-              <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
-              <span>${cat.name}</span>
-            </div>
-            <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${isActive ? 'bg-[#e25c38] text-white' : 'bg-[#121316] text-[#888990]'}">
-              ${count}
-            </span>
+            <span>${cat.name}</span>
+            <span class="text-[10px] font-mono opacity-75">(${count})</span>
           </button>
         `;
       }).join('');
 
-      const categoryHeaderPills = document.getElementById('categoryHeaderPills');
-      if (categoryHeaderPills) {
-        categoryHeaderPills.innerHTML = STYLE_CATEGORIES.map(cat => {
-          const isActive = cat.id === currentCategory;
-          const count = cat.id === 'all' 
-            ? allCount 
-            : (scene ? scene.styles.filter(s => s.category === cat.id).length : 0);
-
-          return `
-            <button onclick="setCategory('${cat.id}')" 
-              class="px-2.5 py-1 rounded-md text-[11px] font-medium flex items-center gap-1.5 transition-all border ${
-                isActive 
-                  ? 'bg-[#e25c38] text-white border-[#e25c38] shadow-sm' 
-                  : 'bg-[#121316] text-[#a1a1aa] hover:text-white border-white/[0.06] hover:border-white/[0.15]'
-              }">
-              <i data-lucide="${cat.icon}" class="w-3 h-3"></i>
-              <span>${cat.name}</span>
-              <span class="opacity-70 text-[10px] font-mono">(${count})</span>
-            </button>
-          `;
-        }).join('');
-      }
-
       lucide.createIcons();
     }
 
-    // Update Scene Header Strip Context
-    function updateSceneHeaderContext() {
+    // Update Context (Active Scene & Count)
+    function updateSceneContext() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
-      const idx = SCENES_DATA.findIndex(s => s.id === currentSceneId);
-      const roman = ROMAN_NUMERALS[idx] || (idx + 1);
 
-      document.getElementById('activeSceneBadge').innerText = `SCENE ${roman} · ${scene.badge}`;
-      document.getElementById('activeSceneTitle').innerText = scene.title.split('·')[1] || scene.title;
-      document.getElementById('activeSceneDesc').innerText = scene.description;
-      document.getElementById('sidebarCoreSubject').innerText = scene.coreSubject;
-
-      const catObj = STYLE_CATEGORIES.find(c => c.id === currentCategory);
-      const activeCategoryBadge = document.getElementById('activeCategoryBadge');
-      if (activeCategoryBadge) {
-        activeCategoryBadge.innerText = catObj ? catObj.name : '全部流派';
+      if (activeSceneSubjectPreview) {
+        activeSceneSubjectPreview.innerText = scene.coreSubject;
       }
       
       const filtered = getFilteredStyles();
-      document.getElementById('filteredCountBadge').innerText = `显示 ${filtered.length} / ${scene.styles.length} 组`;
-      document.getElementById('activeCategoryCount').innerText = `${filtered.length} 风格`;
+      const filteredCountBadge = document.getElementById('filteredCountBadge');
+      if (filteredCountBadge) {
+        filteredCountBadge.innerText = `${filtered.length} / ${scene.styles.length} 组`;
+      }
     }
 
     // Switch Scene
     function switchScene(sceneId) {
       currentSceneId = sceneId;
-      renderSceneSidebar();
-      renderCategorySidebar();
-      updateSceneHeaderContext();
+      renderSceneTabs();
+      renderCategoryPills();
+      updateSceneContext();
       renderGallery();
       renderCheatsheet();
       updateCompareSelectors();
       updateComparisonDisplay();
-      closeMobileMenu();
     }
     window.switchScene = switchScene;
 
+    // Set Category
     function setCategory(catId) {
       currentCategory = catId;
-      renderCategorySidebar();
-      updateSceneHeaderContext();
+      renderCategoryPills();
+      updateSceneContext();
       renderGallery();
       renderCheatsheet();
-      closeMobileMenu();
     }
     window.setCategory = setCategory;
 
-    // Get Filtered Styles
+    // Filter Logic
     function getFilteredStyles() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return [];
@@ -653,7 +563,7 @@
       });
     }
 
-    // Render Gallery Matrix Cards
+    // Render Visual-First Gallery Cards
     function renderGallery() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       const isLandscape = scene && scene.aspectRatio === '16:9';
@@ -662,11 +572,11 @@
       const items = getFilteredStyles();
       if (items.length === 0) {
         galleryGrid.innerHTML = `
-          <div class="col-span-full py-20 text-center text-[#888990] bg-[#18191d] rounded-2xl border border-white/[0.06]">
+          <div class="col-span-full py-20 text-center text-[#888990] bg-[#15161a] rounded-2xl border border-white/[0.06]">
             <i data-lucide="search-x" class="w-10 h-10 mx-auto mb-3 opacity-40 text-[#e25c38]"></i>
             <p class="text-sm font-medium text-[#fbfbfa]">未找到匹配的艺术流派</p>
-            <p class="text-xs text-[#888990] mt-1">请尝试调整搜索词，或在左侧切换流派分类</p>
-            <button onclick="clearSearch()" class="mt-4 px-3 py-1.5 rounded-lg bg-[#24262c] text-xs text-[#c4c4c7] hover:text-white border border-white/[0.08]">
+            <p class="text-xs text-[#888990] mt-1">请尝试调整搜索词，或切换分类</p>
+            <button onclick="clearSearch()" class="mt-4 px-3 py-1.5 rounded-lg bg-[#22252c] text-xs text-[#c4c4c7] hover:text-white border border-white/[0.08]">
               清空搜索关键词
             </button>
           </div>
@@ -677,84 +587,54 @@
 
       galleryGrid.innerHTML = items.map(item => {
         return `
-          <div class="gallery-card flex flex-col justify-between overflow-hidden group">
-            <div>
-              <!-- Artwork Frame -->
-              <div class="artwork-frame ${aspectClass} cursor-pointer relative" onclick="openLightbox('${item.id}')">
-                <img src="${item.image}" alt="${item.nameCn}" 
-                  class="w-full h-full object-cover" 
-                  loading="lazy">
-                
-                <!-- Quick Overlay Actions -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3.5">
-                  <span class="text-xs font-medium text-white flex items-center gap-1.5 bg-[#121316]/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/[0.15]">
-                    <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#e25c38]"></i>
-                    查看大图解构
-                  </span>
-
-                  <button onclick="event.stopPropagation(); setForComparison('${item.id}')" 
-                    class="p-1.5 rounded-lg bg-[#121316]/90 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.15] transition-all" title="加入对比台">
-                    <i data-lucide="git-compare" class="w-3.5 h-3.5"></i>
-                  </button>
-                </div>
-                
-                <!-- Card Badge Header -->
-                <div class="absolute top-3 left-3 flex items-center gap-1.5">
-                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#121316]/90 text-[#fbfbfa] border border-white/[0.1] shadow-md">
-                    #${item.number}
-                  </span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#24262c]/90 text-[#c4c4c7] border border-white/[0.08]">
-                    ${item.categoryName}
-                  </span>
-                </div>
+          <div class="art-card flex flex-col justify-between group">
+            <!-- Artwork Media Frame -->
+            <div class="art-card-media ${aspectClass}" onclick="openLightbox('${item.id}')">
+              <img src="${item.image}" alt="${item.nameCn}" loading="lazy">
+              
+              <!-- Top Badges Overlay -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none z-10">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-[#0f1013]/90 text-[#fbfbfa] border border-white/[0.12] backdrop-blur-md shadow-md">
+                  #${item.number} ${item.nameCn}
+                </span>
+                <button onclick="event.stopPropagation(); setForComparison('${item.id}')" 
+                  class="pointer-events-auto p-1.5 rounded-md bg-[#0f1013]/90 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.12] backdrop-blur-md transition-all shadow-md" title="加入对比台">
+                  <i data-lucide="split-square-vertical" class="w-3.5 h-3.5"></i>
+                </button>
               </div>
 
-              <!-- Metadata Area -->
-              <div class="p-4 sm:p-5">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 class="text-base sm:text-lg font-bold text-[#fbfbfa] font-serif-editorial group-hover:text-[#e25c38] transition-colors">
-                      ${item.nameCn}
-                    </h3>
-                    <div class="text-xs font-mono text-[#888990] mt-0.5">${item.nameEn}</div>
-                  </div>
-                  ${item.master ? `
-                    <span class="text-[11px] text-[#888990] px-2 py-0.5 rounded bg-[#121316] border border-white/[0.06] shrink-0 max-w-[120px] truncate" title="${item.master}">
-                      ${item.master.split('/')[0].trim()}
-                    </span>
-                  ` : ''}
-                </div>
-
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                  ${item.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}
-                </div>
-
-                <!-- Technique Description -->
-                ${item.technique ? `
-                  <p class="text-xs text-[#a1a1aa] mt-2.5 line-clamp-2 leading-relaxed">
-                    ${item.technique}
+              <!-- Hover Overlay with Prompt & Action -->
+              <div class="art-card-hover-overlay">
+                <div class="space-y-2">
+                  <p class="font-mono-code text-[11px] text-[#e4e4e7] line-clamp-2 bg-[#0f1013]/95 p-2 rounded-lg border border-white/[0.1] leading-relaxed shadow-lg">
+                    ${item.prompt}
                   </p>
-                ` : ''}
-              </div>
-            </div>
-
-            <!-- Prompt Box & Actions -->
-            <div class="p-4 sm:p-5 pt-0">
-              <div class="prompt-box p-3">
-                <div class="flex items-center justify-between text-[10px] font-mono text-[#888990] mb-1.5">
-                  <span>PROMPT STRUCTURE</span>
-                  <button onclick="copyPrompt('${item.id}', this)" class="text-[#c4c4c7] hover:text-[#e25c38] flex items-center gap-1 font-medium transition-colors">
-                    <i data-lucide="copy" class="w-3 h-3"></i>
-                    <span>复制</span>
-                  </button>
-                </div>
-                <div class="line-clamp-2 font-mono-code text-[11px] text-[#a1a1aa] leading-relaxed select-all">
-                  ${item.prompt}
+                  <div class="flex items-center justify-between gap-2 pt-1">
+                    <span class="text-[11px] font-medium text-white/90 flex items-center gap-1.5">
+                      <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#e25c38]"></i>
+                      展开大图与解析
+                    </span>
+                    <button onclick="event.stopPropagation(); copyPrompt('${item.id}', this)" 
+                      class="copy-pill-btn px-2.5 py-1 rounded-md flex items-center gap-1 text-[11px] font-mono shadow-md">
+                      <i data-lucide="copy" class="w-3 h-3 text-[#e25c38]"></i>
+                      <span>复制 Prompt</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
 
+            <!-- Card Bottom Bar (Streamlined: English name & Instant Copy Button) -->
+            <div class="px-3.5 py-2.5 bg-[#15161a] border-t border-white/[0.06] flex items-center justify-between gap-2">
+              <div class="min-w-0 flex items-center gap-2">
+                <span class="text-xs font-mono text-[#888990] truncate" title="${item.nameEn}">${item.nameEn}</span>
+              </div>
+              <button onclick="copyPrompt('${item.id}', this)" 
+                class="text-[11px] font-mono text-[#a1a1aa] hover:text-[#e25c38] hover:bg-[#e25c38]/10 px-2 py-1 rounded transition-all flex items-center gap-1 shrink-0" title="复制提示词">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span>复制 Prompt</span>
+              </button>
+            </div>
           </div>
         `;
       }).join('');
@@ -768,7 +648,7 @@
       if (!tbody) return;
 
       tbody.innerHTML = items.map(item => `
-        <tr class="hover:bg-[#1e2025]/50 transition-colors">
+        <tr class="hover:bg-[#1a1c22]/60 transition-colors">
           <td class="p-3.5 text-center font-mono font-bold text-[#e25c38]">#${item.number}</td>
           <td class="p-3.5">
             <div class="font-bold text-[#fbfbfa] font-serif-editorial">${item.nameCn}</div>
@@ -777,14 +657,14 @@
           <td class="p-3.5 text-xs text-[#c4c4c7]">${item.master || '-'}</td>
           <td class="p-3.5">
             <div class="flex flex-wrap gap-1">
-              ${(item.keyModifiers || []).map(m => `<span class="px-1.5 py-0.5 rounded bg-[#121316] border border-white/[0.06] text-[10px] font-mono text-[#a1a1aa]">${m}</span>`).join('')}
+              ${(item.keyModifiers || []).map(m => `<span class="px-1.5 py-0.5 rounded bg-[#0f1013] border border-white/[0.06] text-[10px] font-mono text-[#a1a1aa]">${m}</span>`).join('')}
             </div>
           </td>
           <td class="p-3.5 font-mono-code text-[11px] text-[#888990] max-w-xs truncate" title="${item.prompt}">
             ${item.prompt}
           </td>
           <td class="p-3.5 text-center">
-            <button onclick="copyPrompt('${item.id}', this)" class="px-2.5 py-1 rounded bg-[#24262c] hover:bg-[#e25c38] text-white text-xs transition-colors flex items-center justify-center gap-1 mx-auto">
+            <button onclick="copyPrompt('${item.id}', this)" class="px-2.5 py-1 rounded bg-[#22252c] hover:bg-[#e25c38] text-white text-xs transition-colors flex items-center justify-center gap-1 mx-auto">
               <i data-lucide="copy" class="w-3 h-3"></i> 复制
             </button>
           </td>
@@ -846,17 +726,6 @@
     }
     window.clearSearch = clearSearch;
 
-    // Mobile Drawer Open/Close
-    function openMobileMenu() {
-      sidebarDrawer.classList.remove('-translate-x-full');
-      sidebarBackdrop.classList.remove('hidden');
-    }
-
-    function closeMobileMenu() {
-      sidebarDrawer.classList.add('-translate-x-full');
-      sidebarBackdrop.classList.add('hidden');
-    }
-
     // Lightbox Logic
     function openLightbox(styleId) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
@@ -890,15 +759,16 @@
       lightboxCopyBtn.onclick = () => {
         navigator.clipboard.writeText(item.prompt).then(() => {
           lightboxCopyBtnText.innerText = '已复制到剪贴板！';
-          setTimeout(() => { lightboxCopyBtnText.innerText = '复制 Prompt'; }, 1800);
+          setTimeout(() => { lightboxCopyBtnText.innerText = '复制完整 Prompt'; }, 1800);
           showToast(`已复制【${item.nameCn}】出图 Prompt`);
         });
       };
 
       lightboxModifiers.innerHTML = (item.keyModifiers || []).map(mod => `
-        <span class="px-2 py-1 rounded bg-[#121316] border border-white/[0.08] text-[#c4c4c7] font-mono-code text-[11px]">
+        <button onclick="navigator.clipboard.writeText('${mod}'); showToast('已复制关键词：${mod}');" 
+          class="px-2 py-1 rounded-md bg-[#0f1013] hover:bg-[#e25c38]/15 hover:border-[#e25c38]/50 border border-white/[0.08] text-[#c4c4c7] hover:text-[#e25c38] font-mono-code text-[11px] transition-all" title="点击单独复制">
           ${mod}
-        </span>
+        </button>
       `).join('');
 
       lucide.createIcons();
@@ -984,7 +854,7 @@
         stage.innerHTML = `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Left Style Card -->
-            <div class="bg-[#121316] p-5 rounded-xl border border-[#e25c38]/30 flex flex-col justify-between">
+            <div class="bg-[#0f1013] p-5 rounded-xl border border-[#e25c38]/30 flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#e25c38]/10 text-[#e25c38] border border-[#e25c38]/20">
@@ -1006,7 +876,7 @@
             </div>
 
             <!-- Right Style Card -->
-            <div class="bg-[#121316] p-5 rounded-xl border border-[#d97706]/30 flex flex-col justify-between">
+            <div class="bg-[#0f1013] p-5 rounded-xl border border-[#d97706]/30 flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between mb-3">
                   <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#d97706]/10 text-[#d97706] border border-[#d97706]/20">
@@ -1035,14 +905,14 @@
           <div class="comparison-container ${sliderAspect} mx-auto rounded-xl overflow-hidden border border-white/[0.1] relative" id="sliderBox">
             <!-- Background Image (Right / Style B) -->
             <img src="${styleB.image || ''}" class="absolute inset-0 w-full h-full object-cover select-none">
-            <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#d97706] border border-[#d97706]/30 font-mono font-bold">
+            <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-[#0f1013]/90 backdrop-blur-md text-xs text-[#d97706] border border-[#d97706]/30 font-mono font-bold">
               ${styleB.nameCn}
             </div>
 
             <!-- Overlay Image (Left / Style A) -->
             <div class="comparison-overlay w-1/2 z-10" id="sliderOverlay">
               <img src="${styleA.image || ''}" class="absolute inset-0 max-w-none w-full h-full object-cover select-none" id="sliderImgLeft">
-              <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#e25c38] border border-[#e25c38]/30 font-mono font-bold">
+              <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-[#0f1013]/90 backdrop-blur-md text-xs text-[#e25c38] border border-[#e25c38]/30 font-mono font-bold">
                 ${styleA.nameCn}
               </div>
             </div>
@@ -1080,6 +950,11 @@
           <td class="p-3.5 font-medium text-[#888990] font-mono">核心修饰关键词</td>
           <td class="p-3.5 font-mono-code text-[11px] text-[#e25c38]">${(styleA.keyModifiers || []).join(', ')}</td>
           <td class="p-3.5 font-mono-code text-[11px] text-[#d97706]">${(styleB.keyModifiers || []).join(', ')}</td>
+        </tr>
+        <tr>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">完整出图 Prompt</td>
+          <td class="p-3.5 font-mono-code text-[11px] text-[#888990] select-all">${styleA.prompt}</td>
+          <td class="p-3.5 font-mono-code text-[11px] text-[#888990] select-all">${styleB.prompt}</td>
         </tr>
       `;
 
@@ -1121,16 +996,16 @@
     // Set Grid Density
     function setGridDensity(density) {
       currentGridDensity = density;
-      densityCompactBtn.className = density === 'compact' ? 'p-1.5 rounded bg-[#24262c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
-      densityStandardBtn.className = density === 'standard' ? 'p-1.5 rounded bg-[#24262c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
-      densitySpaciousBtn.className = density === 'spacious' ? 'p-1.5 rounded bg-[#24262c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
+      densityCompactBtn.className = density === 'compact' ? 'p-1.5 rounded bg-[#22252c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
+      densityStandardBtn.className = density === 'standard' ? 'p-1.5 rounded bg-[#22252c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
+      densitySpaciousBtn.className = density === 'spacious' ? 'p-1.5 rounded bg-[#22252c] text-white transition-all' : 'p-1.5 rounded text-[#a1a1aa] hover:text-white transition-all';
 
       if (density === 'compact') {
-        galleryGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 transition-all';
+        galleryGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 transition-all';
       } else if (density === 'spacious') {
-        galleryGrid.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 transition-all';
+        galleryGrid.className = 'grid grid-cols-1 md:grid-cols-2 gap-6 transition-all';
       } else {
-        galleryGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all';
+        galleryGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 transition-all';
       }
     }
 
@@ -1145,11 +1020,19 @@
       };
       clearSearchBtn.onclick = clearSearch;
 
-      // Keyboard Shortcut '/' for search
+      // Keyboard Shortcut '/' for search and Escape to close modal
       window.addEventListener('keydown', (e) => {
         if (e.key === '/' && document.activeElement !== searchInput && lightboxModal.classList.contains('opacity-0')) {
           e.preventDefault();
           searchInput.focus();
+        } else if (e.key === 'Escape' && !lightboxModal.classList.contains('opacity-0')) {
+          closeLightbox();
+        } else if (!lightboxModal.classList.contains('opacity-0')) {
+          if (e.key === 'ArrowLeft') {
+            prevLightboxBtn.click();
+          } else if (e.key === 'ArrowRight') {
+            nextLightboxBtn.click();
+          }
         }
       });
 
@@ -1157,11 +1040,6 @@
       densityCompactBtn.onclick = () => setGridDensity('compact');
       densityStandardBtn.onclick = () => setGridDensity('standard');
       densitySpaciousBtn.onclick = () => setGridDensity('spacious');
-
-      // Mobile Menu
-      mobileMenuBtn.onclick = openMobileMenu;
-      closeMobileMenuBtn.onclick = closeMobileMenu;
-      sidebarBackdrop.onclick = closeMobileMenu;
 
       // Random Style
       randomStyleBtn.onclick = () => {
@@ -1184,9 +1062,9 @@
       // View Toggle
       viewGridBtn.onclick = () => {
         currentViewMode = 'grid';
-        viewGridBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewCompareBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCheatBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
+        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
         galleryView.classList.remove('hidden');
         compareView.classList.add('hidden');
         cheatsheetView.classList.add('hidden');
@@ -1194,9 +1072,9 @@
 
       viewCompareBtn.onclick = () => {
         currentViewMode = 'compare';
-        viewCompareBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewGridBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCheatBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
+        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
         galleryView.classList.add('hidden');
         compareView.classList.remove('hidden');
         cheatsheetView.classList.add('hidden');
@@ -1205,9 +1083,9 @@
 
       viewCheatBtn.onclick = () => {
         currentViewMode = 'cheat';
-        viewCheatBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
-        viewGridBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
-        viewCompareBtn.className = 'px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewCheatBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all bg-[#e25c38] text-white';
+        viewGridBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
+        viewCompareBtn.className = 'px-2.5 sm:px-3 py-1 rounded-md font-medium flex items-center gap-1.5 transition-all text-[#a1a1aa] hover:text-white';
         galleryView.classList.add('hidden');
         compareView.classList.add('hidden');
         cheatsheetView.classList.remove('hidden');
@@ -1255,3 +1133,4 @@
   </script>
 </body>
 </html>
+
