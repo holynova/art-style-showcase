@@ -29,8 +29,8 @@
       
       <!-- Brand -->
       <a href="#" class="flex items-center gap-2.5 shrink-0">
-        <span class="font-semibold text-base sm:text-lg tracking-tight text-white">画风图谱</span>
-        <span class="text-xs text-[#71717a] font-mono hidden sm:inline">Art Style Archive</span>
+        <span id="brandTitleText" class="font-semibold text-base sm:text-lg tracking-tight text-white">画风图谱</span>
+        <span id="brandSubText" class="text-xs text-[#71717a] font-mono hidden sm:inline">Art Style Archive</span>
       </a>
 
       <!-- Global Search -->
@@ -49,7 +49,14 @@
       <div class="flex items-center gap-2 shrink-0">
         <button id="randomStyleBtn" class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风">
           <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
-          <span class="hidden sm:inline">随机</span>
+          <span id="randomBtnText" class="hidden sm:inline">随机</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" 
+          class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-mono font-medium transition-all flex items-center gap-1" title="Switch Language / 切换语言">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#e25c38]"></i>
+          <span id="langBtnText">EN</span>
         </button>
 
         <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" 
@@ -65,7 +72,7 @@
   <div class="sticky top-[53px] z-30 w-full bg-[#090a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-4 lg:px-8 py-2.5 transition-all">
     <div class="max-w-[1720px] mx-auto">
       
-      <!-- Desktop: Clean Wrapped Segmented Buttons (All 9 visible in 1-2 lines, NO emojis, NO roman numerals) -->
+      <!-- Desktop: Clean Wrapped Segmented Buttons -->
       <div class="hidden sm:flex flex-wrap items-center gap-1.5" id="sceneTabsDesktop">
         <!-- Rendered dynamically -->
       </div>
@@ -149,20 +156,95 @@
   <!-- App Logic Scripts -->
   <script src="data.js"></script>
   <script>
+    // Bilingual Internationalization Dictionary
+    const I18N = {
+      zh: {
+        siteTitle: '画风图谱 · 艺术与插画流派视觉图谱 | Art Style Archive',
+        brandTitle: '画风图谱',
+        brandSub: 'Art Style Archive',
+        searchPlaceholder: '搜索画风、流派或 Prompt...',
+        randomBtn: '随机',
+        langBtn: 'EN',
+        langTitle: '切换为英文 / Switch to English',
+        copyPrompt: '复制',
+        copyPromptBtn: '复制 Prompt',
+        copied: '已复制！',
+        copiedToast: (name) => `已复制【${name}】出图 Prompt`,
+        copyFailed: '复制失败，请手动选取',
+        randomToast: (name) => `随机抽取：【${name}】`,
+        noMatchTitle: '未找到匹配画风',
+        noMatchSub: '请尝试其他关键词',
+        clearSearch: '清空搜索',
+        closeTitle: '关闭 (Esc)',
+        prevTitle: '上一张 (←)',
+        nextTitle: '下一张 (→)',
+        scenes: {
+          scene_a: '咖啡馆雨窗与猫',
+          scene_b: '雨后黄昏海滨电车',
+          scene_c: '悬崖古树与镜湖',
+          scene_d: '午夜古书店与老学者',
+          scene_e: '云海机械飞艇与悬空港',
+          scene_f: '深海发光水母与探险潜水员',
+          scene_g: '赛博雨夜拉面馆与机械少女',
+          scene_h: '森林深处的魔导树屋与炼金女巫',
+          scene_i: '荒漠废墟与流浪机械驼兽'
+        }
+      },
+      en: {
+        siteTitle: 'Art Style Archive · 24 Art Styles Benchmark Matrix',
+        brandTitle: 'Art Style Archive',
+        brandSub: 'Visual Matrix',
+        searchPlaceholder: 'Search styles, masters, or prompt keywords...',
+        randomBtn: 'Random',
+        langBtn: '中文',
+        langTitle: '切换为中文 / Switch to Chinese',
+        copyPrompt: 'Copy',
+        copyPromptBtn: 'Copy Prompt',
+        copied: 'Copied!',
+        copiedToast: (name) => `Copied prompt for [${name}]`,
+        copyFailed: 'Copy failed, please select manually',
+        randomToast: (name) => `Random pick: [${name}]`,
+        noMatchTitle: 'No matching styles found',
+        noMatchSub: 'Try searching with different keywords',
+        clearSearch: 'Clear Search',
+        closeTitle: 'Close (Esc)',
+        prevTitle: 'Previous (←)',
+        nextTitle: 'Next (→)',
+        scenes: {
+          scene_a: 'Rainy Cafe & Cat',
+          scene_b: 'Seaside Tram at Dusk',
+          scene_c: 'Cliff Tree & Mirror Lake',
+          scene_d: 'Midnight Bookstore & Scholar',
+          scene_e: 'Airship & Floating Skyport',
+          scene_f: 'Bioluminescent Jellyfish & Diver',
+          scene_g: 'Cyberpunk Ramen & Cyborg Girl',
+          scene_h: 'Treehouse & Alchemist Witch',
+          scene_i: 'Desert Ruins & Mecha Camel'
+        }
+      }
+    };
+
     // State
+    let currentLang = localStorage.getItem('art_style_lang') || 
+      (typeof navigator !== 'undefined' && navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en');
     let currentSceneId = 'scene_a';
     let searchQuery = '';
     let activeLightboxIndex = 0;
 
     // DOM Elements
+    const brandTitleText = document.getElementById('brandTitleText');
+    const brandSubText = document.getElementById('brandSubText');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const randomStyleBtn = document.getElementById('randomStyleBtn');
+    const randomBtnText = document.getElementById('randomBtnText');
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const langBtnText = document.getElementById('langBtnText');
     const sceneTabsDesktop = document.getElementById('sceneTabsDesktop');
     const sceneSelectMobile = document.getElementById('sceneSelectMobile');
     const galleryGrid = document.getElementById('galleryGrid');
-    const searchInput = document.getElementById('searchInput');
-    const clearSearchBtn = document.getElementById('clearSearchBtn');
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMsg');
-    const randomStyleBtn = document.getElementById('randomStyleBtn');
 
     // Lightbox DOM
     const lightboxModal = document.getElementById('lightboxModal');
@@ -181,18 +263,57 @@
 
     // Initialize
     function init() {
-      renderSceneControls();
-      renderGallery();
+      applyLanguage(currentLang);
       initEventListeners();
       lucide.createIcons();
     }
 
+    // Language Handling
+    function applyLanguage(lang) {
+      currentLang = lang;
+      try { localStorage.setItem('art_style_lang', lang); } catch (e) {}
+      const t = I18N[lang];
+
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.title = t.siteTitle;
+
+      if (brandTitleText) brandTitleText.innerText = t.brandTitle;
+      if (brandSubText) brandSubText.innerText = t.brandSub;
+      if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+      if (randomBtnText) randomBtnText.innerText = t.randomBtn;
+      if (langBtnText) langBtnText.innerText = t.langBtn;
+      if (langToggleBtn) langToggleBtn.title = t.langTitle;
+      if (closeLightboxBtn) closeLightboxBtn.title = t.closeTitle;
+      if (prevLightboxBtn) prevLightboxBtn.title = t.prevTitle;
+      if (nextLightboxBtn) nextLightboxBtn.title = t.nextTitle;
+      if (lightboxCopyBtnText) lightboxCopyBtnText.innerText = t.copyPromptBtn;
+
+      renderSceneControls();
+      renderGallery();
+      if (lightboxModal && !lightboxModal.classList.contains('opacity-0')) {
+        updateLightboxContent();
+      }
+    }
+
+    function toggleLanguage() {
+      applyLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    }
+    window.toggleLanguage = toggleLanguage;
+
+    function getSceneTitle(sceneId) {
+      const t = I18N[currentLang];
+      if (t.scenes && t.scenes[sceneId]) {
+        return t.scenes[sceneId];
+      }
+      const scene = SCENES_DATA.find(s => s.id === sceneId);
+      return scene ? (scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title) : sceneId;
+    }
+
     // Render Scene Controls (Desktop Wrapped Buttons + Mobile Select)
     function renderSceneControls() {
-      // Desktop wrapped buttons
       sceneTabsDesktop.innerHTML = SCENES_DATA.map(scene => {
         const isActive = scene.id === currentSceneId;
-        const cleanTitle = scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title;
+        const sceneTitle = getSceneTitle(scene.id);
 
         return `
           <button onclick="switchScene('${scene.id}')" 
@@ -201,15 +322,15 @@
                 ? 'bg-[#e25c38] text-white border-[#e25c38] shadow-sm font-semibold' 
                 : 'bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border-white/[0.08]'
             }">
-            <span>${cleanTitle}</span>
+            <span>${sceneTitle}</span>
           </button>
         `;
       }).join('');
 
       // Mobile Select options
       sceneSelectMobile.innerHTML = SCENES_DATA.map(scene => {
-        const cleanTitle = scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title;
-        return `<option value="${scene.id}" ${scene.id === currentSceneId ? 'selected' : ''}>${cleanTitle}</option>`;
+        const sceneTitle = getSceneTitle(scene.id);
+        return `<option value="${scene.id}" ${scene.id === currentSceneId ? 'selected' : ''}>${sceneTitle}</option>`;
       }).join('');
 
       lucide.createIcons();
@@ -240,6 +361,7 @@
 
     // Render Clean Visual Gallery Cards
     function renderGallery() {
+      const t = I18N[currentLang];
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       const isLandscape = scene && scene.aspectRatio === '16:9';
       const aspectClass = isLandscape ? 'aspect-[16/9]' : 'aspect-[3/4]';
@@ -249,10 +371,10 @@
         galleryGrid.innerHTML = `
           <div class="col-span-full py-20 text-center text-[#71717a] bg-[#141518] rounded-xl border border-white/[0.06]">
             <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
-            <p class="text-sm font-medium text-white">未找到匹配画风</p>
-            <p class="text-xs text-[#71717a] mt-1">请尝试其他关键词</p>
+            <p class="text-sm font-medium text-white">${t.noMatchTitle}</p>
+            <p class="text-xs text-[#71717a] mt-1">${t.noMatchSub}</p>
             <button onclick="clearSearch()" class="mt-4 px-3 py-1.5 rounded-lg bg-[#202227] text-xs text-[#a1a1aa] hover:text-white border border-white/[0.08]">
-              清空搜索
+              ${t.clearSearch}
             </button>
           </div>
         `;
@@ -262,10 +384,13 @@
 
       galleryGrid.innerHTML = items.map(item => {
         const thumbSrc = item.image.replace('images/', 'images/thumbs/');
+        const primaryTitle = currentLang === 'zh' ? item.nameCn : item.nameEn;
+        const secondaryTitle = currentLang === 'zh' ? item.nameEn : item.nameCn;
+
         return `
           <div class="art-card flex flex-col justify-between group">
             <div class="art-card-media ${aspectClass}" onclick="openLightbox('${item.id}')">
-              <img src="${thumbSrc}" alt="${item.nameCn}" loading="lazy" decoding="async" 
+              <img src="${thumbSrc}" alt="${primaryTitle}" loading="lazy" decoding="async" 
                    class="opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0')">
               
               <!-- Number badge on top left -->
@@ -278,13 +403,13 @@
               <!-- Floating Bottom Info on Image (Hover only for copy button) -->
               <div class="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between gap-2 z-10">
                 <div class="min-w-0">
-                  <div class="text-xs sm:text-sm font-semibold text-white truncate">${item.nameCn}</div>
-                  <div class="text-[10px] font-mono text-[#a1a1aa] truncate">${item.nameEn}</div>
+                  <div class="text-xs sm:text-sm font-semibold text-white truncate">${primaryTitle}</div>
+                  <div class="text-[10px] font-mono text-[#a1a1aa] truncate">${secondaryTitle}</div>
                 </div>
                 <button onclick="event.stopPropagation(); copyPrompt('${item.id}', this)" 
-                  class="opacity-0 group-hover:opacity-100 px-2 py-1 rounded bg-white/15 hover:bg-[#e25c38] text-white border border-white/20 text-[11px] font-mono flex items-center gap-1 transition-opacity duration-150 shrink-0 backdrop-blur-md shadow-md" title="复制提示词">
+                  class="opacity-0 group-hover:opacity-100 px-2 py-1 rounded bg-white/15 hover:bg-[#e25c38] text-white border border-white/20 text-[11px] font-mono flex items-center gap-1 transition-opacity duration-150 shrink-0 backdrop-blur-md shadow-md" title="${t.copyPrompt}">
                   <i data-lucide="copy" class="w-3 h-3"></i>
-                  <span class="hidden sm:inline">复制</span>
+                  <span class="hidden sm:inline">${t.copyPrompt}</span>
                 </button>
               </div>
             </div>
@@ -296,24 +421,27 @@
 
     // Copy Prompt
     function copyPrompt(styleId, btnEl) {
+      const t = I18N[currentLang];
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const item = scene.styles.find(st => st.id === styleId);
       if (!item) return;
 
+      const primaryName = currentLang === 'zh' ? item.nameCn : item.nameEn;
+
       navigator.clipboard.writeText(item.prompt).then(() => {
         if (btnEl) {
           const originalHtml = btnEl.innerHTML;
-          btnEl.innerHTML = `<i data-lucide="check" class="w-3 h-3 text-[#e25c38]"></i><span class="text-[#e25c38]">已复制</span>`;
+          btnEl.innerHTML = `<i data-lucide="check" class="w-3 h-3 text-[#e25c38]"></i><span class="text-[#e25c38]">${t.copied}</span>`;
           lucide.createIcons();
           setTimeout(() => {
             btnEl.innerHTML = originalHtml;
             lucide.createIcons();
           }, 1600);
         }
-        showToast(`已复制【${item.nameCn}】出图 Prompt`);
+        showToast(t.copiedToast(primaryName));
       }).catch(() => {
-        showToast('复制失败，请手动选取');
+        showToast(t.copyFailed);
       });
     }
     window.copyPrompt = copyPrompt;
@@ -365,6 +493,7 @@
     window.openLightbox = openLightbox;
 
     function updateLightboxContent() {
+      const t = I18N[currentLang];
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const item = scene.styles[activeLightboxIndex];
@@ -373,6 +502,8 @@
       const thumbSrc = item.image.replace('images/', 'images/thumbs/');
       const fullSrc = item.image;
       const currentItemId = item.id;
+      const primaryName = currentLang === 'zh' ? item.nameCn : item.nameEn;
+      const secondaryName = currentLang === 'zh' ? item.nameEn : item.nameCn;
 
       // Reset viewport zoom
       lightboxViewport.classList.remove('scale-125', 'cursor-zoom-out');
@@ -380,7 +511,7 @@
 
       // Set thumbnail immediately (fast placeholder)
       lightboxThumbImg.src = thumbSrc;
-      lightboxThumbImg.alt = item.nameCn;
+      lightboxThumbImg.alt = primaryName;
 
       // Prepare high-res layer
       lightboxImg.classList.add('opacity-0');
@@ -392,7 +523,7 @@
       highRes.onload = () => {
         if (scene.styles[activeLightboxIndex] && scene.styles[activeLightboxIndex].id === currentItemId) {
           lightboxImg.src = fullSrc;
-          lightboxImg.alt = item.nameCn;
+          lightboxImg.alt = primaryName;
           requestAnimationFrame(() => {
             lightboxImg.classList.remove('opacity-0');
           });
@@ -400,15 +531,16 @@
       };
 
       lightboxNumber.innerText = `#${item.number}`;
-      lightboxTitleCn.innerText = item.nameCn;
-      if (lightboxTitleEn) lightboxTitleEn.innerText = item.nameEn;
+      lightboxTitleCn.innerText = primaryName;
+      if (lightboxTitleEn) lightboxTitleEn.innerText = secondaryName;
       lightboxPromptText.innerText = item.prompt;
+      lightboxCopyBtnText.innerText = t.copyPromptBtn;
 
       lightboxCopyBtn.onclick = () => {
         navigator.clipboard.writeText(item.prompt).then(() => {
-          lightboxCopyBtnText.innerText = '已复制！';
-          setTimeout(() => { lightboxCopyBtnText.innerText = '复制 Prompt'; }, 1600);
-          showToast(`已复制【${item.nameCn}】出图 Prompt`);
+          lightboxCopyBtnText.innerText = t.copied;
+          setTimeout(() => { lightboxCopyBtnText.innerText = t.copyPromptBtn; }, 1600);
+          showToast(t.copiedToast(primaryName));
         });
       };
 
@@ -478,11 +610,13 @@
 
       // Random Style
       randomStyleBtn.onclick = () => {
+        const t = I18N[currentLang];
         const scene = SCENES_DATA.find(s => s.id === currentSceneId);
         if (!scene) return;
         const randomItem = scene.styles[Math.floor(Math.random() * scene.styles.length)];
         openLightbox(randomItem.id);
-        showToast(`随机抽取：【${randomItem.nameCn}】`);
+        const name = currentLang === 'zh' ? randomItem.nameCn : randomItem.nameEn;
+        showToast(t.randomToast(name));
       };
     }
 
