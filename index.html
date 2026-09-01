@@ -193,7 +193,6 @@
                 : 'bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border-white/[0.08]'
             }">
             <span>${cleanTitle}</span>
-            <span class="text-[10px] font-mono opacity-60 ml-0.5">${scene.aspectRatio}</span>
           </button>
         `;
       }).join('');
@@ -201,7 +200,7 @@
       // Mobile Select options
       sceneSelectMobile.innerHTML = SCENES_DATA.map(scene => {
         const cleanTitle = scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title;
-        return `<option value="${scene.id}" ${scene.id === currentSceneId ? 'selected' : ''}>${cleanTitle} (${scene.aspectRatio})</option>`;
+        return `<option value="${scene.id}" ${scene.id === currentSceneId ? 'selected' : ''}>${cleanTitle}</option>`;
       }).join('');
 
       lucide.createIcons();
