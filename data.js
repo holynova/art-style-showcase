@@ -1,14 +1,39 @@
 /**
  * 艺术风格矩阵数据集 (Art Style Matrix Database)
- * 涵盖 9 大基准测试场景 × 24 种经典艺术与插画流派 (全 216 组完整出图与视觉图谱)
+ * 涵盖 9 大基准测试场景 × 34 种经典艺术与插画流派 (全 306 组完整出图与视觉图谱)
  */
 
 const STYLE_CATEGORIES = [
-  { id: 'all', name: '全部流派', icon: 'layout-grid', desc: '全量 24 种经典绘画与插画流派' },
-  { id: 'fine_art', name: '传统绘画与油彩', icon: 'palette', desc: '颜料堆叠、笔触肌理与古典光影层次' },
-  { id: 'printmaking', name: '版画与印刷媒介', icon: 'printer', desc: '套印对位、网点纹理与木刻矿物拓印' },
-  { id: 'retro_pop', name: '时代美学与潮流', icon: 'compass', desc: '经典时代符号、装饰曲线与复古光泽' },
-  { id: 'digital', name: '现代数码与概念', icon: 'monitor', desc: '极简矢量、赛璐珞光影与点阵像素美学' }
+  {
+    "id": "all",
+    "name": "全部流派",
+    "icon": "layout-grid",
+    "desc": "全量 24 种经典绘画与插画流派"
+  },
+  {
+    "id": "fine_art",
+    "name": "传统绘画与油彩",
+    "icon": "palette",
+    "desc": "颜料堆叠、笔触肌理与古典光影层次"
+  },
+  {
+    "id": "printmaking",
+    "name": "版画与印刷媒介",
+    "icon": "printer",
+    "desc": "套印对位、网点纹理与木刻矿物拓印"
+  },
+  {
+    "id": "retro_pop",
+    "name": "时代美学与潮流",
+    "icon": "compass",
+    "desc": "经典时代符号、装饰曲线与复古光泽"
+  },
+  {
+    "id": "digital",
+    "name": "现代数码与概念",
+    "icon": "monitor",
+    "desc": "极简矢量、赛璐珞光影与点阵像素美学"
+  }
 ];
 
 const SCENES_DATA = [
@@ -672,6 +697,275 @@ const SCENES_DATA = [
           "bold black lead came contours",
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
+        ]
+      },
+      {
+        "id": "scene_a_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 3:4",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_a_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_a_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 3:4",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_a_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 3:4",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_a_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_a_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 3:4",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_a_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 3:4",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_a_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_a_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 3:4",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_a_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 3:4",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_a_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 3:4",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_a_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 3:4",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_a_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_a_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 3:4",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
         ]
       }
     ]
@@ -1337,6 +1631,275 @@ const SCENES_DATA = [
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
         ]
+      },
+      {
+        "id": "scene_b_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_b_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_b_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_b_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_b_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_b_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_b_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_b_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_b_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_b_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_b_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_b_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_b_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_b_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
+        ]
       }
     ]
   },
@@ -2000,6 +2563,275 @@ const SCENES_DATA = [
           "bold black lead came contours",
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
+        ]
+      },
+      {
+        "id": "scene_c_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_c_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_c_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_c_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_c_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_c_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_c_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_c_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_c_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_c_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_c_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_c_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_c_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_c_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
         ]
       }
     ]
@@ -2665,6 +3497,275 @@ const SCENES_DATA = [
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
         ]
+      },
+      {
+        "id": "scene_d_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_d_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_d_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_d_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_d_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_d_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_d_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_d_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_d_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_d_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_d_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_d_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_d_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_d_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
+        ]
       }
     ]
   },
@@ -3328,6 +4429,275 @@ const SCENES_DATA = [
           "bold black lead came contours",
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
+        ]
+      },
+      {
+        "id": "scene_e_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_e_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_e_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_e_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_e_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_e_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_e_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_e_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_e_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_e_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_e_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_e_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_e_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_e_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
         ]
       }
     ]
@@ -3993,6 +5363,275 @@ const SCENES_DATA = [
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
         ]
+      },
+      {
+        "id": "scene_f_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_f_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_f_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_f_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_f_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_f_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_f_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_f_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_f_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_f_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_f_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_f_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_f_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_f_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
+        ]
       }
     ]
   },
@@ -4656,6 +6295,275 @@ const SCENES_DATA = [
           "bold black lead came contours",
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
+        ]
+      },
+      {
+        "id": "scene_g_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_g_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_g_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_g_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_g_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_g_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_g_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_g_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_g_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_g_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_g_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_g_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_g_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_g_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
         ]
       }
     ]
@@ -5321,6 +7229,275 @@ const SCENES_DATA = [
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
         ]
+      },
+      {
+        "id": "scene_h_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_h_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_h_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_h_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_h_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_h_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_h_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_h_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_h_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_h_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_h_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_h_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_h_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_h_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
+        ]
       }
     ]
   },
@@ -5984,6 +8161,275 @@ const SCENES_DATA = [
           "bold black lead came contours",
           "glowing translucent jewel-toned glass segments",
           "radiant backlighting and divine prism refractions"
+        ]
+      },
+      {
+        "id": "scene_i_25_fauvism",
+        "number": "25",
+        "nameCn": "野兽派色彩表现",
+        "nameEn": "Fauvism Expression",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_25_fauvism.jpg",
+        "hasImage": true,
+        "tags": [
+          "原色狂放",
+          "情绪张力",
+          "无拘笔触",
+          "高饱和对比"
+        ],
+        "master": "亨利·马蒂斯 (Henri Matisse) / 安德烈·德兰 (André Derain)",
+        "colorTone": "鲜明野性纯色与高对比强烈色块",
+        "technique": "采用非写实的纯原色与狂放写意笔触，注重画面的直觉情绪张力与平面色彩节奏。",
+        "prompt": "Fauvism oil painting of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Henri Matisse style, wild intense unmixed colors, bold expressive brushstrokes, emotional color fields --ar 16:9",
+        "keyModifiers": [
+          "fauvism oil painting",
+          "Henri Matisse style",
+          "wild intense unmixed colors",
+          "bold expressive brushstrokes",
+          "emotional color fields"
+        ]
+      },
+      {
+        "id": "scene_i_26_bauhaus",
+        "number": "26",
+        "nameCn": "包豪斯几何构成",
+        "nameEn": "Bauhaus Constructivism",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_i_26_bauhaus.jpg",
+        "hasImage": true,
+        "tags": [
+          "红黄蓝三原色",
+          "几何网格",
+          "构成主义",
+          "理性秩序"
+        ],
+        "master": "瓦西里·康定斯基 (Wassily Kandinsky) / 莫霍利-纳吉",
+        "colorTone": "纯正红黄蓝三原色与黑白灰理性底色",
+        "technique": "运用圆形、三角形与矩形等几何基本形构成画面，强调秩序感与现代工业设计美学。",
+        "prompt": "Bauhaus constructivism graphic art of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Wassily Kandinsky style, bold primary colors red yellow blue, sharp geometric shapes, minimalist modern grid composition --ar 16:9",
+        "keyModifiers": [
+          "bauhaus constructivism graphic art",
+          "Wassily Kandinsky style",
+          "bold primary colors red yellow blue",
+          "sharp geometric shapes",
+          "minimalist modern grid composition"
+        ]
+      },
+      {
+        "id": "scene_i_27_charcoal",
+        "number": "27",
+        "nameCn": "炭笔素描与古典排线",
+        "nameEn": "Charcoal & Classical Hatching",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_27_charcoal.jpg",
+        "hasImage": true,
+        "tags": [
+          "交叉排线",
+          "炭粉颗粒",
+          "黑白灰明暗",
+          "解剖手稿"
+        ],
+        "master": "达芬奇 (Leonardo da Vinci) / 埃德加·德加 (Edgar Degas)",
+        "colorTone": "复古泛黄羊皮纸上的深邃炭黑与石墨单色",
+        "technique": "利用细腻精微的交叉排线与粗粝炭笔粉末，刻画结构形体与古典光影层次。",
+        "prompt": "Classical charcoal and graphite sketch of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Leonardo da Vinci style, fine cross-hatching, rich monochrome graphite tones, vintage aged parchment paper --ar 16:9",
+        "keyModifiers": [
+          "classical charcoal and graphite sketch",
+          "Leonardo da Vinci style",
+          "fine cross-hatching",
+          "rich monochrome graphite tones",
+          "vintage aged parchment paper"
+        ]
+      },
+      {
+        "id": "scene_i_28_opart",
+        "number": "28",
+        "nameCn": "欧普视错觉艺术",
+        "nameEn": "Op Art & Geometric Illusion",
+        "category": "retro_pop",
+        "categoryName": "时代美学",
+        "image": "images/scene_i_28_opart.jpg",
+        "hasImage": true,
+        "tags": [
+          "视错觉",
+          "几何波纹",
+          "黑白律动",
+          "动态催眠"
+        ],
+        "master": "布里吉特·莱利 (Bridget Riley) / 维克多·瓦萨雷里 (Victor Vasarely)",
+        "colorTone": "极高反差黑白对比与精准几何干涉波",
+        "technique": "通过严谨的几何重复、形变与条纹间隙，在人眼视网膜上产生动态眩晕与视错觉空间。",
+        "prompt": "Op Art optical illusion illustration of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Bridget Riley style, black and white high-contrast geometric wave patterns, kinetic illusion lines --ar 16:9",
+        "keyModifiers": [
+          "op art optical illusion illustration",
+          "Bridget Riley style",
+          "black and white high-contrast geometric wave patterns",
+          "kinetic illusion lines"
+        ]
+      },
+      {
+        "id": "scene_i_29_rococo",
+        "number": "29",
+        "nameCn": "洛可可华丽粉彩",
+        "nameEn": "Rococo Pastel Elegance",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_29_rococo.jpg",
+        "hasImage": true,
+        "tags": [
+          "宫廷奢华",
+          "柔美粉彩",
+          "金色卷草纹",
+          "轻盈浪漫"
+        ],
+        "master": "让-奥诺雷·弗拉戈纳尔 (Fragonard) / 弗朗索瓦·布歇 (Boucher)",
+        "colorTone": "柔美浅粉、薄荷绿与奢华镀金光泽",
+        "technique": "强调轻盈优雅的曲线、细腻粉润的肤色与繁复华丽的宫廷装饰细节。",
+        "prompt": "Rococo oil painting of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Jean-Honoré Fragonard style, soft pastel palette, ornate gilded gold details, romantic soft lighting, delicate brushwork --ar 16:9",
+        "keyModifiers": [
+          "rococo oil painting",
+          "Jean-Honoré Fragonard style",
+          "soft pastel palette",
+          "ornate gilded gold details",
+          "romantic soft lighting",
+          "delicate brushwork"
+        ]
+      },
+      {
+        "id": "scene_i_30_lowpoly",
+        "number": "30",
+        "nameCn": "低多边形三维艺术",
+        "nameEn": "Low Poly 3D & Papercraft",
+        "category": "digital",
+        "categoryName": "现代数码",
+        "image": "images/scene_i_30_lowpoly.jpg",
+        "hasImage": true,
+        "tags": [
+          "硬边多边形",
+          "折纸雕塑",
+          "环境光遮蔽",
+          "极简棱角"
+        ],
+        "master": "现代 3D 概念艺术 / 折纸几何雕塑",
+        "colorTone": "纯净块面着色与柔和渐变环境光",
+        "technique": "以精简的平面多边形网格构筑三维物体，配合硬边缘与柔和着色形成立体折纸感。",
+        "prompt": "Low poly 3D papercraft art of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, geometric faceted polygons, sharp origami edges, ambient occlusion lighting, modern 3D digital art --ar 16:9",
+        "keyModifiers": [
+          "low poly 3D papercraft art",
+          "geometric faceted polygons",
+          "sharp origami edges",
+          "ambient occlusion lighting",
+          "modern 3D digital art"
+        ]
+      },
+      {
+        "id": "scene_i_31_chalkboard",
+        "number": "31",
+        "nameCn": "粉笔黑板报手绘",
+        "nameEn": "Chalkboard Art & Typography",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_31_chalkboard.jpg",
+        "hasImage": true,
+        "tags": [
+          "哑光黑板",
+          "粉笔粉尘",
+          "手绘字线",
+          "怀旧质朴"
+        ],
+        "master": "复古手绘黑板画 / 粉笔艺术",
+        "colorTone": "深灰哑光石板底与手绘白、黄、浅蓝粉笔色",
+        "technique": "在粗糙深色黑板表面以彩色粉笔勾画涂抹，呈现真实的粉质颗粒感与手作怀旧温度。",
+        "prompt": "Chalkboard art and typography illustration of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, dusty colored chalk textures, matte slate blackboard background, hand-drawn vintage bistro style --ar 16:9",
+        "keyModifiers": [
+          "chalkboard art and typography illustration",
+          "dusty colored chalk textures",
+          "matte slate blackboard background",
+          "hand-drawn vintage bistro style"
+        ]
+      },
+      {
+        "id": "scene_i_32_pointillism",
+        "number": "32",
+        "nameCn": "点彩派光学分割",
+        "nameEn": "Pointillism & Divisionism",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_32_pointillism.jpg",
+        "hasImage": true,
+        "tags": [
+          "纯色点阵",
+          "光学混色",
+          "静穆光晕",
+          "色调分割"
+        ],
+        "master": "乔治·修拉 (Georges Seurat) / 保罗·西涅克 (Paul Signac)",
+        "colorTone": "细密点状纯色并置形成的柔和微光色调",
+        "technique": "拒绝在调色板上混合颜料，完全以细密纯色小点在画布上排列，利用视网膜实现光学混色。",
+        "prompt": "Pointillism painting of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Georges Seurat style, tiny distinct dots of pure color, optical color blending, serene luminous atmosphere --ar 16:9",
+        "keyModifiers": [
+          "pointillism painting",
+          "Georges Seurat style",
+          "tiny distinct dots of pure color",
+          "optical color blending",
+          "serene luminous atmosphere"
+        ]
+      },
+      {
+        "id": "scene_i_33_klimt",
+        "number": "33",
+        "nameCn": "克里姆特金箔装饰",
+        "nameEn": "Klimt Gilded Gold Leaf",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_33_klimt.jpg",
+        "hasImage": true,
+        "tags": [
+          "金箔贴金",
+          "螺旋纹样",
+          "拜占庭华贵",
+          "几何嵌画"
+        ],
+        "master": "古斯塔夫·克里姆特 (Gustav Klimt) / 拜占庭马赛克",
+        "colorTone": "璀璨真金箔色、浓郁宝石蓝与奢华翡翠绿",
+        "technique": "将平面人物与繁复奢华的金箔装饰图案、螺旋几何纹样完美融合，呈现璀璨神秘质感。",
+        "prompt": "Gustav Klimt style oil painting with gilded gold leaf of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, intricate gold mosaic patterns, Byzantine golden spirals, opulent decorative textures --ar 16:9",
+        "keyModifiers": [
+          "Gustav Klimt style oil painting",
+          "gilded gold leaf",
+          "intricate gold mosaic patterns",
+          "Byzantine golden spirals",
+          "opulent decorative textures"
+        ]
+      },
+      {
+        "id": "scene_i_34_darkfantasy",
+        "number": "34",
+        "nameCn": "暗黑奇幻水墨",
+        "nameEn": "Dark Fantasy Ink & Macabre",
+        "category": "fine_art",
+        "categoryName": "传统画种",
+        "image": "images/scene_i_34_darkfantasy.jpg",
+        "hasImage": true,
+        "tags": [
+          "空灵水墨",
+          "暗黑哥特",
+          "飘逸线条",
+          "神秘异界"
+        ],
+        "master": "天野喜孝 (Yoshitaka Amano) / John Blanche",
+        "colorTone": "冷冽夜空蓝、苍白月白与深邃墨黑",
+        "technique": "以极其纤细飘逸的墨线勾勒轮廓，结合大面积暗色水渍晕染，营造幽玄凄美的奇幻意境。",
+        "prompt": "Dark fantasy watercolor and ink illustration of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, Yoshitaka Amano style, fluid delicate ink lines, moody ethereal shadows, haunting atmospheric watercolor washes --ar 16:9",
+        "keyModifiers": [
+          "dark fantasy watercolor and ink illustration",
+          "Yoshitaka Amano style",
+          "fluid delicate ink lines",
+          "moody ethereal shadows",
+          "haunting atmospheric watercolor washes"
         ]
       }
     ]
