@@ -216,3 +216,8 @@ body {
 #toast {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
+
+/* Full-Screen Cinema Lightbox */
+#lightboxImg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

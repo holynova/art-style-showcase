@@ -282,89 +282,79 @@
 
   </div>
 
-  <!-- Lightbox Modal (High-Res Inspector & Prompt Deconstruction) -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
-    <div class="relative max-w-6xl w-full max-h-[92vh] bg-[#15161a] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
-      <!-- Close Button -->
-      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
-        <i data-lucide="x" class="w-4 h-4"></i>
-      </button>
+  <!-- Lightbox Modal (Full-Screen Immersive Cinema & Prompt Bar) -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-3 sm:p-5 opacity-0 pointer-events-none transition-opacity duration-200" onclick="if(event.target===this) closeLightbox();">
+    
+    <!-- Top Floating Header Bar -->
+    <div class="max-w-6xl w-full mx-auto flex items-center justify-between gap-3 z-20 shrink-0">
+      <div class="flex items-center gap-2.5 bg-[#15161a]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/[0.1] shadow-lg">
+        <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#22252c] text-[#e25c38] border border-white/[0.08]">#01</span>
+        <span id="lightboxTitleCn" class="text-sm sm:text-base font-bold text-[#fbfbfa] font-serif-editorial">厚涂油画</span>
+        <span class="text-white/20 hidden sm:inline">|</span>
+        <span id="lightboxTitleEn" class="text-xs font-mono text-[#888990] hidden sm:inline">Impasto Oil Painting</span>
+        <span id="lightboxCategory" class="text-[11px] font-mono text-[#e25c38] hidden md:inline px-2 py-0.5 rounded bg-[#e25c38]/10">传统画种</span>
+      </div>
 
-      <!-- Prev / Next Navigation buttons -->
-      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
+      <div class="flex items-center gap-2">
+        <button onclick="setForComparison(SCENES_DATA.find(s=>s.id===currentSceneId).styles[activeLightboxIndex].id); closeLightbox();" 
+          class="px-3 py-2 rounded-xl bg-[#15161a]/90 hover:bg-[#22252c] text-[#c4c4c7] hover:text-white border border-white/[0.1] backdrop-blur-md text-xs flex items-center gap-1.5 transition-all shadow-lg" title="加入对比台">
+          <i data-lucide="split-square-vertical" class="w-3.5 h-3.5 text-[#e25c38]"></i>
+          <span class="hidden sm:inline">加入对比台</span>
+        </button>
+
+        <button id="closeLightboxBtn" class="p-2 rounded-xl bg-[#15161a]/90 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-lg" title="关闭 (Esc)">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center: Large Fullscreen Artwork Viewport -->
+    <div class="flex-1 w-full flex items-center justify-center p-2 sm:p-4 overflow-hidden relative min-h-0">
+      <!-- Prev / Next Floating Navigation Buttons -->
+      <button id="prevLightboxBtn" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#15161a]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="上一张 (←)">
         <i data-lucide="chevron-left" class="w-5 h-5"></i>
       </button>
-      <button id="nextLightboxBtn" class="absolute right-4 md:right-[420px] top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#0f1013]/80 hover:bg-[#22252c] text-[#a1a1aa] hover:text-white transition-all">
+      <button id="nextLightboxBtn" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#15161a]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="下一张 (→)">
         <i data-lucide="chevron-right" class="w-5 h-5"></i>
       </button>
 
-      <!-- High-Res Image Display Area -->
-      <div class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[360px]">
-        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
-      </div>
+      <img id="lightboxImg" src="" alt="Artwork" class="max-h-[72vh] sm:max-h-[76vh] max-w-[94vw] object-contain rounded-xl shadow-[0_0_60px_rgba(0,0,0,0.95)] border border-white/[0.08] transition-all select-none">
+    </div>
 
-      <!-- Prompt & Style Deconstruction Drawer -->
-      <div class="w-full md:w-[400px] bg-[#15161a] p-6 overflow-y-auto max-h-[88vh] border-t md:border-t-0 md:border-l border-white/[0.08] flex flex-col justify-between space-y-5">
-        <div class="space-y-4 text-xs">
-          <!-- Header -->
-          <div>
-            <div class="flex items-center gap-2 mb-1.5">
-              <span id="lightboxNumber" class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#22252c] text-[#e25c38] border border-white/[0.08]">#01</span>
-              <span id="lightboxCategory" class="text-xs font-medium text-[#888990]">传统绘画与油彩</span>
+    <!-- Bottom: Floating Glass Prompt Bar -->
+    <div class="max-w-4xl w-full mx-auto z-20 shrink-0">
+      <div class="bg-[#15161a]/95 backdrop-blur-xl border border-white/[0.12] rounded-2xl p-3 sm:p-4 shadow-2xl space-y-2.5">
+        <!-- Row 1: Prompt Text & Hero Copy Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-mono uppercase text-[#888990] tracking-wider flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-[#e25c38]"></i> 出图 Prompt 提示词
+              </span>
             </div>
-            <h3 id="lightboxTitleCn" class="text-2xl font-bold text-[#fbfbfa] font-serif-editorial">厚涂油画</h3>
-            <div id="lightboxTitleEn" class="text-xs font-mono text-[#888990]">Impasto Oil Painting</div>
-          </div>
-
-          <!-- Prompt Box (Hero) -->
-          <div>
-            <div class="flex items-center justify-between text-[#888990] font-mono uppercase text-[10px] mb-1.5">
-              <span>完整出图 Prompt:</span>
-              <span class="text-[#e25c38]">可一键复制</span>
-            </div>
-            <div class="bg-[#0f1013] p-3.5 rounded-xl border border-white/[0.08] space-y-3">
-              <p id="lightboxPromptText" class="font-mono-code text-[11px] text-[#e4e4e7] break-words leading-relaxed select-all">
-                Prompt loading...
-              </p>
-              <button id="lightboxCopyBtn" class="w-full py-2.5 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-2 transition-all text-xs shadow-lg shadow-[#e25c38]/20">
-                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                <span id="lightboxCopyBtnText">复制完整 Prompt</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Key Modifiers Chips -->
-          <div>
-            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1.5">核心修饰关键词 (点击单个复制)：</div>
-            <div id="lightboxModifiers" class="flex flex-wrap gap-1.5">
-              <!-- Modifiers tags rendered dynamically -->
-            </div>
-          </div>
-
-          <!-- Master / Origin -->
-          <div>
-            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1">代表大师 / 源流：</div>
-            <div id="lightboxMaster" class="text-[#fbfbfa] font-medium bg-[#0f1013] px-3 py-2 rounded-lg border border-white/[0.05]">Craig Mullins / 梵高</div>
-          </div>
-
-          <!-- Technique & Texture -->
-          <div>
-            <div class="text-[#888990] font-mono uppercase text-[10px] mb-1">笔触肌理与技法解析：</div>
-            <p id="lightboxTechnique" class="text-[#a1a1aa] leading-relaxed bg-[#0f1013] p-3 rounded-lg border border-white/[0.05]">
-              使用厚重油彩与油画刀层叠涂抹，强调厚重物理肌理与雕塑般的形体转折。
+            <p id="lightboxPromptText" class="font-mono-code text-[11px] sm:text-xs text-[#e4e4e7] line-clamp-2 select-all leading-relaxed bg-[#0f1013] p-2.5 rounded-xl border border-white/[0.06]">
+              Loading prompt...
             </p>
           </div>
+
+          <button id="lightboxCopyBtn" class="px-4 py-3 rounded-xl bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-2 text-xs shrink-0 shadow-lg shadow-[#e25c38]/30 transition-all">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            <span id="lightboxCopyBtnText">复制完整 Prompt</span>
+          </button>
         </div>
 
-        <!-- Drawer Footer -->
-        <div class="pt-4 border-t border-white/[0.06] flex items-center justify-between text-[11px] text-[#888990]">
-          <span>按 ← / → 键切换画风</span>
-          <button onclick="setForComparison(SCENES_DATA.find(s=>s.id===currentSceneId).styles[activeLightboxIndex].id); closeLightbox();" class="text-[#e25c38] hover:underline flex items-center gap-1">
-            <i data-lucide="split-square-vertical" class="w-3 h-3"></i> 加入对比台
-          </button>
+        <!-- Row 2: Key Modifiers Chips -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/[0.05]">
+          <div class="flex flex-wrap items-center gap-1.5 min-w-0" id="lightboxModifiers">
+            <!-- Rendered dynamically -->
+          </div>
+          <span class="text-[10px] font-mono text-[#5c5d64] hidden md:inline shrink-0">
+            按 ← / → 切换 · Esc 退出
+          </span>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- Toast Notification -->
@@ -435,8 +425,6 @@
     const lightboxCategory = document.getElementById('lightboxCategory');
     const lightboxTitleCn = document.getElementById('lightboxTitleCn');
     const lightboxTitleEn = document.getElementById('lightboxTitleEn');
-    const lightboxMaster = document.getElementById('lightboxMaster');
-    const lightboxTechnique = document.getElementById('lightboxTechnique');
     const lightboxPromptText = document.getElementById('lightboxPromptText');
     const lightboxCopyBtn = document.getElementById('lightboxCopyBtn');
     const lightboxCopyBtnText = document.getElementById('lightboxCopyBtnText');
@@ -749,16 +737,18 @@
       lightboxImg.src = item.image || '';
       lightboxImg.alt = item.nameCn;
       lightboxNumber.innerText = `#${item.number}`;
-      lightboxCategory.innerText = item.categoryName;
+      if (lightboxCategory) lightboxCategory.innerText = item.categoryName;
       lightboxTitleCn.innerText = item.nameCn;
-      lightboxTitleEn.innerText = item.nameEn;
-      lightboxMaster.innerText = item.master || '经典艺术流派';
-      lightboxTechnique.innerText = item.technique || item.colorTone || '精细风格控制变量测试';
+      if (lightboxTitleEn) lightboxTitleEn.innerText = item.nameEn;
       lightboxPromptText.innerText = item.prompt;
       
+      // Reset zoom state on change
+      lightboxImg.classList.remove('scale-125', 'cursor-zoom-out');
+      lightboxImg.classList.add('cursor-zoom-in');
+
       lightboxCopyBtn.onclick = () => {
         navigator.clipboard.writeText(item.prompt).then(() => {
-          lightboxCopyBtnText.innerText = '已复制到剪贴板！';
+          lightboxCopyBtnText.innerText = '已复制！';
           setTimeout(() => { lightboxCopyBtnText.innerText = '复制完整 Prompt'; }, 1800);
           showToast(`已复制【${item.nameCn}】出图 Prompt`);
         });
@@ -773,6 +763,19 @@
 
       lucide.createIcons();
     }
+
+    // Toggle Image Zoom on Click in Lightbox
+    lightboxImg.onclick = (e) => {
+      e.stopPropagation();
+      const isZoomed = lightboxImg.classList.contains('scale-125');
+      if (isZoomed) {
+        lightboxImg.classList.remove('scale-125', 'cursor-zoom-out');
+        lightboxImg.classList.add('cursor-zoom-in');
+      } else {
+        lightboxImg.classList.add('scale-125', 'cursor-zoom-out');
+        lightboxImg.classList.remove('cursor-zoom-in');
+      }
+    };
 
     function closeLightbox() {
       lightboxModal.classList.add('opacity-0', 'pointer-events-none');
