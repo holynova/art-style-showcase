@@ -1,111 +1,65 @@
 /* ==========================================================================
-   Art Style Archive · Visual-First Curatorial Gallery Stylesheet
-   Designed for pure visual immersion, streamlined text, and frictionless Prompt access
+   Art Style Archive · Clean Editorial Stylesheet
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Serif+SC:wght@500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Curatorial Palette */
-  --bg-canvas: #0f1013;
-  --bg-surface: #15161a;
-  --bg-surface-elevated: #1a1c22;
-  --bg-surface-hover: #22252c;
-  
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(226, 92, 56, 0.5);
-  
-  --text-primary: #f8f8f7;
-  --text-secondary: #c4c4c7;
-  --text-muted: #888990;
-  --text-dim: #5c5d64;
-
+  --bg-canvas: #090a0c;
+  --bg-surface: #141518;
+  --bg-surface-hover: #1e2025;
+  --border-subtle: rgba(255, 255, 255, 0.08);
   --accent-terracotta: #e25c38;
-  --accent-terracotta-hover: #f06c48;
-  --accent-terracotta-subtle: rgba(226, 92, 56, 0.14);
-  --accent-ochre: #d97706;
-
-  --font-serif: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Base resets & typography */
 html {
   background-color: var(--bg-canvas);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
+  color: #f4f4f5;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background-color: var(--bg-canvas);
-  background-image: 
-    radial-gradient(ellipse 70% 30% at 50% -5%, rgba(226, 92, 56, 0.06), transparent 70%),
-    radial-gradient(circle at 100% 100%, rgba(217, 119, 6, 0.03), transparent 50%);
   min-height: 100vh;
-}
-
-.font-serif-editorial {
-  font-family: var(--font-serif);
-}
-
-.font-mono-code {
-  font-family: var(--font-mono);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--bg-canvas);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #2a2c33;
-  border-radius: 3px;
+  background: #27272a;
+  border-radius: 2px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #3e414c;
+  background: #3f3f46;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Visual Gallery Card */
+/* Card */
 .art-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.25s ease, 
-              box-shadow 0.25s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .art-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(226, 92, 56, 0.35);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(226, 92, 56, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(226, 92, 56, 0.4);
 }
 
 .art-card-media {
   position: relative;
   overflow: hidden;
-  background-color: #0b0c0e;
+  background-color: #000;
   cursor: pointer;
 }
 
@@ -113,111 +67,20 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .art-card:hover .art-card-media img {
-  transform: scale(1.04);
-}
-
-/* Hover prompt overlay */
-.art-card-hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(11, 12, 14, 0.95) 0%, rgba(11, 12, 14, 0.6) 40%, rgba(11, 12, 14, 0.1) 100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.22s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 12px;
-  z-index: 10;
-}
-
-.art-card:hover .art-card-hover-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Floating copy button */
-.copy-pill-btn {
-  background: rgba(18, 19, 22, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e4e4e7;
-  font-size: 11px;
-  transition: all 0.15s ease;
-}
-
-.copy-pill-btn:hover {
-  background: #e25c38;
-  border-color: #e25c38;
-  color: #ffffff;
-  transform: scale(1.02);
-}
-
-/* Comparison Container */
-.comparison-container {
-  position: relative;
-  overflow: hidden;
-  user-select: none;
-  touch-action: pan-y;
-  background-color: #0b0c0e;
-}
-
-.comparison-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  overflow: hidden;
-  will-change: width;
-}
-
-.comparison-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #fbfbfa;
-  cursor: ew-resize;
-  transform: translateX(-50%);
-  z-index: 10;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
-}
-
-.comparison-knob {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #18191d;
-  border: 2px solid #fbfbfa;
-  color: #fbfbfa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.comparison-handle:hover .comparison-knob,
-.comparison-container:active .comparison-knob {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: var(--accent-terracotta);
-  border-color: #fff;
-}
-
-/* Toast */
-#toast {
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: scale(1.03);
 }
 
 /* Full-Screen Cinema Lightbox */
 #lightboxImg {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Toast */
+#toast {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
