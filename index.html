@@ -24,17 +24,31 @@
 <body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden bg-[#090a0c]">
 
   <!-- Top Global Navigation Bar -->
-  <header class="sticky top-0 z-40 w-full bg-[#090a0c]/95 backdrop-blur-md border-b border-white/[0.08] px-4 lg:px-8 py-3">
-    <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 w-full bg-[#090a0c]/95 backdrop-blur-md border-b border-white/[0.08] px-4 lg:px-8 py-2.5 sm:py-3">
+    <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
       
       <!-- Brand -->
       <a href="#" class="flex items-center gap-2.5 shrink-0">
         <span id="brandTitleText" class="font-semibold text-base sm:text-lg tracking-tight text-white">画风图谱</span>
-        <span id="brandSubText" class="text-xs text-[#71717a] font-mono hidden sm:inline">Art Style Archive</span>
+        <span id="brandSubText" class="text-xs text-[#71717a] font-mono hidden md:inline">Art Style Archive</span>
       </a>
 
+      <!-- View Mode Segmented Toggle (By Scene / By Style) -->
+      <div class="flex items-center p-0.5 sm:p-1 bg-[#141518] rounded-lg border border-white/[0.08] text-xs shrink-0">
+        <button id="viewModeSceneBtn" onclick="setViewMode('scene')" 
+          class="px-2.5 sm:px-3 py-1 sm:py-1.2 rounded-md font-medium transition-all bg-[#e25c38] text-white shadow-sm flex items-center gap-1.5">
+          <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+          <span id="viewModeSceneText">按场景</span>
+        </button>
+        <button id="viewModeStyleBtn" onclick="setViewMode('style')" 
+          class="px-2.5 sm:px-3 py-1 sm:py-1.2 rounded-md font-medium transition-all text-[#a1a1aa] hover:text-white flex items-center gap-1.5">
+          <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+          <span id="viewModeStyleText">按风格</span>
+        </button>
+      </div>
+
       <!-- Global Search -->
-      <div class="flex-1 max-w-md mx-2">
+      <div class="flex-1 max-w-xs sm:max-w-md mx-1 sm:mx-2">
         <div class="relative w-full">
           <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#71717a]"></i>
           <input type="text" id="searchInput" placeholder="搜索画风、流派或 Prompt..." 
@@ -46,7 +60,7 @@
       </div>
 
       <!-- Actions -->
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <button id="randomStyleBtn" class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风">
           <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
           <span id="randomBtnText" class="hidden sm:inline">随机</span>
@@ -68,18 +82,18 @@
     </div>
   </header>
 
-  <!-- Sticky Scene Navigation (Clean Wrap Bar on Desktop, Clean Select on Mobile) -->
+  <!-- Sticky Dynamic Navigation (Switches between Scene Tabs & Style Tabs) -->
   <div class="sticky top-[53px] z-30 w-full bg-[#090a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-4 lg:px-8 py-2.5 transition-all">
     <div class="max-w-[1720px] mx-auto">
       
       <!-- Desktop: Clean Wrapped Segmented Buttons -->
-      <div class="hidden sm:flex flex-wrap items-center gap-1.5" id="sceneTabsDesktop">
+      <div class="hidden sm:flex flex-wrap items-center gap-1.5" id="navTabsDesktop">
         <!-- Rendered dynamically -->
       </div>
 
       <!-- Mobile: Clean Native Dropdown -->
       <div class="sm:hidden relative">
-        <select id="sceneSelectMobile" onchange="switchScene(this.value)" 
+        <select id="navSelectMobile" onchange="handleMobileNavChange(this.value)" 
           class="w-full bg-[#141518] text-white text-xs font-medium px-3.5 py-2 rounded-lg border border-white/[0.1] focus:outline-none focus:border-[#e25c38]">
           <!-- Populated dynamically -->
         </select>
@@ -95,50 +109,66 @@
     </div>
   </main>
 
-  <!-- Lightbox Modal (Full-Screen Immersive Cinema & Minimal Prompt Bar) -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200" onclick="if(event.target===this) closeLightbox();">
+  <!-- Lightbox Modal (Ultra Full-Screen Cinema with Edge-to-Edge Artwork & Floating Minimal Prompt Bar) -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-2 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-200" onclick="if(event.target===this) closeLightbox();">
     
     <!-- Top Floating Header Bar -->
-    <div class="max-w-6xl w-full mx-auto flex items-center justify-between gap-3 z-20 shrink-0">
-      <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#141518]/90 border border-white/[0.1] text-xs">
+    <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-3 z-30 shrink-0">
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#141518]/90 border border-white/[0.1] text-xs backdrop-blur-md">
         <span id="lightboxNumber" class="font-mono text-[#e25c38] font-bold">#01</span>
         <span id="lightboxTitleCn" class="font-semibold text-white">厚涂油画</span>
         <span class="text-white/20">|</span>
         <span id="lightboxTitleEn" class="text-[#a1a1aa] font-mono">Impasto Oil Painting</span>
       </div>
 
-      <button id="closeLightboxBtn" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="关闭 (Esc)">
-        <i data-lucide="x" class="w-4 h-4"></i>
-      </button>
-    </div>
+      <!-- Comparative Model Switcher (Gemini vs ChatGPT) -->
+      <div id="lightboxModelSwitch" class="hidden flex items-center gap-1 p-1 bg-[#141518]/90 rounded-lg border border-white/[0.1] text-xs font-mono backdrop-blur-md">
+        <button id="modelBtnGemini" onclick="setLightboxModel('gemini')" class="px-2.5 py-1 rounded bg-[#e25c38] text-white font-medium flex items-center gap-1 transition-all">
+          <span>✨ Gemini</span>
+        </button>
+        <button id="modelBtnChatgpt" onclick="setLightboxModel('chatgpt')" class="px-2.5 py-1 rounded text-[#a1a1aa] hover:text-white flex items-center gap-1 transition-all">
+          <span>🤖 ChatGPT</span>
+        </button>
+      </div>
 
-    <!-- Center: Large Fullscreen Artwork Viewport -->
-    <div class="flex-1 w-full flex items-center justify-center p-2 sm:p-4 overflow-hidden relative min-h-0">
-      <!-- Prev / Next Floating Navigation Buttons -->
-      <button id="prevLightboxBtn" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-xl" title="上一张 (←)">
-        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-      </button>
-      <button id="nextLightboxBtn" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-xl" title="下一张 (→)">
-        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-      </button>
-
-      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade & Zoom -->
-      <div id="lightboxViewport" class="relative max-h-[75vh] sm:max-h-[78vh] max-w-[95vw] flex items-center justify-center cursor-zoom-in transition-transform duration-300 ease-out select-none">
-        <!-- Low-res thumbnail layer (Immediate placeholder) -->
-        <img id="lightboxThumbImg" src="" alt="Thumbnail" class="max-h-[75vh] sm:max-h-[78vh] max-w-[95vw] object-contain rounded-lg shadow-2xl border border-white/[0.08] select-none transition-opacity duration-300">
-        
-        <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero jump) -->
-        <img id="lightboxImg" src="" alt="Artwork" class="absolute inset-0 w-full h-full object-contain rounded-lg select-none opacity-0 transition-opacity duration-400">
+      <!-- Controls Right -->
+      <div class="flex items-center gap-2">
+        <button id="togglePromptBarBtn" onclick="togglePromptBar()" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="显示/隐藏 Prompt">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+        </button>
+        <button id="closeLightboxBtn" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="关闭 (Esc)">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
       </div>
     </div>
 
-    <!-- Bottom: Floating Minimal Prompt Card -->
-    <div class="max-w-4xl w-full mx-auto z-20 shrink-0">
-      <div class="bg-[#141518]/95 backdrop-blur-md border border-white/[0.1] rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xl">
+    <!-- Center: True Edge-to-Edge Fullscreen Artwork Viewport -->
+    <div class="flex-1 w-full flex items-center justify-center p-1 sm:p-2 overflow-hidden relative min-h-0">
+      <!-- Prev / Next Floating Navigation Buttons -->
+      <button id="prevLightboxBtn" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="上一张 (←)">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+      <button id="nextLightboxBtn" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="下一张 (→)">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade & Zoom -->
+      <div id="lightboxViewport" class="relative w-full h-full max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] flex items-center justify-center cursor-zoom-in transition-transform duration-300 ease-out select-none">
+        <!-- Low-res thumbnail layer (Immediate placeholder) -->
+        <img id="lightboxThumbImg" src="" alt="Thumbnail" class="max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.08] select-none transition-opacity duration-300">
+        
+        <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero jump) -->
+        <img id="lightboxImg" src="" alt="Artwork" class="absolute inset-0 m-auto max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl select-none opacity-0 transition-opacity duration-400">
+      </div>
+    </div>
+
+    <!-- Floating Minimal Frosted Glass Prompt Card at Bottom -->
+    <div id="lightboxPromptBar" class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 max-w-4xl w-[92vw] z-30 transition-all duration-200">
+      <div class="bg-[#141518]/90 backdrop-blur-xl border border-white/[0.12] rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
         <p id="lightboxPromptText" class="font-mono text-xs text-[#e4e4e7] line-clamp-2 select-all leading-relaxed flex-1">
           Loading prompt...
         </p>
-        <button id="lightboxCopyBtn" class="px-4 py-2.5 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 text-xs shrink-0 transition-all">
+        <button id="lightboxCopyBtn" class="px-4 py-2 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 text-xs shrink-0 transition-all shadow-md">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
           <span id="lightboxCopyBtnText">复制 Prompt</span>
         </button>
@@ -159,107 +189,123 @@
     // Bilingual Internationalization Dictionary
     const I18N = {
       zh: {
-        siteTitle: '画风图谱 · 艺术与插画流派视觉图谱 | Art Style Archive',
-        brandTitle: '画风图谱',
-        brandSub: 'Art Style Archive',
-        searchPlaceholder: '搜索画风、流派或 Prompt...',
-        randomBtn: '随机',
-        langBtn: 'EN',
-        langTitle: '切换为英文 / Switch to English',
-        copyPrompt: '复制',
-        copyPromptBtn: '复制 Prompt',
-        copied: '已复制！',
+        siteTitle: "画风图谱 · 艺术与插画流派视觉图谱 | Art Style Archive",
+        brandTitle: "画风图谱",
+        brandSub: "Art Style Archive",
+        viewModeScene: "按场景",
+        viewModeStyle: "按风格",
+        searchPlaceholder: "搜索画风、场景、流派或 Prompt...",
+        randomBtn: "随机",
+        langBtn: "EN",
+        langTitle: "切换为英文 / Switch to English",
+        copyPrompt: "复制",
+        copyPromptBtn: "复制 Prompt",
+        copied: "已复制！",
         copiedToast: (name) => `已复制【${name}】出图 Prompt`,
-        copyFailed: '复制失败，请手动选取',
+        copyFailed: "复制失败，请手动选取",
         randomToast: (name) => `随机抽取：【${name}】`,
-        noMatchTitle: '未找到匹配画风',
-        noMatchSub: '请尝试其他关键词',
-        clearSearch: '清空搜索',
-        closeTitle: '关闭 (Esc)',
-        prevTitle: '上一张 (←)',
-        nextTitle: '下一张 (→)',
+        noMatchTitle: "未找到匹配作品",
+        noMatchSub: "请尝试其他关键词",
+        clearSearch: "清空搜索",
+        closeTitle: "关闭 (Esc)",
+        prevTitle: "上一张 (←)",
+        nextTitle: "下一张 (→)",
         scenes: {
-          scene_a: '咖啡馆雨窗与猫',
-          scene_b: '雨后黄昏海滨电车',
-          scene_c: '悬崖古树与镜湖',
-          scene_d: '午夜古书店与老学者',
-          scene_e: '云海机械飞艇与悬空港',
-          scene_f: '深海发光水母与探险潜水员',
-          scene_g: '赛博雨夜拉面馆与机械少女',
-          scene_h: '森林深处的魔导树屋与炼金女巫',
-          scene_i: '荒漠废墟与流浪机械驼兽'
+          scene_a: "咖啡馆雨窗与猫",
+          scene_b: "雨后黄昏海滨电车",
+          scene_c: "悬崖古树与镜湖",
+          scene_d: "午夜古书店与老学者",
+          scene_e: "云海机械飞艇与悬空港",
+          scene_f: "深海发光水母与探险潜水员",
+          scene_g: "赛博雨夜拉面馆与机械少女",
+          scene_h: "森林深处的魔导树屋与炼金女巫",
+          scene_i: "荒漠废墟与流浪机械驼兽"
         }
       },
       en: {
-        siteTitle: 'Art Style Archive · 24 Art Styles Benchmark Matrix',
-        brandTitle: 'Art Style Archive',
-        brandSub: 'Visual Matrix',
-        searchPlaceholder: 'Search styles, masters, or prompt keywords...',
-        randomBtn: 'Random',
-        langBtn: '中文',
-        langTitle: '切换为中文 / Switch to Chinese',
-        copyPrompt: 'Copy',
-        copyPromptBtn: 'Copy Prompt',
-        copied: 'Copied!',
+        siteTitle: "Art Style Archive · 41 Art Styles Benchmark Matrix",
+        brandTitle: "Art Style Archive",
+        brandSub: "Visual Matrix",
+        viewModeScene: "By Scene",
+        viewModeStyle: "By Style",
+        searchPlaceholder: "Search styles, scenes, masters, or keywords...",
+        randomBtn: "Random",
+        langBtn: "中文",
+        langTitle: "切换为中文 / Switch to Chinese",
+        copyPrompt: "Copy",
+        copyPromptBtn: "Copy Prompt",
+        copied: "Copied!",
         copiedToast: (name) => `Copied prompt for [${name}]`,
-        copyFailed: 'Copy failed, please select manually',
+        copyFailed: "Copy failed, please select manually",
         randomToast: (name) => `Random pick: [${name}]`,
-        noMatchTitle: 'No matching styles found',
-        noMatchSub: 'Try searching with different keywords',
-        clearSearch: 'Clear Search',
-        closeTitle: 'Close (Esc)',
-        prevTitle: 'Previous (←)',
-        nextTitle: 'Next (→)',
+        noMatchTitle: "No matching artworks found",
+        noMatchSub: "Try searching with different keywords",
+        clearSearch: "Clear Search",
+        closeTitle: "Close (Esc)",
+        prevTitle: "Previous (←)",
+        nextTitle: "Next (→)",
         scenes: {
-          scene_a: 'Rainy Cafe & Cat',
-          scene_b: 'Seaside Tram at Dusk',
-          scene_c: 'Cliff Tree & Mirror Lake',
-          scene_d: 'Midnight Bookstore & Scholar',
-          scene_e: 'Airship & Floating Skyport',
-          scene_f: 'Bioluminescent Jellyfish & Diver',
-          scene_g: 'Cyberpunk Ramen & Cyborg Girl',
-          scene_h: 'Treehouse & Alchemist Witch',
-          scene_i: 'Desert Ruins & Mecha Camel'
+          scene_a: "Rainy Cafe & Cat",
+          scene_b: "Seaside Tram at Dusk",
+          scene_c: "Cliff Tree & Mirror Lake",
+          scene_d: "Midnight Bookstore & Scholar",
+          scene_e: "Airship & Floating Skyport",
+          scene_f: "Bioluminescent Jellyfish & Diver",
+          scene_g: "Cyberpunk Ramen & Cyborg Girl",
+          scene_h: "Treehouse & Alchemist Witch",
+          scene_i: "Desert Ruins & Mecha Camel"
         }
       }
     };
 
     // State
-    let currentLang = localStorage.getItem('art_style_lang') || 
-      (typeof navigator !== 'undefined' && navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en');
-    let currentSceneId = 'scene_a';
-    let searchQuery = '';
+    let currentLang = localStorage.getItem("art_style_lang") || 
+      (typeof navigator !== "undefined" && navigator.language && navigator.language.startsWith("zh") ? "zh" : "en");
+    let viewMode = "scene"; // "scene" or "style"
+    let currentSceneId = "scene_a";
+    let currentStyleNumber = "01";
+    let currentLightboxModel = "gemini"; // "gemini" or "chatgpt"
+    let isPromptBarVisible = true;
+    let searchQuery = "";
     let activeLightboxIndex = 0;
 
     // DOM Elements
-    const brandTitleText = document.getElementById('brandTitleText');
-    const brandSubText = document.getElementById('brandSubText');
-    const searchInput = document.getElementById('searchInput');
-    const clearSearchBtn = document.getElementById('clearSearchBtn');
-    const randomStyleBtn = document.getElementById('randomStyleBtn');
-    const randomBtnText = document.getElementById('randomBtnText');
-    const langToggleBtn = document.getElementById('langToggleBtn');
-    const langBtnText = document.getElementById('langBtnText');
-    const sceneTabsDesktop = document.getElementById('sceneTabsDesktop');
-    const sceneSelectMobile = document.getElementById('sceneSelectMobile');
-    const galleryGrid = document.getElementById('galleryGrid');
-    const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toastMsg');
+    const brandTitleText = document.getElementById("brandTitleText");
+    const brandSubText = document.getElementById("brandSubText");
+    const viewModeSceneBtn = document.getElementById("viewModeSceneBtn");
+    const viewModeStyleBtn = document.getElementById("viewModeStyleBtn");
+    const viewModeSceneText = document.getElementById("viewModeSceneText");
+    const viewModeStyleText = document.getElementById("viewModeStyleText");
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    const randomStyleBtn = document.getElementById("randomStyleBtn");
+    const randomBtnText = document.getElementById("randomBtnText");
+    const langToggleBtn = document.getElementById("langToggleBtn");
+    const langBtnText = document.getElementById("langBtnText");
+    const navTabsDesktop = document.getElementById("navTabsDesktop");
+    const navSelectMobile = document.getElementById("navSelectMobile");
+    const galleryGrid = document.getElementById("galleryGrid");
+    const toast = document.getElementById("toast");
+    const toastMsg = document.getElementById("toastMsg");
 
     // Lightbox DOM
-    const lightboxModal = document.getElementById('lightboxModal');
-    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
-    const prevLightboxBtn = document.getElementById('prevLightboxBtn');
-    const nextLightboxBtn = document.getElementById('nextLightboxBtn');
-    const lightboxViewport = document.getElementById('lightboxViewport');
-    const lightboxThumbImg = document.getElementById('lightboxThumbImg');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxNumber = document.getElementById('lightboxNumber');
-    const lightboxTitleCn = document.getElementById('lightboxTitleCn');
-    const lightboxTitleEn = document.getElementById('lightboxTitleEn');
-    const lightboxPromptText = document.getElementById('lightboxPromptText');
-    const lightboxCopyBtn = document.getElementById('lightboxCopyBtn');
-    const lightboxCopyBtnText = document.getElementById('lightboxCopyBtnText');
+    const lightboxModal = document.getElementById("lightboxModal");
+    const closeLightboxBtn = document.getElementById("closeLightboxBtn");
+    const prevLightboxBtn = document.getElementById("prevLightboxBtn");
+    const nextLightboxBtn = document.getElementById("nextLightboxBtn");
+    const lightboxViewport = document.getElementById("lightboxViewport");
+    const lightboxThumbImg = document.getElementById("lightboxThumbImg");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxNumber = document.getElementById("lightboxNumber");
+    const lightboxTitleCn = document.getElementById("lightboxTitleCn");
+    const lightboxTitleEn = document.getElementById("lightboxTitleEn");
+    const lightboxPromptText = document.getElementById("lightboxPromptText");
+    const lightboxPromptBar = document.getElementById("lightboxPromptBar");
+    const lightboxCopyBtn = document.getElementById("lightboxCopyBtn");
+    const lightboxCopyBtnText = document.getElementById("lightboxCopyBtnText");
+    const lightboxModelSwitch = document.getElementById("lightboxModelSwitch");
+    const modelBtnGemini = document.getElementById("modelBtnGemini");
+    const modelBtnChatgpt = document.getElementById("modelBtnChatgpt");
 
     // Initialize
     function init() {
@@ -268,17 +314,35 @@
       lucide.createIcons();
     }
 
+    // Set View Mode (Scene vs Style)
+    function setViewMode(mode) {
+      viewMode = mode;
+      viewModeSceneBtn.classList.toggle("bg-[#e25c38]", mode === "scene");
+      viewModeSceneBtn.classList.toggle("text-white", mode === "scene");
+      viewModeSceneBtn.classList.toggle("text-[#a1a1aa]", mode !== "scene");
+
+      viewModeStyleBtn.classList.toggle("bg-[#e25c38]", mode === "style");
+      viewModeStyleBtn.classList.toggle("text-white", mode === "style");
+      viewModeStyleBtn.classList.toggle("text-[#a1a1aa]", mode !== "style");
+
+      renderNavTabs();
+      renderGallery();
+    }
+    window.setViewMode = setViewMode;
+
     // Language Handling
     function applyLanguage(lang) {
       currentLang = lang;
-      try { localStorage.setItem('art_style_lang', lang); } catch (e) {}
+      try { localStorage.setItem("art_style_lang", lang); } catch (e) {}
       const t = I18N[lang];
 
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
       document.title = t.siteTitle;
 
       if (brandTitleText) brandTitleText.innerText = t.brandTitle;
       if (brandSubText) brandSubText.innerText = t.brandSub;
+      if (viewModeSceneText) viewModeSceneText.innerText = t.viewModeScene;
+      if (viewModeStyleText) viewModeStyleText.innerText = t.viewModeStyle;
       if (searchInput) searchInput.placeholder = t.searchPlaceholder;
       if (randomBtnText) randomBtnText.innerText = t.randomBtn;
       if (langBtnText) langBtnText.innerText = t.langBtn;
@@ -288,15 +352,15 @@
       if (nextLightboxBtn) nextLightboxBtn.title = t.nextTitle;
       if (lightboxCopyBtnText) lightboxCopyBtnText.innerText = t.copyPromptBtn;
 
-      renderSceneControls();
+      renderNavTabs();
       renderGallery();
-      if (lightboxModal && !lightboxModal.classList.contains('opacity-0')) {
+      if (lightboxModal && !lightboxModal.classList.contains("opacity-0")) {
         updateLightboxContent();
       }
     }
 
     function toggleLanguage() {
-      applyLanguage(currentLang === 'zh' ? 'en' : 'zh');
+      applyLanguage(currentLang === "zh" ? "en" : "zh");
     }
     window.toggleLanguage = toggleLanguage;
 
@@ -306,67 +370,138 @@
         return t.scenes[sceneId];
       }
       const scene = SCENES_DATA.find(s => s.id === sceneId);
-      return scene ? (scene.title.split('·')[1] ? scene.title.split('·')[1].trim() : scene.title) : sceneId;
+      return scene ? (scene.title.split("·")[1] ? scene.title.split("·")[1].trim() : scene.title) : sceneId;
     }
 
-    // Render Scene Controls (Desktop Wrapped Buttons + Mobile Select)
-    function renderSceneControls() {
-      sceneTabsDesktop.innerHTML = SCENES_DATA.map(scene => {
-        const isActive = scene.id === currentSceneId;
-        const sceneTitle = getSceneTitle(scene.id);
+    // Render Navigation Controls (Scene Tabs or Style Tabs)
+    function renderNavTabs() {
+      if (viewMode === "scene") {
+        navTabsDesktop.innerHTML = SCENES_DATA.map(scene => {
+          const isActive = scene.id === currentSceneId;
+          const sceneTitle = getSceneTitle(scene.id);
 
-        return `
-          <button onclick="switchScene('${scene.id}')" 
-            class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shrink-0 ${
-              isActive 
-                ? 'bg-[#e25c38] text-white border-[#e25c38] shadow-sm font-semibold' 
-                : 'bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border-white/[0.08]'
-            }">
-            <span>${sceneTitle}</span>
-          </button>
-        `;
-      }).join('');
+          return `
+            <button onclick="switchScene('${scene.id}')" 
+              class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all border shrink-0 ${
+                isActive 
+                  ? "bg-[#e25c38] text-white border-[#e25c38] shadow-sm font-semibold" 
+                  : "bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border-white/[0.08]"
+              }">
+              <span>${sceneTitle}</span>
+            </button>
+          `;
+        }).join("");
 
-      // Mobile Select options
-      sceneSelectMobile.innerHTML = SCENES_DATA.map(scene => {
-        const sceneTitle = getSceneTitle(scene.id);
-        return `<option value="${scene.id}" ${scene.id === currentSceneId ? 'selected' : ''}>${sceneTitle}</option>`;
-      }).join('');
+        navSelectMobile.innerHTML = SCENES_DATA.map(scene => {
+          const sceneTitle = getSceneTitle(scene.id);
+          return `<option value="${scene.id}" ${scene.id === currentSceneId ? "selected" : ""}>${sceneTitle}</option>`;
+        }).join("");
+      } else {
+        // By Style mode
+        const firstScene = SCENES_DATA[0];
+        const allStyles = firstScene ? firstScene.styles : [];
+
+        navTabsDesktop.innerHTML = allStyles.map(style => {
+          const isActive = style.number === currentStyleNumber;
+          const primaryTitle = currentLang === "zh" ? style.nameCn : style.nameEn;
+
+          return `
+            <button onclick="switchStyle('${style.number}')" 
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all border shrink-0 flex items-center gap-1.5 ${
+                isActive 
+                  ? "bg-[#e25c38] text-white border-[#e25c38] shadow-sm font-semibold" 
+                  : "bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border-white/[0.08]"
+              }">
+              <span class="font-mono text-[10px] opacity-75">#${style.number}</span>
+              <span>${primaryTitle}</span>
+            </button>
+          `;
+        }).join("");
+
+        navSelectMobile.innerHTML = allStyles.map(style => {
+          const primaryTitle = currentLang === "zh" ? style.nameCn : style.nameEn;
+          return `<option value="${style.number}" ${style.number === currentStyleNumber ? "selected" : ""}>#${style.number} ${primaryTitle}</option>`;
+        }).join("");
+      }
 
       lucide.createIcons();
     }
 
-    // Switch Scene
+    function handleMobileNavChange(val) {
+      if (viewMode === "scene") {
+        switchScene(val);
+      } else {
+        switchStyle(val);
+      }
+    }
+    window.handleMobileNavChange = handleMobileNavChange;
+
     function switchScene(sceneId) {
       currentSceneId = sceneId;
-      renderSceneControls();
+      renderNavTabs();
       renderGallery();
     }
     window.switchScene = switchScene;
 
-    // Filter Logic
-    function getFilteredStyles() {
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return [];
+    function switchStyle(styleNum) {
+      currentStyleNumber = styleNum;
+      renderNavTabs();
+      renderGallery();
+    }
+    window.switchStyle = switchStyle;
 
-      return scene.styles.filter(item => {
-        return !searchQuery || 
-          item.nameCn.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    // Filter Logic
+    function getActiveDataset() {
+      if (viewMode === "scene") {
+        const scene = SCENES_DATA.find(s => s.id === currentSceneId);
+        if (!scene) return [];
+        return scene.styles.map(st => ({
+          ...st,
+          sceneId: scene.id,
+          aspectRatio: scene.aspectRatio,
+          displayHeading: currentLang === "zh" ? st.nameCn : st.nameEn,
+          displaySubheading: currentLang === "zh" ? st.nameEn : st.nameCn
+        }));
+      } else {
+        // Collect all 9 scenes for currentStyleNumber
+        const list = [];
+        for (const scene of SCENES_DATA) {
+          const st = scene.styles.find(s => s.number === currentStyleNumber);
+          if (st) {
+            const sceneTitle = getSceneTitle(scene.id);
+            const styleTitle = currentLang === "zh" ? st.nameCn : st.nameEn;
+            list.push({
+              ...st,
+              sceneId: scene.id,
+              aspectRatio: scene.aspectRatio,
+              displayHeading: sceneTitle,
+              displaySubheading: styleTitle
+            });
+          }
+        }
+        return list;
+      }
+    }
+
+    function getFilteredItems() {
+      const items = getActiveDataset();
+      if (!searchQuery) return items;
+
+      return items.filter(item => {
+        return item.nameCn.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
           (item.master && item.master.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          item.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          (item.prompt && item.prompt.toLowerCase().includes(searchQuery.toLowerCase()));
+          (item.tags && item.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()))) ||
+          (item.prompt && item.prompt.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (getSceneTitle(item.sceneId).toLowerCase().includes(searchQuery.toLowerCase()));
       });
     }
 
-    // Render Clean Visual Gallery Cards
+    // Render Gallery Cards
     function renderGallery() {
       const t = I18N[currentLang];
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      const isLandscape = scene && scene.aspectRatio === '16:9';
-      const aspectClass = isLandscape ? 'aspect-[16/9]' : 'aspect-[3/4]';
+      const items = getFilteredItems();
 
-      const items = getFilteredStyles();
       if (items.length === 0) {
         galleryGrid.innerHTML = `
           <div class="col-span-full py-20 text-center text-[#71717a] bg-[#141518] rounded-xl border border-white/[0.06]">
@@ -382,31 +517,36 @@
         return;
       }
 
-      galleryGrid.innerHTML = items.map(item => {
-        const thumbSrc = item.image.replace('images/', 'images/thumbs/');
-        const primaryTitle = currentLang === 'zh' ? item.nameCn : item.nameEn;
-        const secondaryTitle = currentLang === 'zh' ? item.nameEn : item.nameCn;
+      galleryGrid.innerHTML = items.map((item, index) => {
+        const thumbSrc = item.image.replace("images/", "images/thumbs/");
+        const aspectClass = item.aspectRatio === "16:9" ? "aspect-[16/9]" : "aspect-[3/4]";
+        const hasChatgpt = Boolean(item.chatgptImage);
 
         return `
           <div class="art-card flex flex-col justify-between group">
-            <div class="art-card-media ${aspectClass}" onclick="openLightbox('${item.id}')">
-              <img src="${thumbSrc}" alt="${primaryTitle}" loading="lazy" decoding="async" 
+            <div class="art-card-media ${aspectClass}" onclick="openLightboxByIndex(${index})">
+              <img src="${thumbSrc}" alt="${item.displayHeading}" loading="lazy" decoding="async" 
                    class="opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0')">
               
-              <!-- Number badge on top left -->
-              <div class="absolute top-2.5 left-2.5 z-10 pointer-events-none">
-                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#090a0c]/80 text-[#f4f4f5] border border-white/[0.1] backdrop-blur-md">
+              <!-- Badges on top -->
+              <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 pointer-events-none">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#090a0c]/85 text-[#f4f4f5] border border-white/[0.1] backdrop-blur-md">
                   #${item.number}
                 </span>
+                ${hasChatgpt ? `
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30 backdrop-blur-md">
+                    ✨+🤖
+                  </span>
+                ` : ""}
               </div>
 
               <!-- Floating Bottom Info on Image (Hover only for copy button) -->
-              <div class="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between gap-2 z-10">
-                <div class="min-w-0">
-                  <div class="text-xs sm:text-sm font-semibold text-white truncate">${primaryTitle}</div>
-                  <div class="text-[10px] font-mono text-[#a1a1aa] truncate">${secondaryTitle}</div>
+              <div class="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex items-end justify-between gap-2 z-10">
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs sm:text-sm font-semibold text-white truncate">${item.displayHeading}</div>
+                  <div class="text-[10px] font-mono text-[#a1a1aa] truncate">${item.displaySubheading}</div>
                 </div>
-                <button onclick="event.stopPropagation(); copyPrompt('${item.id}', this)" 
+                <button onclick="event.stopPropagation(); copyPromptByItem(this, ${index})" 
                   class="opacity-0 group-hover:opacity-100 px-2 py-1 rounded bg-white/15 hover:bg-[#e25c38] text-white border border-white/20 text-[11px] font-mono flex items-center gap-1 transition-opacity duration-150 shrink-0 backdrop-blur-md shadow-md" title="${t.copyPrompt}">
                   <i data-lucide="copy" class="w-3 h-3"></i>
                   <span class="hidden sm:inline">${t.copyPrompt}</span>
@@ -415,19 +555,16 @@
             </div>
           </div>
         `;
-      }).join('');
+      }).join("");
       lucide.createIcons();
     }
 
     // Copy Prompt
-    function copyPrompt(styleId, btnEl) {
+    function copyPromptByItem(btnEl, index) {
       const t = I18N[currentLang];
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-      const item = scene.styles.find(st => st.id === styleId);
+      const items = getFilteredItems();
+      const item = items[index];
       if (!item) return;
-
-      const primaryName = currentLang === 'zh' ? item.nameCn : item.nameEn;
 
       navigator.clipboard.writeText(item.prompt).then(() => {
         if (btnEl) {
@@ -439,100 +576,148 @@
             lucide.createIcons();
           }, 1600);
         }
-        showToast(t.copiedToast(primaryName));
+        showToast(t.copiedToast(item.displayHeading));
       }).catch(() => {
         showToast(t.copyFailed);
       });
     }
-    window.copyPrompt = copyPrompt;
+    window.copyPromptByItem = copyPromptByItem;
 
     // Toast Notification
     function showToast(msg) {
       toastMsg.innerText = msg;
-      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
       setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
       }, 2000);
     }
 
     // Clear search
     function clearSearch() {
-      searchInput.value = '';
-      searchQuery = '';
-      clearSearchBtn.classList.add('hidden');
+      searchInput.value = "";
+      searchQuery = "";
+      clearSearchBtn.classList.add("hidden");
       renderGallery();
     }
     window.clearSearch = clearSearch;
 
     // Lightbox Logic
-    function openLightbox(styleId) {
-      let targetScene = SCENES_DATA.find(s => s.id === currentSceneId);
-      let idx = targetScene ? targetScene.styles.findIndex(st => st.id === styleId) : -1;
+    function openLightboxByIndex(index) {
+      activeLightboxIndex = index;
+      currentLightboxModel = "gemini";
+      updateLightboxContent();
+      lightboxModal.classList.remove("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "hidden";
+    }
+    window.openLightboxByIndex = openLightboxByIndex;
 
-      // If not in current scene (e.g. from global search), auto switch to target scene
-      if (idx === -1) {
+    function openLightbox(styleId) {
+      const items = getFilteredItems();
+      const idx = items.findIndex(st => st.id === styleId);
+      if (idx !== -1) {
+        openLightboxByIndex(idx);
+      } else {
+        // Find in full SCENES_DATA
         for (const scene of SCENES_DATA) {
-          const foundIdx = scene.styles.findIndex(st => st.id === styleId);
-          if (foundIdx !== -1) {
+          const found = scene.styles.find(st => st.id === styleId);
+          if (found) {
             currentSceneId = scene.id;
-            idx = foundIdx;
-            renderSceneControls();
+            viewMode = "scene";
+            renderNavTabs();
             renderGallery();
+            const newItems = getFilteredItems();
+            const newIdx = newItems.findIndex(st => st.id === styleId);
+            if (newIdx !== -1) openLightboxByIndex(newIdx);
             break;
           }
         }
       }
-
-      if (idx === -1) return;
-
-      activeLightboxIndex = idx;
-      updateLightboxContent();
-      lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = 'hidden';
     }
     window.openLightbox = openLightbox;
 
-    function updateLightboxContent() {
+    function setLightboxModel(model) {
+      currentLightboxModel = model;
+      modelBtnGemini.classList.toggle("bg-[#e25c38]", model === "gemini");
+      modelBtnGemini.classList.toggle("text-white", model === "gemini");
+      modelBtnGemini.classList.toggle("text-[#a1a1aa]", model !== "gemini");
+
+      modelBtnChatgpt.classList.toggle("bg-[#e25c38]", model === "chatgpt");
+      modelBtnChatgpt.classList.toggle("text-white", model === "chatgpt");
+      modelBtnChatgpt.classList.toggle("text-[#a1a1aa]", model !== "chatgpt");
+
+      updateLightboxContent(false);
+    }
+    window.setLightboxModel = setLightboxModel;
+
+    function togglePromptBar() {
+      isPromptBarVisible = !isPromptBarVisible;
+      lightboxPromptBar.classList.toggle("hidden", !isPromptBarVisible);
+    }
+    window.togglePromptBar = togglePromptBar;
+
+    function updateLightboxContent(resetModel = true) {
       const t = I18N[currentLang];
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-      const item = scene.styles[activeLightboxIndex];
+      const items = getFilteredItems();
+      if (!items || items.length === 0) return;
+      if (activeLightboxIndex < 0) activeLightboxIndex = 0;
+      if (activeLightboxIndex >= items.length) activeLightboxIndex = items.length - 1;
+
+      const item = items[activeLightboxIndex];
       if (!item) return;
 
-      const thumbSrc = item.image.replace('images/', 'images/thumbs/');
-      const fullSrc = item.image;
-      const currentItemId = item.id;
-      const primaryName = currentLang === 'zh' ? item.nameCn : item.nameEn;
-      const secondaryName = currentLang === 'zh' ? item.nameEn : item.nameCn;
+      if (resetModel) {
+        currentLightboxModel = "gemini";
+      }
+
+      // Handle comparative models (Gemini vs ChatGPT)
+      const hasChatgpt = Boolean(item.chatgptImage);
+      lightboxModelSwitch.classList.toggle("hidden", !hasChatgpt);
+      if (hasChatgpt) {
+        modelBtnGemini.classList.toggle("bg-[#e25c38]", currentLightboxModel === "gemini");
+        modelBtnGemini.classList.toggle("text-white", currentLightboxModel === "gemini");
+        modelBtnGemini.classList.toggle("text-[#a1a1aa]", currentLightboxModel !== "gemini");
+
+        modelBtnChatgpt.classList.toggle("bg-[#e25c38]", currentLightboxModel === "chatgpt");
+        modelBtnChatgpt.classList.toggle("text-white", currentLightboxModel === "chatgpt");
+        modelBtnChatgpt.classList.toggle("text-[#a1a1aa]", currentLightboxModel !== "chatgpt");
+      }
+
+      const activeImageSrc = (hasChatgpt && currentLightboxModel === "chatgpt") ? item.chatgptImage : item.image;
+      const activeThumbSrc = (hasChatgpt && currentLightboxModel === "chatgpt") ? item.chatgptThumb : item.image.replace("images/", "images/thumbs/");
+
+      const sceneTitle = getSceneTitle(item.sceneId);
+      const styleTitleCn = item.nameCn;
+      const styleTitleEn = item.nameEn;
 
       // Reset viewport zoom
-      lightboxViewport.classList.remove('scale-125', 'cursor-zoom-out');
-      lightboxViewport.classList.add('cursor-zoom-in');
+      lightboxViewport.classList.remove("scale-150", "cursor-zoom-out");
+      lightboxViewport.classList.add("cursor-zoom-in");
 
       // Set thumbnail immediately (fast placeholder)
-      lightboxThumbImg.src = thumbSrc;
-      lightboxThumbImg.alt = primaryName;
+      lightboxThumbImg.src = activeThumbSrc;
+      lightboxThumbImg.alt = `${styleTitleCn} - ${sceneTitle}`;
 
       // Prepare high-res layer
-      lightboxImg.classList.add('opacity-0');
-      lightboxImg.src = '';
+      lightboxImg.classList.add("opacity-0");
+      lightboxImg.src = "";
 
       // Preload full resolution image and crossfade in smoothly with zero jump
       const highRes = new Image();
-      highRes.src = fullSrc;
+      highRes.src = activeImageSrc;
       highRes.onload = () => {
-        if (scene.styles[activeLightboxIndex] && scene.styles[activeLightboxIndex].id === currentItemId) {
-          lightboxImg.src = fullSrc;
-          lightboxImg.alt = primaryName;
+        const currentItem = getFilteredItems()[activeLightboxIndex];
+        if (currentItem && currentItem.id === item.id) {
+          lightboxImg.src = activeImageSrc;
+          lightboxImg.alt = `${styleTitleCn} - ${sceneTitle}`;
           requestAnimationFrame(() => {
-            lightboxImg.classList.remove('opacity-0');
+            lightboxImg.classList.remove("opacity-0");
           });
         }
       };
 
       lightboxNumber.innerText = `#${item.number}`;
-      lightboxTitleCn.innerText = primaryName;
-      if (lightboxTitleEn) lightboxTitleEn.innerText = secondaryName;
+      lightboxTitleCn.innerText = viewMode === "scene" ? styleTitleCn : `${sceneTitle} · ${styleTitleCn}`;
+      if (lightboxTitleEn) lightboxTitleEn.innerText = viewMode === "scene" ? styleTitleEn : `${item.aspectRatio}`;
       lightboxPromptText.innerText = item.prompt;
       lightboxCopyBtnText.innerText = t.copyPromptBtn;
 
@@ -540,7 +725,7 @@
         navigator.clipboard.writeText(item.prompt).then(() => {
           lightboxCopyBtnText.innerText = t.copied;
           setTimeout(() => { lightboxCopyBtnText.innerText = t.copyPromptBtn; }, 1600);
-          showToast(t.copiedToast(primaryName));
+          showToast(t.copiedToast(item.displayHeading));
         });
       };
 
@@ -550,33 +735,33 @@
     // Toggle Image Zoom on Click in Lightbox
     lightboxViewport.onclick = (e) => {
       e.stopPropagation();
-      const isZoomed = lightboxViewport.classList.contains('scale-125');
+      const isZoomed = lightboxViewport.classList.contains("scale-150");
       if (isZoomed) {
-        lightboxViewport.classList.remove('scale-125', 'cursor-zoom-out');
-        lightboxViewport.classList.add('cursor-zoom-in');
+        lightboxViewport.classList.remove("scale-150", "cursor-zoom-out");
+        lightboxViewport.classList.add("cursor-zoom-in");
       } else {
-        lightboxViewport.classList.add('scale-125', 'cursor-zoom-out');
-        lightboxViewport.classList.remove('cursor-zoom-in');
+        lightboxViewport.classList.add("scale-150", "cursor-zoom-out");
+        lightboxViewport.classList.remove("cursor-zoom-in");
       }
     };
 
     function closeLightbox() {
-      lightboxModal.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      lightboxModal.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
     }
 
     // Lightbox Nav
     prevLightboxBtn.onclick = () => {
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-      activeLightboxIndex = (activeLightboxIndex - 1 + scene.styles.length) % scene.styles.length;
+      const items = getFilteredItems();
+      if (!items || items.length === 0) return;
+      activeLightboxIndex = (activeLightboxIndex - 1 + items.length) % items.length;
       updateLightboxContent();
     };
 
     nextLightboxBtn.onclick = () => {
-      const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-      if (!scene) return;
-      activeLightboxIndex = (activeLightboxIndex + 1) % scene.styles.length;
+      const items = getFilteredItems();
+      if (!items || items.length === 0) return;
+      activeLightboxIndex = (activeLightboxIndex + 1) % items.length;
       updateLightboxContent();
     };
 
@@ -587,22 +772,22 @@
       // Search
       searchInput.oninput = (e) => {
         searchQuery = e.target.value.trim();
-        clearSearchBtn.classList.toggle('hidden', searchQuery.length === 0);
+        clearSearchBtn.classList.toggle("hidden", searchQuery.length === 0);
         renderGallery();
       };
       clearSearchBtn.onclick = clearSearch;
 
-      // Keyboard Shortcut '/' for search and Escape to close modal
-      window.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== searchInput && lightboxModal.classList.contains('opacity-0')) {
+      // Keyboard Shortcut "/" for search and Escape to close modal
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "/" && document.activeElement !== searchInput && lightboxModal.classList.contains("opacity-0")) {
           e.preventDefault();
           searchInput.focus();
-        } else if (e.key === 'Escape' && !lightboxModal.classList.contains('opacity-0')) {
+        } else if (e.key === "Escape" && !lightboxModal.classList.contains("opacity-0")) {
           closeLightbox();
-        } else if (!lightboxModal.classList.contains('opacity-0')) {
-          if (e.key === 'ArrowLeft') {
+        } else if (!lightboxModal.classList.contains("opacity-0")) {
+          if (e.key === "ArrowLeft") {
             prevLightboxBtn.click();
-          } else if (e.key === 'ArrowRight') {
+          } else if (e.key === "ArrowRight") {
             nextLightboxBtn.click();
           }
         }
@@ -611,18 +796,18 @@
       // Random Style
       randomStyleBtn.onclick = () => {
         const t = I18N[currentLang];
-        const scene = SCENES_DATA.find(s => s.id === currentSceneId);
-        if (!scene) return;
-        const randomItem = scene.styles[Math.floor(Math.random() * scene.styles.length)];
-        openLightbox(randomItem.id);
-        const name = currentLang === 'zh' ? randomItem.nameCn : randomItem.nameEn;
-        showToast(t.randomToast(name));
+        const items = getFilteredItems();
+        if (!items || items.length === 0) return;
+        const randomIdx = Math.floor(Math.random() * items.length);
+        openLightboxByIndex(randomIdx);
+        const randomItem = items[randomIdx];
+        showToast(t.randomToast(randomItem.displayHeading));
       };
     }
 
     // Run
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
     } else {
       init();
     }

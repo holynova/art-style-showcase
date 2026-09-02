@@ -1,6 +1,6 @@
 /**
  * 艺术风格矩阵数据集 (Art Style Matrix Database)
- * 涵盖 9 大基准测试场景 × 34 种经典艺术与插画流派 (全 306 组完整出图与视觉图谱)
+ * 涵盖 9 大基准测试场景 × 41 种经典艺术与插画流派 (全 369 组完整出图与视觉图谱)
  */
 
 const STYLE_CATEGORIES = [
@@ -71,7 +71,9 @@ const SCENES_DATA = [
           "heavy textured oil paint",
           "rich chiaroscuro lighting",
           "Craig Mullins style"
-        ]
+        ],
+        "chatgptImage": "chatgpt_images/scene_a_01_impasto_chatgpt.png",
+        "chatgptThumb": "chatgpt_images/thumbs/scene_a_01_impasto_chatgpt.jpg"
       },
       {
         "id": "scene_a_02_watercolor",
@@ -98,7 +100,9 @@ const SCENES_DATA = [
           "translucent watercolor pigments",
           "visible cold-press paper grain",
           "delicate soft ink lines"
-        ]
+        ],
+        "chatgptImage": "chatgpt_images/scene_a_02_watercolor_chatgpt.png",
+        "chatgptThumb": "chatgpt_images/thumbs/scene_a_02_watercolor_chatgpt.jpg"
       },
       {
         "id": "scene_a_03_impressionism",
@@ -967,6 +971,195 @@ const SCENES_DATA = [
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
         ]
+      },
+      {
+        "id": "scene_a_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 3:4",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_a_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_a_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_a_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_a_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_a_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_a_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_a_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 3:4",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
+        ]
       }
     ]
   },
@@ -1004,7 +1197,9 @@ const SCENES_DATA = [
           "heavy textured oil paint",
           "rich chiaroscuro lighting",
           "Craig Mullins style"
-        ]
+        ],
+        "chatgptImage": "chatgpt_images/scene_b_01_impasto_chatgpt.png",
+        "chatgptThumb": "chatgpt_images/thumbs/scene_b_01_impasto_chatgpt.jpg"
       },
       {
         "id": "scene_b_02_watercolor",
@@ -1031,7 +1226,9 @@ const SCENES_DATA = [
           "translucent watercolor pigments",
           "visible cold-press paper grain",
           "delicate soft ink lines"
-        ]
+        ],
+        "chatgptImage": "chatgpt_images/scene_b_02_watercolor_chatgpt.png",
+        "chatgptThumb": "chatgpt_images/thumbs/scene_b_02_watercolor_chatgpt.jpg"
       },
       {
         "id": "scene_b_03_impressionism",
@@ -1899,6 +2096,195 @@ const SCENES_DATA = [
           "fluid delicate ink lines",
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
+        ]
+      },
+      {
+        "id": "scene_b_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_b_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_b_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_b_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_b_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_b_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_b_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_b_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
         ]
       }
     ]
@@ -2833,6 +3219,195 @@ const SCENES_DATA = [
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
         ]
+      },
+      {
+        "id": "scene_c_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_c_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_c_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_c_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_c_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_c_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_c_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_c_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
+        ]
       }
     ]
   },
@@ -3765,6 +4340,195 @@ const SCENES_DATA = [
           "fluid delicate ink lines",
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
+        ]
+      },
+      {
+        "id": "scene_d_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_d_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_d_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_d_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_d_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_d_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_d_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_d_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
         ]
       }
     ]
@@ -4699,6 +5463,195 @@ const SCENES_DATA = [
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
         ]
+      },
+      {
+        "id": "scene_e_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_e_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_e_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_e_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_e_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_e_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_e_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_e_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
+        ]
       }
     ]
   },
@@ -5631,6 +6584,195 @@ const SCENES_DATA = [
           "fluid delicate ink lines",
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
+        ]
+      },
+      {
+        "id": "scene_f_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_f_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_f_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_f_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_f_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_f_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_f_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_f_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
         ]
       }
     ]
@@ -6565,6 +7707,195 @@ const SCENES_DATA = [
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
         ]
+      },
+      {
+        "id": "scene_g_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_g_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_g_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_g_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_g_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_g_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_g_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_g_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
+        ]
       }
     ]
   },
@@ -7498,6 +8829,195 @@ const SCENES_DATA = [
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
         ]
+      },
+      {
+        "id": "scene_h_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_h_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_h_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_h_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_h_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_h_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_h_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_h_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
+        ]
       }
     ]
   },
@@ -8430,6 +9950,195 @@ const SCENES_DATA = [
           "fluid delicate ink lines",
           "moody ethereal shadows",
           "haunting atmospheric watercolor washes"
+        ]
+      },
+      {
+        "id": "scene_i_35_woodcut_news",
+        "number": "35",
+        "nameCn": "木刻新闻插图",
+        "nameEn": "Woodcut News Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_35_woodcut_news.jpg",
+        "hasImage": true,
+        "tags": [
+          "刀痕大黑白",
+          "木纤维毛刺",
+          "旧报纸压印",
+          "强对比叙事"
+        ],
+        "master": "近代报刊木刻版画 (Woodcut Newsprint)",
+        "colorTone": "深邃油墨黑与米白新闻纸底色",
+        "technique": "用粗细不一的手工刀痕和大面积纯黑组织光影，边缘略有木纤维毛刺，呈现旧报纸木刻压印质感。",
+        "prompt": "Woodcut news illustration of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset; preserve the subject silhouette, pose, and primary composition. Shape light with bold solid-black masses and varied hand-carved gouge marks, leaving clean warm off-white paper. Strict black and white only, high contrast, slight wood-fiber roughness at edges, aged newspaper ink texture. No gradients, photorealism, 3D rendering, modern sans-serif text, watermark, or border. --ar 16:9",
+        "keyModifiers": [
+          "woodcut news illustration",
+          "hand-carved gouge marks",
+          "solid-black masses",
+          "wood-fiber roughness",
+          "aged newspaper ink texture"
+        ]
+      },
+      {
+        "id": "scene_i_36_pen_hatching",
+        "number": "36",
+        "nameCn": "钢笔排线插图",
+        "nameEn": "Pen-Hatching Illustration",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_36_pen_hatching.jpg",
+        "hasImage": true,
+        "tags": [
+          "平行交叉排线",
+          "线的疏密成灰",
+          "高光大留白",
+          "编辑插画"
+        ],
+        "master": "古典报刊钢笔插画 (Vintage Pen & Ink)",
+        "colorTone": "纯净黑墨线条与温润棉纸白",
+        "technique": "只用黑色墨线在白纸上塑造体积，亮部大面积留白，阴影由方向明确的平行线与交叉线逐层加密。",
+        "prompt": "Pen-hatching illustration of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset; preserve proportions, perspective, and defining details. Model volume with black ink only on white paper: broad untouched highlights, shadows built from directional parallel hatching and crosshatching that follows form. Restrained editorial composition with subtle paper texture. No color fills, blurry brushes, pencil smudging, photo texture, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "pen-hatching illustration",
+          "black ink only on white paper",
+          "directional parallel hatching and crosshatching",
+          "restrained editorial composition",
+          "subtle paper texture"
+        ]
+      },
+      {
+        "id": "scene_i_37_halftone_dot",
+        "number": "37",
+        "nameCn": "黑白半调网点",
+        "nameEn": "Monochrome Halftone Screen",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_37_halftone_dot.jpg",
+        "hasImage": true,
+        "tags": [
+          "规则圆形网点",
+          "调幅灰阶",
+          "新闻纸颗粒",
+          "机械印刷"
+        ],
+        "master": "早期报纸半调照相制版 (Halftone Screening)",
+        "colorTone": "单色纯黑点阵与微黄新闻纸色",
+        "technique": "使用规则圆形网点模拟灰阶，亮部网点稀小，暗部网点密大，网线角度统一，带有真实油墨扩散与印刷颗粒感。",
+        "prompt": "Convert A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset into a black-and-white newspaper halftone illustration while keeping a clear silhouette and readable value structure. Use a consistent round-dot screen: tiny sparse dots in highlights, larger dense dots in shadows, one coherent screen angle. Slightly yellowed newsprint with restrained ink spread and print grain. Black ink and paper color only. No color, smooth continuous gradients, comic outlines, digital noise, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "black-and-white newspaper halftone illustration",
+          "consistent round-dot screen",
+          "coherent screen angle",
+          "yellowed newsprint",
+          "restrained ink spread and print grain"
+        ]
+      },
+      {
+        "id": "scene_i_38_cmyk_overprint",
+        "number": "38",
+        "nameCn": "CMYK 四色套印",
+        "nameEn": "Vintage CMYK Overprint",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_38_cmyk_overprint.jpg",
+        "hasImage": true,
+        "tags": [
+          "四色网角叠印",
+          "微套印偏移",
+          "复古报刊色",
+          "吸墨颗粒"
+        ],
+        "master": "复古报刊四色照相制版 (Vintage CMYK Process)",
+        "colorTone": "青、品红、黄、黑四色分离与叠印混合色",
+        "technique": "用青、品红、黄、黑四组不同网角的圆形网点叠色，带有 1-2 像素的轻微套印偏差和旧纸吸墨感。",
+        "prompt": "Create a vintage CMYK newspaper overprint of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, preserving the original composition, visual hierarchy, and important details. Build color with visibly separate cyan, magenta, yellow, and black round-dot screens at distinct angles. Allow a subtle 1 to 2 pixel registration drift, authentic ink grain, and absorbent aged-paper texture. Colors are limited yet vivid and blend into a complete image from a distance. No RGB neon glow, smooth digital gradients, plastic gloss, text, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "vintage CMYK newspaper overprint",
+          "separate cyan magenta yellow black round-dot screens",
+          "distinct screen angles",
+          "registration drift",
+          "absorbent aged-paper texture"
+        ]
+      },
+      {
+        "id": "scene_i_39_lithograph",
+        "number": "39",
+        "nameCn": "古典石版画",
+        "nameEn": "Classical Lithograph Print",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_39_lithograph.jpg",
+        "hasImage": true,
+        "tags": [
+          "油性蜡笔颗粒",
+          "油水相斥柔雾",
+          "粉性呼吸感",
+          "墨洗擦染"
+        ],
+        "master": "奥诺雷·杜米埃 (Daumier) / 德加石版",
+        "colorTone": "深黑、暖灰与浅米色石版纸粉白",
+        "technique": "利用油水相斥原理，使用油性蜡笔颗粒与墨洗擦染表现柔和灰调，石版纸表面带有细腻的粉质感与自然呼吸感。",
+        "prompt": "Lithograph of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, preserving composition, proportions, and the direction of light. Use greasy crayon grain, ink wash, and soft values; let lines break naturally with visible hand pressure, and build dark areas through layered rubbing. Keep breathing room in the paper. Limit color to deep black, warm gray, and pale cream litho paper with a chalky surface. No hard-edged vector blocks, regular halftone dots, photo sharpening, 3D lighting, text, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "classical lithograph",
+          "greasy crayon grain and ink wash",
+          "layered rubbing darks",
+          "pale cream litho paper",
+          "chalky paper surface"
+        ]
+      },
+      {
+        "id": "scene_i_40_screen_poster",
+        "number": "40",
+        "nameCn": "手工丝网海报",
+        "nameEn": "Hand-Pulled Screen Print Poster",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_40_screen_poster.jpg",
+        "hasImage": true,
+        "tags": [
+          "专色平整色块",
+          "独立分版漏印",
+          "无涂层暖白纸",
+          "张力构图"
+        ],
+        "master": "现代手工丝网版画 (Studio Screenprinting)",
+        "colorTone": "3-5 种饱和明亮的手工调配专色色块",
+        "technique": "每种专色为一层独立网版，色块平整大胆，允许细微漏印与墨层厚薄变化，呈现手工网印的张力美感。",
+        "prompt": "Hand-pulled screen-print poster of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, preserving a strong silhouette, key layers, and negative space. Use 3 to 5 spot colors, each as a separate screen layer that forms bold flat areas. Permit slight ink skips, registration variation, and uneven ink coverage on uncoated warm-white paper. Keep the composition simple and energetic. No gradients, atmospheric perspective, photographic detail, 3D effects, small explanatory type, logo, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "hand-pulled screen-print poster",
+          "3 to 5 spot colors separate screen layers",
+          "bold flat areas",
+          "slight ink skips and registration variation",
+          "uncoated warm-white paper"
+        ]
+      },
+      {
+        "id": "scene_i_41_etching_aquatint",
+        "number": "41",
+        "nameCn": "蚀刻与飞尘法",
+        "nameEn": "Etching & Aquatint Intaglio",
+        "category": "printmaking",
+        "categoryName": "版画与媒介",
+        "image": "images/scene_i_41_etching_aquatint.jpg",
+        "hasImage": true,
+        "tags": [
+          "腐蚀细密墨线",
+          "松香飞尘颗粒",
+          "深邃透明暗部",
+          "厚棉纸印痕"
+        ],
+        "master": "戈雅 (Goya) / 伦勃朗铜版蚀刻",
+        "colorTone": "深棕黑墨 (Sepia-Black) 与泛黄厚棉纸色",
+        "technique": "以酸液腐蚀出的细密凹线勾勒轮廓，并用松香粉末飞尘法焙烤出细腻透明的颗粒灰调，压印边缘带有隐约压痕。",
+        "prompt": "Etching and aquatint intaglio print of A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset, preserving fine detail, spatial relationships, and quiet light. Define contours and texture with delicate bitten lines; build tonal fields from irregular rosin grain, with deep yet transparent darks. Print in deep sepia-black on subtly aged heavy cotton paper, with a faint plate mark when appropriate. No regular dots, solid black graphic blocks, color, digital splatter, photorealism, text, signature, or watermark. --ar 16:9",
+        "keyModifiers": [
+          "etching and aquatint intaglio print",
+          "delicate bitten lines",
+          "irregular rosin grain tonal fields",
+          "deep sepia-black ink",
+          "subtly aged heavy cotton paper plate mark"
         ]
       }
     ]
