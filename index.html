@@ -104,7 +104,7 @@
 
   <!-- Main Exploration Stage -->
   <main class="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5" id="galleryGrid">
+    <div class="columns-2 md:columns-3 lg:columns-4 gap-4 sm:gap-5" id="galleryGrid">
       <!-- Visual cards populated here -->
     </div>
   </main>
@@ -504,7 +504,7 @@
 
       if (items.length === 0) {
         galleryGrid.innerHTML = `
-          <div class="col-span-full py-20 text-center text-[#71717a] bg-[#141518] rounded-xl border border-white/[0.06]">
+          <div class="w-full [column-span:_all] py-20 text-center text-[#71717a] bg-[#141518] rounded-xl border border-white/[0.06]">
             <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
             <p class="text-sm font-medium text-white">${t.noMatchTitle}</p>
             <p class="text-xs text-[#71717a] mt-1">${t.noMatchSub}</p>
@@ -523,7 +523,7 @@
         const hasChatgpt = Boolean(item.chatgptImage);
 
         return `
-          <div class="art-card flex flex-col justify-between group">
+          <div class="art-card break-inside-avoid mb-4 sm:mb-5 w-full inline-block group">
             <div class="art-card-media ${aspectClass}" onclick="openLightboxByIndex(${index})">
               <img src="${thumbSrc}" alt="${item.displayHeading}" loading="lazy" decoding="async" 
                    class="opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0')">
