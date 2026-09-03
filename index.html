@@ -19,7 +19,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.2.0">
 </head>
 <body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden bg-[#090a0c]">
 
@@ -157,7 +157,7 @@
         <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
 
-      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade & Texture Loupe -->
+      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade -->
       <div id="lightboxViewport" class="relative w-full h-full max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] flex items-center justify-center cursor-zoom-in transition-transform duration-300 ease-out select-none">
         <!-- Low-res thumbnail layer (Immediate placeholder) -->
         <img id="lightboxThumbImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Thumbnail" class="max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.08] select-none transition-opacity duration-300">
@@ -189,7 +189,7 @@
   </div>
 
   <!-- App Logic Scripts -->
-  <script src="data.js"></script>
+  <script src="data.js?v=2.2.0"></script>
   <script>
     // Bilingual Internationalization Dictionary
     const I18N = {
@@ -772,30 +772,6 @@
       if (updateHash) syncStateToHash();
     }
     window.openLightboxByIndex = openLightboxByIndex;
-
-    function openLightbox(styleId) {
-      const items = getFilteredItems();
-      const idx = items.findIndex(st => st.id === styleId);
-      if (idx !== -1) {
-        openLightboxByIndex(idx);
-      } else {
-        // Find in full SCENES_DATA
-        for (const scene of SCENES_DATA) {
-          const found = scene.styles.find(st => st.id === styleId);
-          if (found) {
-            currentSceneId = scene.id;
-            viewMode = "scene";
-            renderNavTabs();
-            renderGallery();
-            const newItems = getFilteredItems();
-            const newIdx = newItems.findIndex(st => st.id === styleId);
-            if (newIdx !== -1) openLightboxByIndex(newIdx);
-            break;
-          }
-        }
-      }
-    }
-    window.openLightbox = openLightbox;
 
     function setLightboxModel(model) {
       currentLightboxModel = model;

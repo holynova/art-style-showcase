@@ -3,39 +3,6 @@
  * 涵盖 9 大基准测试场景 × 41 种经典艺术与插画流派 (全 369 组完整出图与视觉图谱)
  */
 
-const STYLE_CATEGORIES = [
-  {
-    "id": "all",
-    "name": "全部流派",
-    "icon": "layout-grid",
-    "desc": "全量 24 种经典绘画与插画流派"
-  },
-  {
-    "id": "fine_art",
-    "name": "传统绘画与油彩",
-    "icon": "palette",
-    "desc": "颜料堆叠、笔触肌理与古典光影层次"
-  },
-  {
-    "id": "printmaking",
-    "name": "版画与印刷媒介",
-    "icon": "printer",
-    "desc": "套印对位、网点纹理与木刻矿物拓印"
-  },
-  {
-    "id": "retro_pop",
-    "name": "时代美学与潮流",
-    "icon": "compass",
-    "desc": "经典时代符号、装饰曲线与复古光泽"
-  },
-  {
-    "id": "digital",
-    "name": "现代数码与概念",
-    "icon": "monitor",
-    "desc": "极简矢量、赛璐珞光影与点阵像素美学"
-  }
-];
-
 const SCENES_DATA = [
   {
     "id": "scene_a",
