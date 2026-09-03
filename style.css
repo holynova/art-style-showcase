@@ -99,27 +99,70 @@ body {
   transform: scale(1.035);
 }
 
-/* Full-Screen Cinema Lightbox Image */
+/* Tactile Press Feedback (:active state on buttons & cards) */
+button,
+[role="button"],
+.art-card-media {
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1), background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+button:active,
+[role="button"]:active,
+.art-card-media:active {
+  transform: scale(0.975);
+}
+
+/* Full-Screen Cinema Lightbox Viewport & Settlement */
+#lightboxViewport {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease-out;
+}
+
+#lightboxModal.opacity-0 #lightboxViewport {
+  transform: scale(0.97);
+  opacity: 0;
+}
+
 #lightboxImg {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Image Fallback State */
-.image-fallback {
-  background: repeating-linear-gradient(
-    45deg,
-    #141518,
-    #141518 10px,
-    #1a1c20 10px,
-    #1a1c20 20px
-  ) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+/* Floating Prompt Bar Smooth Sliding Drawer */
+#lightboxPromptBar {
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1), opacity 180ms ease-out;
 }
 
-/* Toast */
+#lightboxPromptBar.collapsed {
+  transform: translate(-50%, calc(100% + 32px)) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Toast Arrival & Symmetrical Dismissal */
 #toast {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms ease-out;
+}
+
+#toast.toast-hidden {
+  transform: translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Random Shuffle Icon Spin */
+.icon-spin-180 {
+  transform: rotate(180deg);
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  button:active,
+  [role="button"]:active,
+  .art-card-media:active,
+  #lightboxModal.opacity-0 #lightboxViewport,
+  .icon-spin-180 {
+    transform: none !important;
+  }
 }
 
