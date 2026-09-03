@@ -1,6 +1,6 @@
 {
   "name": "art-style-showcase",
-  "version": "1.0.0",
+  "version": "2.2.0",
   "description": "🎨 AI Art Style Matrix & Comparator | 42 组全景艺术风格矩阵与交互式对比展示画廊",
   "main": "index.html",
   "scripts": {
