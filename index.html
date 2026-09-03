@@ -312,15 +312,146 @@
     const modelBtnGemini = document.getElementById("modelBtnGemini");
     const modelBtnChatgpt = document.getElementById("modelBtnChatgpt");
 
+    // ==========================================================================
+    // URL Hash Router (State Persistence & Deep Linking)
+    // ==========================================================================
+    let isSyncingFromHash = false;
+
+    function syncStateToHash(replace = false) {
+      if (isSyncingFromHash) return;
+      const params = new URLSearchParams();
+
+      if (viewMode === "style") {
+        params.set("style", currentStyleNumber);
+      } else {
+        params.set("scene", currentSceneId);
+      }
+
+      if (searchQuery) {
+        params.set("q", searchQuery);
+      }
+
+      const isModalOpen = lightboxModal && !lightboxModal.classList.contains("opacity-0");
+      if (isModalOpen) {
+        const items = getFilteredItems();
+        const activeItem = items[activeLightboxIndex];
+        if (activeItem) {
+          if (viewMode === "style") {
+            params.set("scene", activeItem.sceneId);
+          } else {
+            params.set("art", activeItem.number || activeItem.id);
+          }
+        }
+      }
+
+      const hashString = "#" + params.toString();
+      if (window.location.hash !== hashString) {
+        if (replace) {
+          history.replaceState(null, "", hashString);
+        } else {
+          window.location.hash = hashString;
+        }
+      }
+    }
+
+    function syncHashToState() {
+      const rawHash = window.location.hash.replace(/^#\/?/, "").trim();
+      if (!rawHash) {
+        if (lightboxModal && !lightboxModal.classList.contains("opacity-0")) {
+          closeLightbox(false);
+        }
+        return;
+      }
+
+      isSyncingFromHash = true;
+      try {
+        const params = new URLSearchParams(rawHash);
+
+        let sceneParam = params.get("scene");
+        let styleParam = params.get("style");
+        let artParam = params.get("art");
+        let qParam = params.get("q");
+
+        // Human-friendly shorthand like #scene_c, #05, or #style_05_ukiyoe
+        if (!sceneParam && !styleParam && !artParam) {
+          if (rawHash.startsWith("scene_")) {
+            sceneParam = rawHash;
+          } else if (/^\d+$/.test(rawHash)) {
+            styleParam = rawHash.padStart(2, "0");
+          } else if (rawHash.startsWith("style_")) {
+            artParam = rawHash;
+          }
+        }
+
+        // 1. Search Query
+        if (qParam !== null && qParam !== undefined) {
+          searchQuery = qParam.trim();
+          if (searchInput) {
+            searchInput.value = searchQuery;
+            clearSearchBtn.classList.toggle("hidden", searchQuery.length === 0);
+          }
+        }
+
+        // 2. View Mode & Selection
+        if (styleParam) {
+          const num = styleParam.padStart(2, "0");
+          const firstScene = SCENES_DATA[0];
+          if (firstScene && firstScene.styles.some(s => s.number === num)) {
+            currentStyleNumber = num;
+            viewMode = "style";
+          }
+        } else if (sceneParam) {
+          if (SCENES_DATA.some(s => s.id === sceneParam)) {
+            currentSceneId = sceneParam;
+            viewMode = "scene";
+          }
+        }
+
+        viewModeSceneBtn.classList.toggle("bg-[#e25c38]", viewMode === "scene");
+        viewModeSceneBtn.classList.toggle("text-white", viewMode === "scene");
+        viewModeSceneBtn.classList.toggle("text-[#a1a1aa]", viewMode !== "scene");
+
+        viewModeStyleBtn.classList.toggle("bg-[#e25c38]", viewMode === "style");
+        viewModeStyleBtn.classList.toggle("text-white", viewMode === "style");
+        viewModeStyleBtn.classList.toggle("text-[#a1a1aa]", viewMode !== "style");
+
+        renderNavTabs();
+        renderGallery();
+
+        // 3. Lightbox State
+        if (artParam || (viewMode === "style" && sceneParam)) {
+          const items = getFilteredItems();
+          let targetIdx = -1;
+          if (viewMode === "style" && sceneParam) {
+            targetIdx = items.findIndex(item => item.sceneId === sceneParam);
+          } else if (artParam) {
+            const padNum = artParam.padStart(2, "0");
+            targetIdx = items.findIndex(item => item.number === padNum || item.id === artParam);
+          }
+
+          if (targetIdx !== -1) {
+            openLightboxByIndex(targetIdx, false);
+          }
+        } else {
+          if (lightboxModal && !lightboxModal.classList.contains("opacity-0")) {
+            closeLightbox(false);
+          }
+        }
+      } finally {
+        isSyncingFromHash = false;
+      }
+    }
+
     // Initialize
     function init() {
       applyLanguage(currentLang);
       initEventListeners();
+      syncHashToState();
       lucide.createIcons();
     }
 
     // Set View Mode (Scene vs Style)
-    function setViewMode(mode) {
+    function setViewMode(mode, updateHash = true) {
       viewMode = mode;
       viewModeSceneBtn.classList.toggle("bg-[#e25c38]", mode === "scene");
       viewModeSceneBtn.classList.toggle("text-white", mode === "scene");
@@ -332,6 +463,7 @@
 
       renderNavTabs();
       renderGallery();
+      if (updateHash) syncStateToHash();
     }
     window.setViewMode = setViewMode;
 
@@ -441,17 +573,19 @@
     }
     window.handleMobileNavChange = handleMobileNavChange;
 
-    function switchScene(sceneId) {
+    function switchScene(sceneId, updateHash = true) {
       currentSceneId = sceneId;
       renderNavTabs();
       renderGallery();
+      if (updateHash) syncStateToHash();
     }
     window.switchScene = switchScene;
 
-    function switchStyle(styleNum) {
+    function switchStyle(styleNum, updateHash = true) {
       currentStyleNumber = styleNum;
       renderNavTabs();
       renderGallery();
+      if (updateHash) syncStateToHash();
     }
     window.switchStyle = switchStyle;
 
@@ -617,13 +751,14 @@
       searchQuery = "";
       clearSearchBtn.classList.add("hidden");
       renderGallery();
+      syncStateToHash(true);
     }
     window.clearSearch = clearSearch;
 
-    // Lightbox Logic with Texture Loupe & Focus Management
+    // Lightbox Logic with Focus Management
     let lastFocusedElement = null;
 
-    function openLightboxByIndex(index) {
+    function openLightboxByIndex(index, updateHash = true) {
       lastFocusedElement = document.activeElement;
       activeLightboxIndex = index;
       currentLightboxModel = "gemini";
@@ -634,6 +769,7 @@
       setTimeout(() => {
         if (closeLightboxBtn) closeLightboxBtn.focus();
       }, 50);
+      if (updateHash) syncStateToHash();
     }
     window.openLightboxByIndex = openLightboxByIndex;
 
@@ -771,12 +907,13 @@
       }
     };
 
-    function closeLightbox() {
+    function closeLightbox(updateHash = true) {
       lightboxModal.classList.add("opacity-0", "pointer-events-none");
       document.body.style.overflow = "";
       if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
+      if (updateHash) syncStateToHash(true);
     }
 
     // Lightbox Nav
@@ -785,6 +922,7 @@
       if (!items || items.length === 0) return;
       activeLightboxIndex = (activeLightboxIndex - 1 + items.length) % items.length;
       updateLightboxContent();
+      syncStateToHash(true);
     };
 
     nextLightboxBtn.onclick = () => {
@@ -792,17 +930,24 @@
       if (!items || items.length === 0) return;
       activeLightboxIndex = (activeLightboxIndex + 1) % items.length;
       updateLightboxContent();
+      syncStateToHash(true);
     };
 
     closeLightboxBtn.onclick = closeLightbox;
 
     // Event Listeners
     function initEventListeners() {
+      // Listen to Browser Back / Forward URL hash changes
+      window.addEventListener("hashchange", () => {
+        syncHashToState();
+      });
+
       // Search
       searchInput.oninput = (e) => {
         searchQuery = e.target.value.trim();
         clearSearchBtn.classList.toggle("hidden", searchQuery.length === 0);
         renderGallery();
+        syncStateToHash(true);
       };
       clearSearchBtn.onclick = clearSearch;
 
