@@ -28,9 +28,9 @@
     <div class="max-w-[1720px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
       
       <!-- Brand -->
-      <a href="#" class="flex items-center gap-2.5 shrink-0">
-        <span id="brandTitleText" class="font-semibold text-base sm:text-lg tracking-tight text-white">画风图谱</span>
-        <span id="brandSubText" class="text-xs text-[#71717a] font-mono hidden md:inline">Art Style Archive</span>
+      <a href="#" class="flex items-center gap-2.5 shrink-0" aria-label="画风图谱首页">
+        <span id="brandTitleText" class="font-bold text-lg sm:text-2xl tracking-tight text-white">画风图谱</span>
+        <span id="brandSubText" class="text-xs text-[#8e9099] font-mono hidden md:inline">Art Style Archive</span>
       </a>
 
       <!-- View Mode Segmented Toggle (By Scene / By Style) -->
@@ -50,10 +50,10 @@
       <!-- Global Search -->
       <div class="flex-1 max-w-xs sm:max-w-md mx-1 sm:mx-2">
         <div class="relative w-full">
-          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#71717a]"></i>
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#8e9099]"></i>
           <input type="text" id="searchInput" placeholder="搜索画风、流派或 Prompt..." 
-            class="w-full pl-8 pr-8 py-1.5 bg-[#141518] hover:bg-[#1a1c20] focus:bg-[#1a1c20] border border-white/[0.08] focus:border-[#e25c38] rounded-lg text-xs text-white placeholder-[#52525b] focus:outline-none transition-all">
-          <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-[#71717a] hover:text-white">
+            class="w-full pl-8 pr-8 py-2 bg-[#141518] hover:bg-[#1a1c20] focus:bg-[#1a1c20] border border-white/[0.1] focus:border-[#e25c38] rounded-lg text-xs text-white placeholder-[#8e9099] focus:outline-none transition-all">
+          <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8e9099] hover:text-white p-1" aria-label="清空搜索">
             <i data-lucide="x" class="w-3 h-3"></i>
           </button>
         </div>
@@ -61,20 +61,20 @@
 
       <!-- Actions -->
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <button id="randomStyleBtn" class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风">
+        <button id="randomStyleBtn" class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-medium transition-all flex items-center gap-1.5" title="随机抽取画风" aria-label="随机抽取画风">
           <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
           <span id="randomBtnText" class="hidden sm:inline">随机</span>
         </button>
 
         <!-- Language Switcher -->
         <button id="langToggleBtn" onclick="toggleLanguage()" 
-          class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-mono font-medium transition-all flex items-center gap-1" title="Switch Language / 切换语言">
+          class="px-2.5 py-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] text-xs font-mono font-medium transition-all flex items-center gap-1" title="Switch Language / 切换语言" aria-label="切换语言">
           <i data-lucide="globe" class="w-3.5 h-3.5 text-[#e25c38]"></i>
           <span id="langBtnText">EN</span>
         </button>
 
         <a href="https://github.com/holynova/art-style-showcase" target="_blank" rel="noopener noreferrer" 
-           class="p-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] transition-all flex items-center justify-center" title="GitHub 仓库">
+           class="p-1.5 rounded-lg bg-[#141518] hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.08] transition-all flex items-center justify-center" title="GitHub 仓库" aria-label="GitHub 仓库">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
       </div>
@@ -110,7 +110,12 @@
   </main>
 
   <!-- Lightbox Modal (Ultra Full-Screen Cinema with Edge-to-Edge Artwork & Floating Minimal Prompt Bar) -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-2 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-200" onclick="if(event.target===this) closeLightbox();">
+  <div id="lightboxModal" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-label="画作大图解构与提示词" 
+    class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-2 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-200" 
+    onclick="if(event.target===this) closeLightbox();">
     
     <!-- Top Floating Header Bar -->
     <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-3 z-30 shrink-0">
@@ -118,7 +123,7 @@
         <span id="lightboxNumber" class="font-mono text-[#e25c38] font-bold">#01</span>
         <span id="lightboxTitleCn" class="font-semibold text-white">厚涂油画</span>
         <span class="text-white/20">|</span>
-        <span id="lightboxTitleEn" class="text-[#a1a1aa] font-mono">Impasto Oil Painting</span>
+        <span id="lightboxTitleEn" class="text-[#8e9099] font-mono">Impasto Oil Painting</span>
       </div>
 
       <!-- Comparative Model Switcher (Gemini vs ChatGPT) -->
@@ -133,10 +138,10 @@
 
       <!-- Controls Right -->
       <div class="flex items-center gap-2">
-        <button id="togglePromptBarBtn" onclick="togglePromptBar()" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="显示/隐藏 Prompt">
+        <button id="togglePromptBarBtn" onclick="togglePromptBar()" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="显示/隐藏 Prompt" aria-label="显示或隐藏提示词卡片">
           <i data-lucide="message-square" class="w-4 h-4"></i>
         </button>
-        <button id="closeLightboxBtn" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="关闭 (Esc)">
+        <button id="closeLightboxBtn" class="p-2 rounded-lg bg-[#141518]/90 hover:bg-[#202227] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="关闭 (Esc)" aria-label="关闭大图模态框">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
@@ -145,20 +150,23 @@
     <!-- Center: True Edge-to-Edge Fullscreen Artwork Viewport -->
     <div class="flex-1 w-full flex items-center justify-center p-1 sm:p-2 overflow-hidden relative min-h-0">
       <!-- Prev / Next Floating Navigation Buttons -->
-      <button id="prevLightboxBtn" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="上一张 (←)">
+      <button id="prevLightboxBtn" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="上一张 (←)" aria-label="上一张画作">
         <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </button>
-      <button id="nextLightboxBtn" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="下一张 (→)">
+      <button id="nextLightboxBtn" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-[#141518]/80 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.1] backdrop-blur-md transition-all shadow-2xl" title="下一张 (→)" aria-label="下一张画作">
         <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
 
-      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade & Zoom -->
+      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade & Texture Loupe -->
       <div id="lightboxViewport" class="relative w-full h-full max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] flex items-center justify-center cursor-zoom-in transition-transform duration-300 ease-out select-none">
         <!-- Low-res thumbnail layer (Immediate placeholder) -->
-        <img id="lightboxThumbImg" src="" alt="Thumbnail" class="max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.08] select-none transition-opacity duration-300">
+        <img id="lightboxThumbImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Thumbnail" class="max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.08] select-none transition-opacity duration-300">
         
         <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero jump) -->
-        <img id="lightboxImg" src="" alt="Artwork" class="absolute inset-0 m-auto max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl select-none opacity-0 transition-opacity duration-400">
+        <img id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Artwork" class="absolute inset-0 m-auto max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl select-none opacity-0 transition-opacity duration-400">
+
+        <!-- 2.5x Texture Micro-Magnifier Loupe -->
+        <div id="textureLoupe" class="texture-loupe"></div>
       </div>
     </div>
 
@@ -168,7 +176,7 @@
         <p id="lightboxPromptText" class="font-mono text-xs text-[#e4e4e7] line-clamp-2 select-all leading-relaxed flex-1">
           Loading prompt...
         </p>
-        <button id="lightboxCopyBtn" class="px-4 py-2 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 text-xs shrink-0 transition-all shadow-md">
+        <button id="lightboxCopyBtn" class="px-4 py-2 rounded-lg bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 text-xs shrink-0 transition-all shadow-md" aria-label="复制此提示词">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
           <span id="lightboxCopyBtnText">复制 Prompt</span>
         </button>
@@ -178,7 +186,7 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#141518] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#141518] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
     <i data-lucide="check" class="w-4 h-4 text-[#e25c38]"></i>
     <span id="toastMsg">提示词已成功复制到剪贴板</span>
   </div>
@@ -521,20 +529,32 @@
         const thumbSrc = item.image.replace("images/", "images/thumbs/");
         const aspectClass = item.aspectRatio === "16:9" ? "aspect-[16/9]" : "aspect-[3/4]";
         const hasChatgpt = Boolean(item.chatgptImage);
+        const isPriority = index < 6;
 
         return `
           <div class="art-card break-inside-avoid mb-4 sm:mb-5 w-full inline-block group">
-            <div class="art-card-media ${aspectClass}" onclick="openLightboxByIndex(${index})">
-              <img src="${thumbSrc}" alt="${item.displayHeading}" loading="lazy" decoding="async" 
-                   class="opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0')">
+            <div class="art-card-media ${aspectClass} focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e25c38] focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] rounded-t-xl" 
+              tabindex="0" 
+              role="button" 
+              aria-label="查看【${item.displayHeading}】(${item.displaySubheading}) 高清大图解构与提示词"
+              onclick="openLightboxByIndex(${index})"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openLightboxByIndex(${index});}">
+              
+              <img src="${thumbSrc}" alt="${item.displayHeading} · ${item.displaySubheading} 风格表现" 
+                   loading="${isPriority ? 'eager' : 'lazy'}" 
+                   ${index < 4 ? 'fetchpriority="high"' : ''}
+                   decoding="async" 
+                   class="opacity-0 transition-opacity duration-300" 
+                   onload="this.classList.remove('opacity-0')"
+                   onerror="this.parentElement.classList.add('image-fallback'); this.style.display='none'; this.parentElement.innerHTML+='<div class=\\'p-4 text-center text-xs font-mono text-[#8e9099]\\'>[画作占位]</div>';">
               
               <!-- Badges on top -->
               <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 pointer-events-none">
-                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#090a0c]/85 text-[#f4f4f5] border border-white/[0.1] backdrop-blur-md">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#090a0c]/85 text-[#f4f4f5] border border-white/[0.1] backdrop-blur-md shadow-md">
                   #${item.number}
                 </span>
                 ${hasChatgpt ? `
-                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30 backdrop-blur-md">
+                  <span class="px-1.5 py-0.5 rounded text-[11px] font-mono bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30 backdrop-blur-md">
                     ✨+🤖
                   </span>
                 ` : ""}
@@ -544,10 +564,12 @@
               <div class="absolute inset-x-0 bottom-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/95 via-black/60 to-transparent flex items-end justify-between gap-2 z-10">
                 <div class="min-w-0 flex-1">
                   <div class="text-xs sm:text-sm font-semibold text-white truncate">${item.displayHeading}</div>
-                  <div class="text-[10px] font-mono text-[#a1a1aa] truncate">${item.displaySubheading}</div>
+                  <div class="text-[11px] font-mono text-[#8e9099] truncate mt-0.5">${item.displaySubheading}</div>
                 </div>
                 <button onclick="event.stopPropagation(); copyPromptByItem(this, ${index})" 
-                  class="opacity-0 group-hover:opacity-100 px-2 py-1 rounded bg-white/15 hover:bg-[#e25c38] text-white border border-white/20 text-[11px] font-mono flex items-center gap-1 transition-opacity duration-150 shrink-0 backdrop-blur-md shadow-md" title="${t.copyPrompt}">
+                  class="opacity-0 group-hover:opacity-100 px-2.5 py-1 rounded bg-white/15 hover:bg-[#e25c38] text-white border border-white/20 text-[11px] font-mono flex items-center gap-1 transition-opacity duration-150 shrink-0 backdrop-blur-md shadow-md" 
+                  title="${t.copyPrompt}" 
+                  aria-label="复制此画风出图提示词">
                   <i data-lucide="copy" class="w-3 h-3"></i>
                   <span class="hidden sm:inline">${t.copyPrompt}</span>
                 </button>
@@ -601,13 +623,20 @@
     }
     window.clearSearch = clearSearch;
 
-    // Lightbox Logic
+    // Lightbox Logic with Texture Loupe & Focus Management
+    let lastFocusedElement = null;
+
     function openLightboxByIndex(index) {
+      lastFocusedElement = document.activeElement;
       activeLightboxIndex = index;
       currentLightboxModel = "gemini";
       updateLightboxContent();
       lightboxModal.classList.remove("opacity-0", "pointer-events-none");
       document.body.style.overflow = "hidden";
+
+      setTimeout(() => {
+        if (closeLightboxBtn) closeLightboxBtn.focus();
+      }, 50);
     }
     window.openLightboxByIndex = openLightboxByIndex;
 
@@ -669,6 +698,10 @@
         currentLightboxModel = "gemini";
       }
 
+      // Hide texture loupe on content switch
+      const loupe = document.getElementById("textureLoupe");
+      if (loupe) loupe.style.display = "none";
+
       // Handle comparative models (Gemini vs ChatGPT)
       const hasChatgpt = Boolean(item.chatgptImage);
       lightboxModelSwitch.classList.toggle("hidden", !hasChatgpt);
@@ -697,9 +730,9 @@
       lightboxThumbImg.src = activeThumbSrc;
       lightboxThumbImg.alt = `${styleTitleCn} - ${sceneTitle}`;
 
-      // Prepare high-res layer
+      // Prepare high-res layer with valid transparent SVG data URI
       lightboxImg.classList.add("opacity-0");
-      lightboxImg.src = "";
+      lightboxImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E";
 
       // Preload full resolution image and crossfade in smoothly with zero jump
       const highRes = new Image();
@@ -748,6 +781,11 @@
     function closeLightbox() {
       lightboxModal.classList.add("opacity-0", "pointer-events-none");
       document.body.style.overflow = "";
+      const loupe = document.getElementById("textureLoupe");
+      if (loupe) loupe.style.display = "none";
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
     }
 
     // Lightbox Nav
@@ -767,6 +805,51 @@
 
     closeLightboxBtn.onclick = closeLightbox;
 
+    // Texture Loupe (2.5x Micro Magnifier on Hover)
+    function initTextureLoupe() {
+      const loupe = document.getElementById("textureLoupe");
+      const img = document.getElementById("lightboxImg");
+      const viewport = document.getElementById("lightboxViewport");
+      if (!loupe || !img || !viewport) return;
+
+      viewport.addEventListener("mouseenter", () => {
+        if (!img.src || img.src.startsWith("data:") || lightboxViewport.classList.contains("scale-150")) return;
+        loupe.style.display = "block";
+        loupe.style.backgroundImage = `url('${img.src}')`;
+      });
+
+      viewport.addEventListener("mouseleave", () => {
+        loupe.style.display = "none";
+      });
+
+      viewport.addEventListener("mousemove", (e) => {
+        if (lightboxViewport.classList.contains("scale-150")) {
+          loupe.style.display = "none";
+          return;
+        }
+
+        const rect = img.getBoundingClientRect();
+        const vRect = viewport.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+          loupe.style.display = "none";
+          return;
+        }
+
+        loupe.style.display = "block";
+        const loupeX = e.clientX - vRect.left;
+        const loupeY = e.clientY - vRect.top;
+        loupe.style.left = `${loupeX}px`;
+        loupe.style.top = `${loupeY}px`;
+
+        const zoom = 2.5;
+        loupe.style.backgroundSize = `${rect.width * zoom}px ${rect.height * zoom}px`;
+        loupe.style.backgroundPosition = `-${x * zoom - 80}px -${y * zoom - 80}px`;
+      });
+    }
+
     // Event Listeners
     function initEventListeners() {
       // Search
@@ -777,7 +860,7 @@
       };
       clearSearchBtn.onclick = clearSearch;
 
-      // Keyboard Shortcut "/" for search and Escape to close modal
+      // Keyboard Shortcuts
       window.addEventListener("keydown", (e) => {
         if (e.key === "/" && document.activeElement !== searchInput && lightboxModal.classList.contains("opacity-0")) {
           e.preventDefault();
@@ -790,6 +873,10 @@
           } else if (e.key === "ArrowRight") {
             nextLightboxBtn.click();
           }
+        } else if (document.activeElement !== searchInput && lightboxModal.classList.contains("opacity-0")) {
+          // View mode toggle with '1' and '2'
+          if (e.key === "1") setViewMode("scene");
+          if (e.key === "2") setViewMode("style");
         }
       });
 
@@ -803,6 +890,9 @@
         const randomItem = items[randomIdx];
         showToast(t.randomToast(randomItem.displayHeading));
       };
+
+      // Initialize Texture Loupe
+      initTextureLoupe();
     }
 
     // Run

@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Art Style Archive · Clean Editorial Stylesheet
+   Art Style Archive · Impeccable Craft Stylesheet
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --bg-canvas: #090a0c;
@@ -10,12 +10,18 @@
   --bg-surface-hover: #1e2025;
   --border-subtle: rgba(255, 255, 255, 0.08);
   --accent-terracotta: #e25c38;
+  --accent-terracotta-glow: rgba(226, 92, 56, 0.35);
+  --text-primary: #fbfbfa;
+  --text-muted: #a1a1aa;
+  --text-dim: #8e9099; /* Boosted for WCAG AA compliance (>=4.5:1 on dark canvas) */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 html {
   background-color: var(--bg-canvas);
   color: #f4f4f5;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -23,6 +29,12 @@ html {
 body {
   background-color: var(--bg-canvas);
   min-height: 100vh;
+}
+
+/* Global Accessible Keyboard Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--accent-terracotta) !important;
+  outline-offset: 2px !important;
 }
 
 /* Custom Scrollbar */
@@ -45,10 +57,10 @@ body {
 .art-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   break-inside: avoid;
   page-break-inside: avoid;
   -webkit-column-break-inside: avoid;
@@ -64,14 +76,15 @@ body {
 }
 
 .art-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(226, 92, 56, 0.4);
+  transform: translateY(-3px);
+  border-color: rgba(226, 92, 56, 0.45);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 15px -3px rgba(226, 92, 56, 0.15);
 }
 
 .art-card-media {
   position: relative;
   overflow: hidden;
-  background-color: #000;
+  background-color: #0d0e11;
   cursor: pointer;
 }
 
@@ -79,16 +92,45 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .art-card:hover .art-card-media img {
-  transform: scale(1.03);
+  transform: scale(1.035);
 }
 
-/* Full-Screen Cinema Lightbox */
+/* Full-Screen Cinema Lightbox Image */
 #lightboxImg {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Texture Loupe (2.5x Micro-Magnifier on hover) */
+.texture-loupe {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid rgba(226, 92, 56, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.9), 0 0 20px rgba(226, 92, 56, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  background-repeat: no-repeat;
+  display: none;
+  z-index: 45;
+  transform: translate(-50%, -50%);
+}
+
+/* Image Fallback State */
+.image-fallback {
+  background: repeating-linear-gradient(
+    45deg,
+    #141518,
+    #141518 10px,
+    #1a1c20 10px,
+    #1a1c20 20px
+  ) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /* Toast */
