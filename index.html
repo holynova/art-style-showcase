@@ -83,9 +83,9 @@
         <div class="relative w-full">
           <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#888990]"></i>
           <input type="text" id="searchInput" placeholder="搜索流派、笔触、大师或 Prompt 关键词... (/) " 
-            class="w-full pl-8 pr-8 py-1.5 bg-[#18191d] hover:bg-[#1e2025] focus:bg-[#1e2025] border border-white/[0.08] focus:border-[#e25c38] rounded-lg text-xs text-[#fbfbfa] placeholder-[#5c5d64] focus:outline-none transition-all">
-          <button id="clearSearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-[#888990] hover:text-white">
-            <i data-lucide="x" class="w-3 h-3"></i>
+            class="w-full pl-8 pr-8 py-1.5 bg-[#18191d] hover:bg-[#1e2025] focus:bg-[#1e2025] border border-white/[0.08] focus:border-[#e25c38] rounded-lg text-xs text-[#fbfbfa] placeholder-[#8e9099] focus:outline-none transition-all">
+          <button id="clearSearchBtn" class="hidden absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-[#888990] hover:text-white rounded-md transition-colors" title="清空搜索">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
           </button>
         </div>
       </div>
@@ -155,7 +155,7 @@
                 <i data-lucide="layers" class="w-3.5 h-3.5 text-[#e25c38]"></i>
                 基准测试场景 (9)
               </span>
-              <span class="text-[10px] font-mono text-[#5c5d64]">固定主体变量</span>
+              <span class="text-[11px] font-mono text-[#8e9099]">固定主体常数</span>
             </div>
 
             <div class="space-y-1.5" id="sceneSidebarContainer">
@@ -170,7 +170,7 @@
                 <i data-lucide="palette" class="w-3.5 h-3.5 text-amber-500"></i>
                 艺术流派分类 (24)
               </span>
-              <span id="activeCategoryCount" class="text-[10px] font-mono text-[#e25c38]">24 风格</span>
+              <span id="activeCategoryCount" class="text-[11px] font-mono text-[#e25c38]">24 风格</span>
             </div>
 
             <div class="space-y-1" id="categorySidebarContainer">
@@ -185,8 +185,8 @@
                 <i data-lucide="crosshair" class="w-3 h-3 text-[#e25c38]"></i>
                 当前场景主体 Prompt
               </span>
-              <button id="copyCoreSubjectBtn" class="text-[10px] text-[#a1a1aa] hover:text-[#e25c38] font-mono flex items-center gap-1 transition-colors">
-                <i data-lucide="copy" class="w-2.5 h-2.5"></i> 复制主体
+              <button id="copyCoreSubjectBtn" class="text-[11px] text-[#a1a1aa] hover:text-[#e25c38] font-mono flex items-center gap-1 transition-colors py-0.5 px-1.5 rounded hover:bg-white/[0.04]">
+                <i data-lucide="copy" class="w-3 h-3"></i> 复制主体
               </button>
             </div>
             <p id="sidebarCoreSubject" class="font-mono-code text-[11px] text-[#c4c4c7] line-clamp-3 bg-[#121316] p-2.5 rounded-lg border border-white/[0.04] select-all leading-relaxed">
@@ -219,6 +219,9 @@
               <span id="activeSceneBadge" class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-[#24262c] text-[#e25c38] border border-white/[0.08]">
                 SCENE I · 3:4 肖像
               </span>
+              <span id="activeCategoryBadge" class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-[#121316] text-[#c4c4c7] border border-white/[0.08]">
+                全部流派
+              </span>
               <span id="filteredCountBadge" class="text-xs font-mono text-[#888990]">
                 显示 24 / 24 组
               </span>
@@ -229,7 +232,7 @@
             <p id="activeSceneDesc" class="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed">
               咖啡馆雨窗旁，戴宽檐帽喝咖啡的优雅女性，木桌上趴着一只睡猫。用于测试人物五官结构、衣褶质感、室内外冷暖对比与情绪传达。
             </p>
-            <!-- Category Filter Pills -->
+            <!-- Category Filter Pills / Benchmark Indicator -->
             <div class="flex flex-wrap items-center gap-1.5 pt-1" id="categoryHeaderPills">
               <!-- Injected dynamically -->
             </div>
@@ -361,24 +364,34 @@
   </div>
 
   <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
-    <div class="relative max-w-5xl w-full max-h-[92vh] bg-[#18191d] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+  <div id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitleCn" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div id="lightboxCard" class="relative max-w-5xl w-full max-h-[92vh] bg-[#18191d] border border-white/[0.1] rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
       <!-- Close Button -->
-      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-20 p-2 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
+      <button id="closeLightboxBtn" class="absolute top-4 right-4 z-30 p-2 rounded-lg bg-[#121316]/85 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all" title="关闭 (Esc 快捷键)" aria-label="关闭画作解构弹窗">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <!-- Prev / Next Navigation buttons -->
-      <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
-        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-      </button>
-      <button id="nextLightboxBtn" class="absolute right-4 md:right-[400px] top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-lg bg-[#121316]/80 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white transition-all">
-        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-      </button>
+      <!-- Image Area with Integrated Controls & Texture Loupe -->
+      <div id="lightboxImageArea" class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[320px] select-none">
+        <!-- Prev / Next Navigation buttons directly framed in image area -->
+        <button id="prevLightboxBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-lg bg-[#121316]/85 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all shadow-lg" title="上一张 (← 快捷键)" aria-label="上一张艺术画作">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button id="nextLightboxBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2.5 rounded-lg bg-[#121316]/85 hover:bg-[#24262c] text-[#a1a1aa] hover:text-white border border-white/[0.1] transition-all shadow-lg" title="下一张 (→ 快捷键)" aria-label="下一张艺术画作">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
 
-      <!-- Image Area -->
-      <div class="flex-1 bg-[#0b0c0e] flex items-center justify-center p-4 overflow-hidden relative min-h-[320px]">
-        <img id="lightboxImg" src="" alt="Artwork" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-xl">
+        <!-- Artwork image -->
+        <img id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" alt="Artwork preview" class="max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-xl cursor-crosshair">
+
+        <!-- Interactive Micro-Texture Loupe -->
+        <div id="textureLoupe" class="texture-loupe"></div>
+
+        <!-- Micro-hint strip -->
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 px-3 py-1 rounded-full bg-[#121316]/80 backdrop-blur-sm border border-white/[0.1] text-[11px] font-mono text-[#8e9099] hidden sm:flex items-center gap-2 pointer-events-none">
+          <i data-lucide="sparkles" class="w-3 h-3 text-[#e25c38]"></i>
+          <span>悬浮画作启用 2.5x 微观笔触放大镜 · 键盘 ←/→ 切换</span>
+        </div>
       </div>
 
       <!-- Details Drawer Area -->
@@ -405,7 +418,7 @@
             <div class="text-[#888990] font-mono uppercase text-[11px] mb-1.5">完整提示词 (Prompt)：</div>
             <div class="bg-[#121316] p-3 rounded-lg border border-white/[0.08] font-mono-code text-[11px] text-[#e4e4e7] break-words leading-relaxed">
               <span id="lightboxPromptText">Prompt text</span>
-              <button id="lightboxCopyBtn" class="mt-3 w-full py-2 rounded-md bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 transition-all text-xs">
+              <button id="lightboxCopyBtn" class="mt-3 w-full py-2 rounded-md bg-[#e25c38] hover:bg-[#c8502e] text-white font-medium flex items-center justify-center gap-1.5 transition-all text-xs" aria-label="复制当前提示词">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 <span id="lightboxCopyBtnText">复制 Prompt</span>
               </button>
@@ -423,8 +436,8 @@
     </div>
   </div>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#18191d] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
+  <!-- Toast Notification (Accessible Live Region) -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-lg bg-[#18191d] border border-white/[0.15] text-[#fbfbfa] text-xs font-medium shadow-2xl flex items-center gap-2.5 transform translate-y-20 opacity-0 transition-all duration-200 pointer-events-none">
     <i data-lucide="check" class="w-4 h-4 text-[#e25c38]"></i>
     <span id="toastMsg">提示词已成功复制到剪贴板</span>
   </div>
@@ -534,7 +547,7 @@
       lucide.createIcons();
     }
 
-    // Render Category Sidebar Tabs & Header Pills
+    // Render Category Sidebar Tabs & Refined Benchmark Meta
     function renderCategorySidebar() {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       const allCount = scene ? scene.styles.length : 24;
@@ -551,39 +564,44 @@
               isActive 
                 ? 'bg-[#e25c38]/15 text-[#e25c38] border-[#e25c38]/40 font-semibold' 
                 : 'bg-[#18191d]/60 text-[#a1a1aa] hover:text-white border-transparent hover:border-white/[0.08]'
-            }">
+            }"
+            aria-pressed="${isActive}">
             <div class="flex items-center gap-2">
               <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
               <span>${cat.name}</span>
             </div>
-            <span class="text-[10px] font-mono px-1.5 py-0.2 rounded ${isActive ? 'bg-[#e25c38] text-white' : 'bg-[#121316] text-[#888990]'}">
+            <span class="text-[11px] font-mono px-1.5 py-0.5 rounded ${isActive ? 'bg-[#e25c38] text-white' : 'bg-[#121316] text-[#888990]'}">
               ${count}
             </span>
           </button>
         `;
       }).join('');
 
+      // Refined Header Meta (Replaces duplicate category pills)
       const categoryHeaderPills = document.getElementById('categoryHeaderPills');
       if (categoryHeaderPills) {
-        categoryHeaderPills.innerHTML = STYLE_CATEGORIES.map(cat => {
-          const isActive = cat.id === currentCategory;
-          const count = cat.id === 'all' 
-            ? allCount 
-            : (scene ? scene.styles.filter(s => s.category === cat.id).length : 0);
-
-          return `
-            <button onclick="setCategory('${cat.id}')" 
-              class="px-2.5 py-1 rounded-md text-[11px] font-medium flex items-center gap-1.5 transition-all border ${
-                isActive 
-                  ? 'bg-[#e25c38] text-white border-[#e25c38] shadow-sm' 
-                  : 'bg-[#121316] text-[#a1a1aa] hover:text-white border-white/[0.06] hover:border-white/[0.15]'
-              }">
-              <i data-lucide="${cat.icon}" class="w-3 h-3"></i>
-              <span>${cat.name}</span>
-              <span class="opacity-70 text-[10px] font-mono">(${count})</span>
-            </button>
-          `;
-        }).join('');
+        const catObj = STYLE_CATEGORIES.find(c => c.id === currentCategory);
+        categoryHeaderPills.innerHTML = `
+          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-[#121316] text-[#e25c38] border border-[#e25c38]/30 flex items-center gap-1.5">
+              <i data-lucide="${catObj ? catObj.icon : 'palette'}" class="w-3.5 h-3.5"></i>
+              <span>当前筛选: ${catObj ? catObj.name : '全部流派'}</span>
+              ${currentCategory !== 'all' ? `
+                <button onclick="setCategory('all')" class="ml-1 text-[#888990] hover:text-white p-0.5 rounded transition-colors" title="重置为全部流派" aria-label="清除流派筛选">
+                  <i data-lucide="x" class="w-3 h-3"></i>
+                </button>
+              ` : ''}
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-[#121316] text-[#8e9099] border border-white/[0.06] flex items-center gap-1.5">
+              <i data-lucide="ratio" class="w-3.5 h-3.5 text-amber-500"></i>
+              <span>${scene ? scene.aspectRatio : '3:4'} ${scene && scene.aspectRatio === '16:9' ? '全景画幅' : '肖像画幅'}</span>
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-[#121316] text-[#8e9099] border border-white/[0.06] hidden sm:flex items-center gap-1.5">
+              <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>主体变量锁定 · 风格词差分</span>
+            </span>
+          </div>
+        `;
       }
 
       lucide.createIcons();
@@ -602,7 +620,10 @@
       document.getElementById('sidebarCoreSubject').innerText = scene.coreSubject;
 
       const catObj = STYLE_CATEGORIES.find(c => c.id === currentCategory);
-      document.getElementById('activeCategoryBadge').innerText = catObj ? catObj.name : '全部流派';
+      const activeCatBadge = document.getElementById('activeCategoryBadge');
+      if (activeCatBadge) {
+        activeCatBadge.innerText = catObj ? catObj.name : '全部流派';
+      }
       
       const filtered = getFilteredStyles();
       document.getElementById('filteredCountBadge').innerText = `显示 ${filtered.length} / ${scene.styles.length} 组`;
@@ -670,35 +691,46 @@
         return;
       }
 
-      galleryGrid.innerHTML = items.map(item => {
+      galleryGrid.innerHTML = items.map((item, idx) => {
+        const isPriority = idx < 6;
         return `
           <div class="gallery-card flex flex-col justify-between overflow-hidden group">
             <div>
-              <!-- Artwork Frame -->
-              <div class="artwork-frame ${aspectClass} cursor-pointer relative" onclick="openLightbox('${item.id}')">
-                <img src="${item.image}" alt="${item.nameCn}" 
-                  class="w-full h-full object-cover" 
-                  loading="lazy">
+              <!-- Artwork Frame (Keyboard Accessible) -->
+              <div class="artwork-frame ${aspectClass} cursor-pointer relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e25c38] focus-visible:ring-offset-2 focus-visible:ring-offset-[#121316] rounded-t-xl" 
+                tabindex="0" 
+                role="button" 
+                aria-label="查看【${item.nameCn}】(${item.nameEn}) 大图解构与提示词"
+                onclick="openLightbox('${item.id}')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openLightbox('${item.id}');}">
+                
+                <img src="${item.image}" alt="${item.nameCn} · ${item.nameEn} 风格表现" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                  loading="${isPriority ? 'eager' : 'lazy'}"
+                  ${idx < 4 ? 'fetchpriority="high"' : ''}
+                  onerror="this.parentElement.classList.add('image-fallback'); this.style.display='none'; this.parentElement.innerHTML+='<div class=\\'p-4 text-center text-xs font-mono text-[#8e9099]\\'>[画作离线占位]</div>';">
                 
                 <!-- Quick Overlay Actions -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3.5">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3.5 pointer-events-none">
                   <span class="text-xs font-medium text-white flex items-center gap-1.5 bg-[#121316]/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/[0.15]">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#e25c38]"></i>
                     查看大图解构
                   </span>
 
                   <button onclick="event.stopPropagation(); setForComparison('${item.id}')" 
-                    class="p-1.5 rounded-lg bg-[#121316]/90 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.15] transition-all" title="加入对比台">
+                    class="p-1.5 rounded-lg bg-[#121316]/90 hover:bg-[#e25c38] text-[#a1a1aa] hover:text-white border border-white/[0.15] transition-all pointer-events-auto" 
+                    title="加入对比台" 
+                    aria-label="将【${item.nameCn}】加入对比台">
                     <i data-lucide="git-compare" class="w-3.5 h-3.5"></i>
                   </button>
                 </div>
                 
                 <!-- Card Badge Header -->
-                <div class="absolute top-3 left-3 flex items-center gap-1.5">
-                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#121316]/90 text-[#fbfbfa] border border-white/[0.1] shadow-md">
+                <div class="absolute top-3 left-3 flex items-center gap-1.5 pointer-events-none">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-[#121316]/90 text-[#fbfbfa] border border-white/[0.1] shadow-md">
                     #${item.number}
                   </span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#24262c]/90 text-[#c4c4c7] border border-white/[0.08]">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-[#24262c]/90 text-[#c4c4c7] border border-white/[0.08]">
                     ${item.categoryName}
                   </span>
                 </div>
@@ -711,10 +743,10 @@
                     <h3 class="text-base sm:text-lg font-bold text-[#fbfbfa] font-serif-editorial group-hover:text-[#e25c38] transition-colors">
                       ${item.nameCn}
                     </h3>
-                    <div class="text-xs font-mono text-[#888990] mt-0.5">${item.nameEn}</div>
+                    <div class="text-xs font-mono text-[#8e9099] mt-0.5">${item.nameEn}</div>
                   </div>
                   ${item.master ? `
-                    <span class="text-[11px] text-[#888990] px-2 py-0.5 rounded bg-[#121316] border border-white/[0.06] shrink-0 max-w-[120px] truncate" title="${item.master}">
+                    <span class="text-[11px] text-[#8e9099] px-2 py-0.5 rounded bg-[#121316] border border-white/[0.06] shrink-0 max-w-[150px] truncate" title="${item.master}">
                       ${item.master.split('/')[0].trim()}
                     </span>
                   ` : ''}
@@ -737,9 +769,9 @@
             <!-- Prompt Box & Actions -->
             <div class="p-4 sm:p-5 pt-0">
               <div class="prompt-box p-3">
-                <div class="flex items-center justify-between text-[10px] font-mono text-[#888990] mb-1.5">
+                <div class="flex items-center justify-between text-[11px] font-mono text-[#8e9099] mb-1.5">
                   <span>PROMPT STRUCTURE</span>
-                  <button onclick="copyPrompt('${item.id}', this)" class="text-[#c4c4c7] hover:text-[#e25c38] flex items-center gap-1 font-medium transition-colors">
+                  <button onclick="copyPrompt('${item.id}', this)" class="text-[#c4c4c7] hover:text-[#e25c38] flex items-center gap-1 font-medium transition-colors" aria-label="复制此画风提示词">
                     <i data-lucide="copy" class="w-3 h-3"></i>
                     <span>复制</span>
                   </button>
@@ -749,7 +781,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         `;
       }).join('');
@@ -849,17 +880,25 @@
       sidebarBackdrop.classList.add('hidden');
     }
 
-    // Lightbox Logic
+    // Lightbox Logic & Texture Loupe
+    let lastFocusedElement = null;
+
     window.openLightbox = function(styleId) {
       const scene = SCENES_DATA.find(s => s.id === currentSceneId);
       if (!scene) return;
       const idx = scene.styles.findIndex(st => st.id === styleId);
       if (idx === -1) return;
 
+      lastFocusedElement = document.activeElement;
       activeLightboxIndex = idx;
       updateLightboxContent();
       lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
       document.body.style.overflow = 'hidden';
+
+      // Focus management
+      setTimeout(() => {
+        closeLightboxBtn.focus();
+      }, 50);
     };
 
     function updateLightboxContent() {
@@ -869,7 +908,7 @@
       if (!item) return;
 
       lightboxImg.src = item.image || '';
-      lightboxImg.alt = item.nameCn;
+      lightboxImg.alt = `${item.nameCn} · ${item.nameEn} 艺术画作高清大图`;
       lightboxNumber.innerText = `#${item.number}`;
       lightboxCategory.innerText = item.categoryName;
       lightboxTitleCn.innerText = item.nameCn;
@@ -877,6 +916,12 @@
       lightboxMaster.innerText = item.master || '经典艺术流派';
       lightboxTechnique.innerText = item.technique || item.colorTone || '精细风格控制变量测试';
       lightboxPromptText.innerText = item.prompt;
+
+      // Hide texture loupe upon artwork switch
+      const textureLoupe = document.getElementById('textureLoupe');
+      if (textureLoupe) {
+        textureLoupe.style.display = 'none';
+      }
       
       lightboxCopyBtn.onclick = () => {
         navigator.clipboard.writeText(item.prompt).then(() => {
@@ -898,7 +943,21 @@
     function closeLightbox() {
       lightboxModal.classList.add('opacity-0', 'pointer-events-none');
       document.body.style.overflow = '';
+      const textureLoupe = document.getElementById('textureLoupe');
+      if (textureLoupe) {
+        textureLoupe.style.display = 'none';
+      }
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
     }
+
+    // Dismiss modal on clicking backdrop
+    lightboxModal.onclick = (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    };
 
     // Lightbox Nav
     prevLightboxBtn.onclick = () => {
@@ -916,6 +975,46 @@
     };
 
     closeLightboxBtn.onclick = closeLightbox;
+
+    // Micro-Texture Loupe Mouse Event Registration
+    function initTextureLoupe() {
+      const loupe = document.getElementById('textureLoupe');
+      const img = document.getElementById('lightboxImg');
+      const area = document.getElementById('lightboxImageArea');
+      if (!loupe || !img || !area) return;
+
+      img.addEventListener('mouseenter', () => {
+        if (!img.src || img.src.startsWith('data:')) return;
+        loupe.style.display = 'block';
+        loupe.style.backgroundImage = `url('${img.src}')`;
+      });
+
+      img.addEventListener('mouseleave', () => {
+        loupe.style.display = 'none';
+      });
+
+      img.addEventListener('mousemove', (e) => {
+        const imgRect = img.getBoundingClientRect();
+        const areaRect = area.getBoundingClientRect();
+        const x = e.clientX - imgRect.left;
+        const y = e.clientY - imgRect.top;
+
+        if (x < 0 || y < 0 || x > imgRect.width || y > imgRect.height) {
+          loupe.style.display = 'none';
+          return;
+        }
+
+        loupe.style.display = 'block';
+        const loupeX = e.clientX - areaRect.left;
+        const loupeY = e.clientY - areaRect.top;
+        loupe.style.left = `${loupeX}px`;
+        loupe.style.top = `${loupeY}px`;
+
+        const zoom = 2.5;
+        loupe.style.backgroundSize = `${imgRect.width * zoom}px ${imgRect.height * zoom}px`;
+        loupe.style.backgroundPosition = `-${x * zoom - 80}px -${y * zoom - 80}px`;
+      });
+    }
 
     // Comparison View Logic
     function initComparisonView() {
@@ -1025,21 +1124,28 @@
         stage.innerHTML = `
           <div class="comparison-container ${sliderAspect} mx-auto rounded-xl overflow-hidden border border-white/[0.1] relative" id="sliderBox">
             <!-- Background Image (Right / Style B) -->
-            <img src="${styleB.image || ''}" class="absolute inset-0 w-full h-full object-cover select-none">
+            <img src="${styleB.image || ''}" alt="${styleB.nameCn} 艺术风格对比右图" class="absolute inset-0 w-full h-full object-cover select-none">
             <div class="absolute top-4 right-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#d97706] border border-[#d97706]/30 font-mono font-bold">
               ${styleB.nameCn}
             </div>
 
             <!-- Overlay Image (Left / Style A) -->
             <div class="comparison-overlay w-1/2 z-10" id="sliderOverlay">
-              <img src="${styleA.image || ''}" class="absolute inset-0 max-w-none w-full h-full object-cover select-none" id="sliderImgLeft">
+              <img src="${styleA.image || ''}" alt="${styleA.nameCn} 艺术风格对比左图" class="absolute inset-0 max-w-none w-full h-full object-cover select-none" id="sliderImgLeft">
               <div class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-[#121316]/90 backdrop-blur-md text-xs text-[#e25c38] border border-[#e25c38]/30 font-mono font-bold">
                 ${styleA.nameCn}
               </div>
             </div>
 
-            <!-- Slider Handle -->
-            <div class="comparison-handle left-1/2" id="sliderHandle">
+            <!-- Slider Handle (Keyboard Accessible Slider) -->
+            <div class="comparison-handle left-1/2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e25c38]" 
+              id="sliderHandle" 
+              role="slider" 
+              tabindex="0" 
+              aria-valuenow="50" 
+              aria-valuemin="0" 
+              aria-valuemax="100" 
+              aria-label="画风分割对比滑块: 左侧 ${styleA.nameCn}, 右侧 ${styleB.nameCn}">
               <div class="comparison-knob">
                 <i data-lucide="move-horizontal" class="w-3.5 h-3.5"></i>
               </div>
@@ -1049,13 +1155,16 @@
         initSliderDrag();
       }
 
-      // Diff Table
+      // Diff Table with Visual Prompt Diffing
       const diffTableBody = document.getElementById('diffTableBody');
+      const modsA = styleA.keyModifiers || [];
+      const modsB = styleB.keyModifiers || [];
+
       diffTableBody.innerHTML = `
         <tr>
           <td class="p-3.5 font-medium text-[#888990] font-mono">流派分类</td>
-          <td class="p-3.5">${styleA.categoryName}</td>
-          <td class="p-3.5">${styleB.categoryName}</td>
+          <td class="p-3.5 text-[#fbfbfa]">${styleA.categoryName}</td>
+          <td class="p-3.5 text-[#fbfbfa]">${styleB.categoryName}</td>
         </tr>
         <tr>
           <td class="p-3.5 font-medium text-[#888990] font-mono">笔触与物理特征</td>
@@ -1068,9 +1177,26 @@
           <td class="p-3.5 text-[#a1a1aa]">${styleB.colorTone || '清爽高饱和'}</td>
         </tr>
         <tr>
-          <td class="p-3.5 font-medium text-[#888990] font-mono">核心修饰关键词</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#e25c38]">${(styleA.keyModifiers || []).join(', ')}</td>
-          <td class="p-3.5 font-mono-code text-[11px] text-[#d97706]">${(styleB.keyModifiers || []).join(', ')}</td>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">核心修饰词 (Tokens)</td>
+          <td class="p-3.5 font-mono-code text-[11px]">
+            ${modsA.map(m => `<span class="diff-token-mod-left">${m}</span>`).join(' ')}
+          </td>
+          <td class="p-3.5 font-mono-code text-[11px]">
+            ${modsB.map(m => `<span class="diff-token-mod-right">${m}</span>`).join(' ')}
+          </td>
+        </tr>
+        <tr>
+          <td class="p-3.5 font-medium text-[#888990] font-mono">完整 Prompt 结构对照</td>
+          <td class="p-3.5 font-mono-code text-[11px] leading-relaxed text-[#a1a1aa]">
+            <div class="bg-[#121316] p-3 rounded-lg border border-white/[0.04]">
+              ${styleA.prompt}
+            </div>
+          </td>
+          <td class="p-3.5 font-mono-code text-[11px] leading-relaxed text-[#a1a1aa]">
+            <div class="bg-[#121316] p-3 rounded-lg border border-white/[0.04]">
+              ${styleB.prompt}
+            </div>
+          </td>
         </tr>
       `;
 
@@ -1085,17 +1211,24 @@
       if (!box || !overlay || !handle) return;
 
       let isDown = false;
+      let currentPercentage = 50;
 
       function updateSliderPosition(clientX) {
         const rect = box.getBoundingClientRect();
         let posX = clientX - rect.left;
         if (posX < 0) posX = 0;
         if (posX > rect.width) posX = rect.width;
-        const percentage = (posX / rect.width) * 100;
-        overlay.style.width = `${percentage}%`;
-        handle.style.left = `${percentage}%`;
+        currentPercentage = (posX / rect.width) * 100;
+        applyPercentage(currentPercentage, rect.width);
+      }
+
+      function applyPercentage(pct, boxWidth) {
+        pct = Math.max(0, Math.min(100, pct));
+        overlay.style.width = `${pct}%`;
+        handle.style.left = `${pct}%`;
+        handle.setAttribute('aria-valuenow', Math.round(pct));
         if (imgLeft) {
-          imgLeft.style.width = `${rect.width}px`;
+          imgLeft.style.width = `${boxWidth || box.getBoundingClientRect().width}px`;
         }
       }
 
@@ -1103,10 +1236,38 @@
       window.onmouseup = () => { isDown = false; };
       window.onmousemove = (e) => { if (isDown) updateSliderPosition(e.clientX); };
 
-      // Touch
+      // Touch support
       box.ontouchstart = (e) => { isDown = true; updateSliderPosition(e.touches[0].clientX); };
       window.ontouchend = () => { isDown = false; };
       window.ontouchmove = (e) => { if (isDown) updateSliderPosition(e.touches[0].clientX); };
+
+      // Keyboard arrow control for slider
+      handle.onkeydown = (e) => {
+        if (e.key === 'ArrowLeft') {
+          currentPercentage = Math.max(0, currentPercentage - 5);
+          applyPercentage(currentPercentage);
+          e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+          currentPercentage = Math.min(100, currentPercentage + 5);
+          applyPercentage(currentPercentage);
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          currentPercentage = 0;
+          applyPercentage(0);
+          e.preventDefault();
+        } else if (e.key === 'End') {
+          currentPercentage = 100;
+          applyPercentage(100);
+          e.preventDefault();
+        }
+      };
+
+      // Responsive resize correction
+      window.addEventListener('resize', () => {
+        if (box && imgLeft) {
+          imgLeft.style.width = `${box.getBoundingClientRect().width}px`;
+        }
+      });
     }
 
     // Set Grid Density
@@ -1136,11 +1297,46 @@
       };
       clearSearchBtn.onclick = clearSearch;
 
-      // Keyboard Shortcut '/' for search
+      // Global Keyboard Shortcuts
       window.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== searchInput && lightboxModal.classList.contains('opacity-0')) {
+        // Close modal on Escape
+        if (e.key === 'Escape') {
+          if (!lightboxModal.classList.contains('pointer-events-none')) {
+            closeLightbox();
+            e.preventDefault();
+            return;
+          }
+          if (!sidebarDrawer.classList.contains('-translate-x-full')) {
+            closeMobileMenu();
+            e.preventDefault();
+            return;
+          }
+        }
+
+        // Arrow Left / Right navigation inside Lightbox
+        if (!lightboxModal.classList.contains('pointer-events-none')) {
+          if (e.key === 'ArrowLeft') {
+            prevLightboxBtn.click();
+            e.preventDefault();
+            return;
+          } else if (e.key === 'ArrowRight') {
+            nextLightboxBtn.click();
+            e.preventDefault();
+            return;
+          }
+        }
+
+        // Search shortcut '/'
+        if (e.key === '/' && document.activeElement !== searchInput && lightboxModal.classList.contains('pointer-events-none')) {
           e.preventDefault();
           searchInput.focus();
+        }
+
+        // View toggle shortcuts '1', '2', '3' (when not in search or textarea)
+        if (['1', '2', '3'].includes(e.key) && document.activeElement !== searchInput && lightboxModal.classList.contains('pointer-events-none')) {
+          if (e.key === '1') viewGridBtn.click();
+          if (e.key === '2') viewCompareBtn.click();
+          if (e.key === '3') viewCheatBtn.click();
         }
       });
 
@@ -1221,20 +1417,50 @@
         updateComparisonDisplay();
       };
 
-      // Export
+      // Export (Structured JSON & Plaintext Dataset)
       exportPromptsBtn.onclick = () => {
         const scene = SCENES_DATA.find(s => s.id === currentSceneId);
         if (!scene) return;
-        const textData = scene.styles.map(st => `=== ${st.number}. ${st.nameCn} (${st.nameEn}) ===\nMaster: ${st.master}\nTechnique: ${st.technique}\nPrompt: ${st.prompt}\nTags: ${st.tags.join(', ')}\n`).join('\n\n');
-        const blob = new Blob([textData], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
+        
+        // Structured JSON dataset
+        const exportDataset = {
+          benchmarkScene: {
+            id: scene.id,
+            title: scene.title,
+            aspectRatio: scene.aspectRatio,
+            coreSubject: scene.coreSubject,
+            description: scene.description
+          },
+          generatedAt: new Date().toISOString(),
+          stylesCount: scene.styles.length,
+          styles: scene.styles.map(st => ({
+            id: st.id,
+            number: st.number,
+            nameCn: st.nameCn,
+            nameEn: st.nameEn,
+            category: st.category,
+            categoryName: st.categoryName,
+            master: st.master,
+            technique: st.technique,
+            colorTone: st.colorTone,
+            keyModifiers: st.keyModifiers,
+            prompt: st.prompt,
+            tags: st.tags
+          }))
+        };
+
+        const jsonBlob = new Blob([JSON.stringify(exportDataset, null, 2)], { type: 'application/json;charset=utf-8' });
+        const url = URL.createObjectURL(jsonBlob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `${scene.id}_prompts.txt`;
+        a.download = `${scene.id}_styles_benchmark.json`;
         a.click();
         URL.revokeObjectURL(url);
-        showToast(`已导出【${scene.title}】全部 Prompt 图谱`);
+        showToast(`已导出【${scene.title}】结构化 JSON 提示词图谱`);
       };
+
+      // Initialize Texture Loupe
+      initTextureLoupe();
     }
 
     // Run
