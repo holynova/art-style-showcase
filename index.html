@@ -164,9 +164,6 @@
         
         <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero jump) -->
         <img id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Artwork" class="absolute inset-0 m-auto max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl select-none opacity-0 transition-opacity duration-400">
-
-        <!-- 2.5x Texture Micro-Magnifier Loupe -->
-        <div id="textureLoupe" class="texture-loupe"></div>
       </div>
     </div>
 
@@ -698,10 +695,6 @@
         currentLightboxModel = "gemini";
       }
 
-      // Hide texture loupe on content switch
-      const loupe = document.getElementById("textureLoupe");
-      if (loupe) loupe.style.display = "none";
-
       // Handle comparative models (Gemini vs ChatGPT)
       const hasChatgpt = Boolean(item.chatgptImage);
       lightboxModelSwitch.classList.toggle("hidden", !hasChatgpt);
@@ -781,8 +774,6 @@
     function closeLightbox() {
       lightboxModal.classList.add("opacity-0", "pointer-events-none");
       document.body.style.overflow = "";
-      const loupe = document.getElementById("textureLoupe");
-      if (loupe) loupe.style.display = "none";
       if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
@@ -804,51 +795,6 @@
     };
 
     closeLightboxBtn.onclick = closeLightbox;
-
-    // Texture Loupe (2.5x Micro Magnifier on Hover)
-    function initTextureLoupe() {
-      const loupe = document.getElementById("textureLoupe");
-      const img = document.getElementById("lightboxImg");
-      const viewport = document.getElementById("lightboxViewport");
-      if (!loupe || !img || !viewport) return;
-
-      viewport.addEventListener("mouseenter", () => {
-        if (!img.src || img.src.startsWith("data:") || lightboxViewport.classList.contains("scale-150")) return;
-        loupe.style.display = "block";
-        loupe.style.backgroundImage = `url('${img.src}')`;
-      });
-
-      viewport.addEventListener("mouseleave", () => {
-        loupe.style.display = "none";
-      });
-
-      viewport.addEventListener("mousemove", (e) => {
-        if (lightboxViewport.classList.contains("scale-150")) {
-          loupe.style.display = "none";
-          return;
-        }
-
-        const rect = img.getBoundingClientRect();
-        const vRect = viewport.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-          loupe.style.display = "none";
-          return;
-        }
-
-        loupe.style.display = "block";
-        const loupeX = e.clientX - vRect.left;
-        const loupeY = e.clientY - vRect.top;
-        loupe.style.left = `${loupeX}px`;
-        loupe.style.top = `${loupeY}px`;
-
-        const zoom = 2.5;
-        loupe.style.backgroundSize = `${rect.width * zoom}px ${rect.height * zoom}px`;
-        loupe.style.backgroundPosition = `-${x * zoom - 80}px -${y * zoom - 80}px`;
-      });
-    }
 
     // Event Listeners
     function initEventListeners() {
@@ -890,9 +836,6 @@
         const randomItem = items[randomIdx];
         showToast(t.randomToast(randomItem.displayHeading));
       };
-
-      // Initialize Texture Loupe
-      initTextureLoupe();
     }
 
     // Run
