@@ -53,6 +53,26 @@ body {
   background: #3f3f46;
 }
 
+/* Gallery Masonry Layout (Strictly Max 3 Columns) */
+#galleryGrid {
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 540px) {
+  #galleryGrid {
+    column-count: 2;
+    column-gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #galleryGrid {
+    column-count: 3;
+    column-gap: 1.5rem;
+  }
+}
+
 /* Card */
 .art-card {
   background: var(--bg-surface);
