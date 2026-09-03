@@ -4,6 +4,7 @@
   "description": "🎨 AI Art Style Matrix & Comparator | 42 组全景艺术风格矩阵与交互式对比展示画廊",
   "main": "index.html",
   "scripts": {
+    "build": "node scripts/build-pages.mjs",
     "dev": "python3 -m http.server 8080",
     "serve": "npx serve .",
     "start": "open index.html"
