@@ -19,7 +19,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css?v=2.2.0">
+  <link rel="stylesheet" href="style.css?v=2.2.5">
 </head>
 <body class="selection:bg-[#e25c38] selection:text-white min-h-screen text-[#e4e4e7] overflow-x-hidden bg-[#090a0c]">
 
@@ -157,13 +157,13 @@
         <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
 
-      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade -->
-      <div id="lightboxViewport" class="relative w-full h-full max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] flex items-center justify-center cursor-zoom-in transition-transform duration-300 ease-out select-none">
-        <!-- Low-res thumbnail layer (Immediate placeholder) -->
-        <img id="lightboxThumbImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Thumbnail" class="max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.08] select-none transition-opacity duration-300">
+      <!-- Artwork Viewport Container with Smooth Dual-Layer Crossfade (Progressive Blur-Up) -->
+      <div id="lightboxViewport" class="cursor-zoom-in select-none">
+        <!-- Low-res thumbnail blur-up placeholder layer (fills container at final display size) -->
+        <img id="lightboxThumbImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Thumbnail">
         
-        <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero jump) -->
-        <img id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Artwork" class="absolute inset-0 m-auto max-h-[88vh] sm:max-h-[92vh] max-w-[96vw] w-auto h-auto object-contain rounded-xl select-none opacity-0 transition-opacity duration-400">
+        <!-- High-res full image layer (Fades in seamlessly over thumbnail with zero physical jump) -->
+        <img id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" alt="Artwork" class="opacity-0">
       </div>
     </div>
 
@@ -831,19 +831,26 @@
       const styleTitleCn = item.nameCn;
       const styleTitleEn = item.nameEn;
 
+      // 1. Lock exact geometry aspect ratio (eliminates thumbnail size jump)
+      const isPortrait = item.aspectRatio === "3:4";
+      lightboxViewport.style.setProperty("--art-ratio-num", isPortrait ? "3" : "16");
+      lightboxViewport.style.setProperty("--art-ratio-den", isPortrait ? "4" : "9");
+      lightboxViewport.style.setProperty("--art-aspect-ratio", isPortrait ? "3 / 4" : "16 / 9");
+
       // Reset viewport zoom
       lightboxViewport.classList.remove("scale-150", "cursor-zoom-out");
       lightboxViewport.classList.add("cursor-zoom-in");
 
-      // Set thumbnail immediately (fast placeholder)
+      // 2. Set blurred thumbnail placeholder immediately (matching full image size from frame 1)
       lightboxThumbImg.src = activeThumbSrc;
       lightboxThumbImg.alt = `${styleTitleCn} - ${sceneTitle}`;
+      lightboxThumbImg.classList.remove("opacity-0");
 
-      // Prepare high-res layer with valid transparent SVG data URI
+      // 3. Prepare high-res layer with valid transparent SVG data URI
       lightboxImg.classList.add("opacity-0");
       lightboxImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E";
 
-      // Preload full resolution image and crossfade in smoothly with zero jump
+      // 4. Preload full resolution image and crossfade in smoothly with ZERO physical jump
       const highRes = new Image();
       highRes.src = activeImageSrc;
       highRes.onload = () => {
