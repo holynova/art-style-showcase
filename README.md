@@ -1,35 +1,69 @@
-# 画风图谱 · 经典艺术与插画流派视觉解构 (Art Style Archive)
+<p align="right">
+  <strong>简体中文</strong> · <a href="./README.en.md">English</a>
+</p>
 
-基于统一基准测试场景，解构 41 种经典绘画、版画与插画流派的**笔触肌理、色彩语言、光影逻辑与 Prompt 结构化对照**。支持 9 大基准场景 × 41 种艺术风格共 369 组全量视觉图谱浏览、双模式「按场景查看」与「按风格查看」切换、Gemini vs ChatGPT 双模型细节对比、中英文双语切换、极速轻量缩略图加载与巨幕沉浸式灯箱。
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="画风图谱 · 经典艺术流派视觉解构 - Art Style Archive & Visual Taxonomy">
+</p>
 
----
-
-## 在线体验与源码
-
-- **在线访问 (GitHub Pages)**：[https://holynova.github.io/art-style-showcase/](https://holynova.github.io/art-style-showcase/)
-- **开源仓库 (GitHub)**：[https://github.com/holynova/art-style-showcase](https://github.com/holynova/art-style-showcase)
-
----
-
-## 核心特性
-
-1. **369 组基准视觉图谱**：覆盖人物肖像、海滨电车、镜湖古树、午夜古书店、云海蒸汽飞艇、深海发光水母、赛博雨夜拉面馆、森林魔导树屋与荒漠机械驼兽 9 大基准测试场景。
-2. **双维度矩阵浏览模式**：
-   - **🖼 按场景查看**：浏览同个场景在 41 种不同艺术流派下的视觉演变；
-   - **🎨 按风格查看**：锁定某一流派，一览 9 大基准场景在此流派下的横向表现力。
-3. **41 大经典与现代流派解构**：
-   - **传统画种**：厚涂油画、通透水彩、印象派、野兽派、炭笔素描、洛可可粉彩、点彩派、克里姆特金箔、暗黑奇幻水墨等；
-   - **版画与媒介 (含 Print Atlas 版画专题)**：木刻新闻插图、钢笔排线插图、黑白半调网点、CMYK 四色套印、古典石版画、手工丝网海报、蚀刻与飞尘法、浮世绘木刻、丝网版画/波普艺术、哥特木刻蚀刻、孔版印刷(Risograph)、粉笔黑板报手绘等；
-   - **时代美学**：美式复古网点漫画、80s City Pop、新艺术运动、装饰风艺术(Art Deco)、包豪斯构成、欧普视错觉等；
-   - **现代数码**：赛博朋克霓虹、吉卜力手绘风、极简扁平矢量、16-bit 像素艺术、低多边形三维(Low Poly)、定格黏土动画等。
-4. **✨ Gemini vs 🤖 ChatGPT 跨模型双模对照**：在详情页支持一键切换对比 Google Gemini 与 OpenAI ChatGPT 在相同提示词下的画面构图、质感与笔触还原度。
-5. **巨幕沉浸式全屏灯箱**：自适应视口完整展示大图，支持点击 1.5x 微观放大、左右按键/点击平滑切换与折叠式悬浮 Prompt 栏。
-6. **中英双语国际化 (i18n)**：支持一键切换中文/英文界面，自动持久化偏好设置。
-7. **极致加载性能**：600px 紧凑渐进式缩略图与双层平滑交叉淡入，杜绝大图加载跳变与闪烁。
+<p align="center">
+  <a href="https://art-style-showcase.xiaosang.cc/"><strong>🌐 在线体验 (Live Demo)</strong></a> · 
+  <a href="https://holynova.github.io/art-style-showcase/"><strong>🚀 备选镜像 (GitHub Pages)</strong></a> · 
+  <a href="https://github.com/holynova/art-style-showcase"><strong>📦 GitHub 源码</strong></a> · 
+  <a href="https://xiaosang.cc/"><strong>✨ 更多作品集</strong></a>
+</p>
 
 ---
 
-## 协议
+## 真实预览 (Proof of Work)
 
-[MIT License](LICENSE)
+<p align="center">
+  <img src="./assets/readme/screenshot.png" width="100%" alt="画风图谱 · 经典艺术流派视觉解构 实际运行效果截图">
+</p>
 
+---
+
+## 项目简介 (What It Is)
+
+用严谨的科研对照组思维构建的经典艺术流派图谱。建立 9 组跨类别标准基准场景（都市雨夜、荒野原野、静物陈列等），横向贯通测试 41 种经典绘画、版画与现代插画流派。提供笔触肌理、色彩语言、光影逻辑的多维度解构，支持双画风同屏对比与双模型细节实测。
+
+---
+
+## 核心机制与特色 (Why It Matters)
+
+- **基准变量控制法**：保持画面主体内容与构图严格一致，只改变流派参数，精准剥离风格本身的美学特征。
+- **41 大流派全景图谱**：囊括印象派、浮世绘、野兽派、Art Deco、包豪斯、波普艺术、赛博朋克等 41 种主流范式。
+- **双模型并排对比台**：同屏比对 Gemini 与 ChatGPT 在相同提示词下的笔触还原度与构图偏好。
+- **沉浸式巨幕灯箱**：支持 4K 级别微观笔触画质放大，配套结构化 Prompt 说明书与关键词配比。
+
+---
+
+## 收录清单与规格 (Inventory & Scope)
+
+9 大基准测试场景、41 种艺术流派、369 组高精画作样本、中英双语切换、双流派自由联动对比功能。
+
+---
+
+## 快速开始 (Quick Start)
+
+### 1. 在线体验
+无需安装任何环境，直接在浏览器中打开：
+- 🌐 **主站演示 (Primary)**：[https://art-style-showcase.xiaosang.cc/](https://art-style-showcase.xiaosang.cc/)
+- 🚀 **备选镜像 (GitHub Pages)**：[https://holynova.github.io/art-style-showcase/](https://holynova.github.io/art-style-showcase/)
+
+### 2. 本地运行与调试
+克隆仓库后执行以下命令：
+
+```bash
+git clone https://github.com/holynova/art-style-showcase.git
+cd art-style-showcase
+open index.html # Pure static HTML5, open directly in browser
+```
+
+---
+
+## 开源协议与作者 (License & Author)
+
+- **作者**：[holynova (小桑)](https://xiaosang.cc/)
+- **授权协议**：[MIT License](./LICENSE)
+- **合辑收录**：本仓库作为精选项目收录于 [Where Craft Lives (xiaosang.cc)](https://xiaosang.cc/)。
