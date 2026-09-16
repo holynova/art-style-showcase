@@ -31,7 +31,7 @@
 
 ## 核心机制与特色 (Why It Matters)
 
-- **基准变量控制法**：保持画面主体内容与构图严格一致，只改变流派参数，精准剥离风格本身的美学特征。
+- **基准变量控制法**：以共同的场景描述比较流派差异，观察笔触、颜色与构图的变化。
 - **41 大流派全景图谱**：囊括印象派、浮世绘、野兽派、Art Deco、包豪斯、波普艺术、赛博朋克等 41 种主流范式。
 - **双模型并排对比台**：同屏比对 Gemini 与 ChatGPT 在相同提示词下的笔触还原度与构图偏好。
 - **沉浸式巨幕灯箱**：支持 4K 级别微观笔触画质放大，配套结构化 Prompt 说明书与关键词配比。
@@ -57,13 +57,19 @@
 ```bash
 git clone https://github.com/holynova/art-style-showcase.git
 cd art-style-showcase
-open index.html # Pure static HTML5, open directly in browser
+python3 -m http.server 8080
 ```
 
 ---
 
+打开 [localhost:8080](http://localhost:8080)。浏览图库只需 Python 3 和浏览器；图片生成脚本不是启动步骤。
+
+## 如何对比
+
+先固定一个场景，再选择不同画风或模型观察结果，对照配套提示词。生成图像用于视觉探索；相同提示词并不保证构图严格一致。
+
 ## 开源协议与作者 (License & Author)
 
 - **作者**：[holynova (小桑)](https://xiaosang.cc/)
-- **授权协议**：[MIT License](./LICENSE)
+- **授权说明**：仓库当前未附独立 LICENSE 文件；复用代码或素材前请确认相应授权。
 - **合辑收录**：本仓库作为精选项目收录于 [Where Craft Lives (xiaosang.cc)](https://xiaosang.cc/)。
