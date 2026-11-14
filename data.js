@@ -6,8 +6,8 @@
 const SCENES_DATA = [
   {
     "id": "scene_a",
-    "title": "I · 咖啡馆雨窗与猫",
-    "subtitle": "人物肖像 · 室内外冷暖光影与织物质感",
+    "title": "I — 咖啡馆雨窗与猫",
+    "subtitle": "人物肖像：室内外冷暖光影与织物质感",
     "badge": "3:4 肖像比例",
     "description": "咖啡馆雨窗旁，戴宽檐帽喝咖啡的优雅女性，木桌上趴着一只睡猫。用于测试人物五官结构、衣褶质感、室内外冷暖对比与情绪传达。",
     "coreSubject": "A stylish woman in a wide-brim hat sitting by a rainy cafe window, sipping coffee, a fluffy cat sleeping on the wooden table",
@@ -1132,8 +1132,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_b",
-    "title": "II · 雨后黄昏海滨电车",
-    "subtitle": "街景建筑 · 空间透视、黄昏光影与湿地反射",
+    "title": "II — 雨后黄昏海滨电车",
+    "subtitle": "街景建筑：空间透视、黄昏光影与湿地反射",
     "badge": "16:9 全景比例",
     "description": "滨海大道上行驶的复古绿色有轨电车，雨后黄昏金色落日，湿漉沥青路面倒映路灯与云霞。用于测试空间纵深、建筑立面、车辆金属反光与湿地漫反射。",
     "coreSubject": "A vintage green electric tram moving along a seaside coastal boulevard at golden sunset, wet asphalt reflecting streetlights, ocean waves in the background",
@@ -2258,8 +2258,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_c",
-    "title": "III · 悬崖古树与镜湖",
-    "subtitle": "自然风光 · 远近景深、树木肌理与水面倒影",
+    "title": "III — 悬崖古树与镜湖",
+    "subtitle": "自然风光：远近景深、树木肌理与水面倒影",
     "badge": "16:9 全景比例",
     "description": "暮色中悬崖边缘傲然挺立的苍劲松树，俯瞰下方薄雾弥漫的如镜高山湖泊与远方层峦叠嶂。用于测试有机自然形态、空气透视、植被微细节与水天倒影。",
     "coreSubject": "An ancient gnarled pine tree clinging to a misty cliff overlooking a pristine mirror-like mountain lake at twilight, dramatic peaks and ethereal fog in the distance",
@@ -3380,8 +3380,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_d",
-    "title": "IV · 午夜古书店与老学者",
-    "subtitle": "室内群组 · 密集物体排列与局部暖光源暗调光影",
+    "title": "IV — 午夜古书店与老学者",
+    "subtitle": "室内群组：密集物体排列与局部暖光源暗调光影",
     "badge": "16:9 全景比例",
     "description": "午夜堆满泛黄古卷的高耸旧书店里，戴圆形眼镜的老学者借着复古铜台灯光芒专注阅读大部头古籍，空气中漂浮着微光尘埃。用于测试复杂空间群组、密集物体排列、暗调暖光氛围与人物神态刻画。",
     "coreSubject": "An elderly scholar with round spectacles reading a leather-bound grimoire inside a towering midnight antique bookstore, towering bookshelves, warm brass desk lamp, floating dust motes",
@@ -4502,8 +4502,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_e",
-    "title": "V · 云海机械飞艇与悬空港",
-    "subtitle": "奇幻工业 · 复杂机械结构与宏大云雾大气透视",
+    "title": "V — 云海机械飞艇与悬空港",
+    "subtitle": "奇幻工业：复杂机械结构与宏大云雾大气透视",
     "badge": "16:9 全景比例",
     "description": "一艘由黄铜齿轮与巨大气囊构成的蒸汽朋克机械巨型飞艇，正缓缓停靠在云海之上的悬空浮岛空港，落日余晖穿透蒸腾云海，悬索桥在狂风中微摆。用于测试复杂机械硬表面、材质金属反光、多层云雾景深与工业科幻宏大构图。",
     "coreSubject": "A colossal steampunk brass mechanical airship docking at a floating cloud city skyport, spinning bronze propellers, intricate suspension bridges, dramatic sunset clouds billowing below",
@@ -5624,8 +5624,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_f",
-    "title": "VI · 深海发光水母与探险潜水员",
-    "subtitle": "幽暗水下 · 生物荧光、丁达尔光束与半透明材质",
+    "title": "VI — 深海发光水母与探险潜水员",
+    "subtitle": "幽暗水下：生物荧光、丁达尔光束与半透明材质",
     "badge": "16:9 全景比例",
     "description": "在幽深静谧的海底深渊中，身着复古铜盔潜水服的探险家手持探照灯，正迎面穿过一群散发着梦幻荧光的巨大半透明水母群，丁达尔光束穿透深蓝海水，气泡闪烁升腾。用于测试半透明介质折射、自发光体散射、深水环境光衰减与神秘深邃氛围。",
     "coreSubject": "A deep sea diver in antique bronze diving suit encountering a majestic swarm of giant glowing bioluminescent jellyfish in deep oceanic trench, volumetric god rays, sparkling bubbles, deep sapphire water",
@@ -6746,8 +6746,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_g",
-    "title": "VII · 赛博雨夜拉面馆与机械少女",
-    "subtitle": "未来街头 · 霓虹倒影、机能服饰与机械臂结构",
+    "title": "VII — 赛博雨夜拉面馆与机械少女",
+    "subtitle": "未来街头：霓虹倒影、机能服饰与机械臂结构",
     "badge": "16:9 全景比例",
     "description": "赛博朋克风格的新东京雨夜窄巷中，半机械少女正坐在冒着热气的路边拉面摊前，由多轴仿生机械臂厨师递上拉面，周围是层叠的霓虹广告牌与湿滑沥青地面的倒影。用于测试高饱和未来光影、机械关节结构、雨丝质感与科幻市井烟火气。",
     "coreSubject": "A cyborg girl and an android chef preparing ramen in a steaming noodle cart inside a rain-slicked Neo-Tokyo alleyway, holographic neon signs, steaming broth, wet asphalt reflections",
@@ -7868,8 +7868,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_h",
-    "title": "VIII · 森林深处的魔导树屋与炼金女巫",
-    "subtitle": "奇幻自然 · 苍古巨树生态、魔药器皿与微光氛围",
+    "title": "VIII — 森林深处的魔导树屋与炼金女巫",
+    "subtitle": "奇幻自然：苍古巨树生态、魔药器皿与微光氛围",
     "badge": "16:9 全景比例",
     "description": "在一棵贯通天地的万年魔导发光巨树躯干上搭建的多层精致木构树屋实验室中，年轻的炼金女巫正在调配发光的魔药，周围挂满了风干草药、发光荧光菌菇与咕嘟冒泡的蒸馏瓶。用于测试奇幻生态、木质与玻璃材质反光、柔和微光照明与温馨童话细节。",
     "coreSubject": "A young alchemist witch brewing glowing potions inside a whimsical multi-level treehouse laboratory in deep ancient enchanted forest, bubbling glass alembics, bioluminescent mushrooms, soft moonbeam",
@@ -8990,8 +8990,8 @@ const SCENES_DATA = [
   },
   {
     "id": "scene_i",
-    "title": "IX · 荒漠废墟与流浪机械驼兽",
-    "subtitle": "废土异星 · 风蚀古遗迹、重装机械兽与黄昏沙海",
+    "title": "IX — 荒漠废墟与流浪机械驼兽",
+    "subtitle": "废土异星：风蚀古遗迹、重装机械兽与黄昏沙海",
     "badge": "16:9 全景比例",
     "description": "金黄色漫天沙尘暴渐歇的废土荒漠上，一位披着防风斗篷的异星流浪者牵着一头背负重型货柜的四足重装机械驼兽，正缓缓穿过风蚀严重的古文明神庙巨柱废墟。用于测试粗糙砂石与风化石材肌理、重型工业骨架、黄昏强逆光与苍茫苍凉的史诗空间感。",
     "coreSubject": "A desert wanderer leading a giant steampunk mechanical camel past crumbling ancient sandstone temple ruins across sand dunes at golden sunset",

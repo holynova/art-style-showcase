@@ -25,7 +25,7 @@
 
 ## What It Is
 
-A rigorous visual benchmark exploring classic art movements. Controls variables by fixing 9 standard benchmark scenes (urban rainy night, wild landscape, still life, etc.) while systematically rendering 41 art movements (Impressionism, Ukiyo-e, Art Deco, Bauhaus, Pop Art, Cyberpunk, etc.). Provides multi-dimensional breakdowns of brushstrokes, color language, and prompt recipes.
+A rigorous visual benchmark exploring classic art movements. Controls variables by fixing 9 standard benchmark scenes (urban rainy night, wild landscape, still life, etc.) while systematically rendering 41 art movements (Impressionism, Ukiyo-e, Art Deco, Bauhaus, Pop Art, Cyberpunk, etc.). Each movement carries breakdown fields for brushwork, color, technique, and masters (see data.js); the site offers browsing, a lightbox, and one-click prompt copy.
 
 ---
 
@@ -33,14 +33,14 @@ A rigorous visual benchmark exploring classic art movements. Controls variables 
 
 - **Benchmark Variable-Controlled Testing**: Strictly keeps scene subjects and composition consistent while swapping movement prompts to isolate aesthetic traits.
 - **41 Art Movements Taxonomy**: From Impressionism and Ukiyo-e to Art Deco, Bauhaus, Risograph, and Cyberpunk.
-- **Dual-Model Comparison Stage**: Side-by-side comparison between Gemini and ChatGPT on stroke fidelity and color bias under identical prompts.
-- **Immersive 4K Lightbox**: Microscopic stroke zoom with paired bilingual prompt breakdown cards.
+- **Dual-Model Comparison (4-item pilot)**: Impasto and Watercolor in the Cafe and Seaside Tram scenes have ChatGPT versions; switch between Gemini / ChatGPT inside the lightbox.
+- **Immersive Lightbox**: Click to enlarge the full-resolution artwork (16:9 about 1376×768, 3:4 about 896×1200), zoom in on brushwork, and copy the prompt with one click.
 
 ---
 
 ## Inventory & Scope
 
-9 benchmark scenes, 41 art movements, 369 paired specimens, bilingual language toggles, interactive dual-style slider.
+9 benchmark scenes, 41 art movements, 369 specimens (plus 369 thumbnails), bilingual language toggle, browse by scene or by style.
 
 ---
 
